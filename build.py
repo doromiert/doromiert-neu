@@ -29,10 +29,11 @@ class NzIcon:
 
 class NavButton:
     tag = "nav-button"
-    attrs = ["href", "c0", "c1"]
+    attrs = ["href", "c0", "c1", "id"]
 
-    def render(self, href, inner, c0, c1, **_):
-        return f'<a style="text-decoration: none;" href="{href}"><button style="--c1: {c1}; --c0: {c0};">{inner}</button></a>'
+    def render(self, href, inner, c0, c1, id=None, **_):
+        id_attr = f' id="{id}"' if id else ""
+        return f'<a style="text-decoration: none;" href="{href}"><button style="--c1: {c1}; --c0: {c0};"{id_attr}>{inner}</button></a>'
 
 # Add new element classes above, then register them here
 ELEMENTS = [NzIcon, NavButton]
@@ -85,22 +86,44 @@ def generate_icon_css():
     return css
 
 # =============================================================================
+# INLINE SVGS
+# =============================================================================
+
+def inline_svgs(html):
+    def replacer(m):
+        src = m.group(1)
+        style = m.group(2)
+        path = ROOT / src
+        if not path.exists():
+            return m.group(0)
+        svg = path.read_text()
+        if style:
+            svg = re.sub(r'<svg', f'<svg style="{style}"', svg, count=1)
+        return svg
+    return re.sub(r'<img\s+src="([^"]+\.svg)"[^>]*style="([^"]*)"[^>]*/>', replacer, html)
+
+# =============================================================================
 # BUILD
 # =============================================================================
 
 def build():
     html = (ROOT / "index.html").read_text()
 
-    html = compile_elements(html)
+    html = inline_svgs(html)       # inline SVGs first, before element compilation
+    html = compile_elements(html)  # so inner content is already resolved
     html = html.replace("</style>", generate_icon_css() + "\n    </style>", 1)
 
     DIST.mkdir(exist_ok=True)
     out = DIST / "index.html"
-    out.write_text(html)
+    out.write_text(html)           # write once, after all transforms
 
-    for asset in ["icons.svg", "doromiert.svg"]:
+    for asset in ["icons.svg", "doromiert-znak"]:
         src = ROOT / asset
-        if src.exists():
+        if not src.exists():
+            continue
+        if src.is_dir():
+            shutil.copytree(src, DIST / asset, dirs_exist_ok=True)
+        else:
             shutil.copy(src, DIST / asset)
 
     with open(out, "rb") as f_in, gzip.open(str(out) + ".gz", "wb", compresslevel=9) as f_out:

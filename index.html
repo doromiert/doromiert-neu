@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>doromiert</title>
     <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
+        font-family: "Atkinson Hyperlegible Next", sans-serif;
         --b1: #5a1e17;
         --b0: #c96959;
         --po0: #e58b3c;
         --po1: #7c3a0b;
-        --je0: #ffd165;
-        --je1: #a87600;
+        --j0: #ffd165;
+        --j1: #a87600;
         --z0: #76e256;
         --z1: #2e7700;
         --n0: #59a7c9;
@@ -56,21 +63,111 @@
         min-height: calc(100vh - 34px);
         background-color: var(--c0);
         color: var(--c1);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
       }
 
       body {
         padding: 0;
         margin: 0;
       }
+
+      #doromiert-icon {
+        fill: var(--b1);
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: all 0.15s;
+
+        @media (max-width: 600px) {
+          justify-content: space-between;
+        }
+        @media (min-width: 601px) {
+          justify-content: flex-end;
+          gap: 10px;
+
+          & #doromiert-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+          }
+        }
+      }
+      .doromiert-znak {
+        user-select: none;
+        display: flex;
+        gap: 10px;
+        @media (max-width: 600px) {
+          flex-direction: column;
+        }
+        @media (min-width: 601px) {
+          flex-direction: row;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="topbar">
-      <nav-button href="#jab" c0="var(--b0)" c1="var(--b1)">
-        <nz-icon name="home" />
-        <span>Home</span>
+      <nav-button
+        id="doromiert-button"
+        href="#doromiert"
+        c0="var(--b1)"
+        c1="var(--b0)"
+      >
+        <img
+          src="doromiert.svg"
+          alt="Logo"
+          style="width: 18px; height: 18px; padding: 3px"
+        />
+      </nav-button>
+
+      <nav-button href="#jab" c0="var(--n0)" c1="var(--n1)">
+        <nz-icon name="user"></nz-icon>
+      </nav-button>
+
+      <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)">
+        <nz-icon name="library"></nz-icon>
+      </nav-button>
+
+      <nav-button href="#blog" c0="var(--j0)" c1="var(--po1)">
+        <nz-icon name="announcement"></nz-icon>
+      </nav-button>
+
+      <nav-button href="#devices" c0="var(--z0)" c1="var(--x0)">
+        <nz-icon name="cpu"></nz-icon>
+      </nav-button>
+
+      <nav-button href="#music" c0="var(--r0)" c1="var(--r1)">
+        <nz-icon name="music"></nz-icon>
+      </nav-button>
+
+      <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)">
+        <nz-icon name="chat"></nz-icon>
       </nav-button>
     </div>
-    <section id="jab" style="--c0: var(--b0); --c1: var(--b1)"></section>
+    <section id="doromiert" style="--c0: var(--b0); --c1: var(--b1)">
+      <div class="doromiert-znak">
+        <img src="doromiert-znak/dor.svg" />
+        <img src="doromiert-znak/omi.svg" />
+        <img src="doromiert-znak/ert.svg" />
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center">
+        <div style="font-size: 20px"><b>doromiert</b> /dor-omi-ert/</div>
+        <div style="font-size: 16px">Noun. The one that creates.</div>
+      </div>
+    </section>
+    <section id="jab" style="--c0: var(--n1); --c1: var(--n0)"></section>
   </body>
 </html>
