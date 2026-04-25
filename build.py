@@ -45,8 +45,44 @@ class NavButton:
         id_attr = f' id="{id}"' if id else ""
         return f'<a style="text-decoration: none;" href="{href}"><button style="--c1: {c1}; --c0: {c0};"{id_attr}>{inner}</button></a>'
 
+SECTION_COLORS = {
+    "doromiert": ("var(--b0)",  "var(--b1)", None),
+    "jab":       ("var(--n1)",  "var(--n0)", None),
+    "lib":       ("var(--z1)",  "var(--z0)", "library"),
+    "blog":      ("var(--po1)", "var(--j0)", "announcement"),
+    "devices":   ("var(--x0)",  "var(--z0)", "cpu"),
+    "music":     ("var(--r1)",  "var(--r0)", "music"),
+    "contact":   ("var(--pu1)", "var(--r0)", "chat"),
+}
+
+class NzSection:
+    tag = "nz-section"
+    attrs = ["id", "name", "nosep"]
+
+    def render(self, id, name="", nosep="", inner="", **_):
+        c0, c1, icon = SECTION_COLORS.get(id, ("var(--x0)", "var(--w)", None))
+        sep_c0, sep_c1 = {
+            "jab":     ("var(--n1)", "var(--n0)"),
+            "lib":     ("var(--z1)", "var(--z0)"),
+            "blog":    ("var(--po1)", "var(--j0)"),
+            "devices": ("var(--x0)", "var(--z0)"),
+            "music":   ("var(--r1)", "var(--r0)"),
+            "contact": ("var(--pu1)", "var(--r0)"),
+        }.get(id, (c0, c1))
+
+        sep = "" if nosep else f'<nz-sep name="{name}" href="#{id}" c0="{sep_c0}" c1="{sep_c1}"></nz-sep>'
+        extra = ' style="min-height:calc(100vh - 80px)!important"' if id == "contact" else ""
+
+        header = ""
+        if icon:
+            header = f'<nz-icon name="{icon}" size="64"></nz-icon><b style="font-size:20px">{name}</b>'
+        elif id == "jab":
+            header = f'<img src="doromiert-bold.svg" alt="Logo" /><b style="font-size:20px">{name}</b>'
+
+        return f'{sep}<section class="nz-section" id="{id}" style="--c0:{c0};--c1:{c1}"{extra}>{header}{inner}</section>'
+
 # Add new element classes above, then register them here
-ELEMENTS = [NzIcon, NavButton, Separator]
+ELEMENTS = [NzIcon, NavButton, Separator, NzSection]
 
 # =============================================================================
 # COMPILER
@@ -84,17 +120,20 @@ def compile_elements(html):
 def generate_icon_css():
     icons = (ROOT / "icons.txt").read_text().strip().split("\n")
     total = len(icons)
-    sprite_width = total * 24
 
     css = (
         f".nz-icon{{display:inline-block;width:var(--icon-size,24px);height:var(--icon-size,24px);"
         f"background-color:currentColor;"
-        f"mask-image:url('icons.svg');mask-size:{sprite_width}px 24px;"
-        f"-webkit-mask-image:url('icons.svg');-webkit-mask-size:{sprite_width}px 24px}}"
+        f"--icon-count:{total};--icon-index:0;"
+        f"mask-image:url('icons.svg');"
+        f"mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);"
+        f"mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0;"
+        f"-webkit-mask-image:url('icons.svg');"
+        f"-webkit-mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);"
+        f"-webkit-mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0}}"
     )
     for i, name in enumerate(icons):
-        offset = i * 24
-        css += f".nz-icon-{name}{{mask-position:-{offset}px 0;-webkit-mask-position:-{offset}px 0}}"
+        css += f".nz-icon-{name}{{--icon-index:{i}}}"
 
     return css
 
@@ -130,7 +169,7 @@ def build():
     out = DIST / "index.html"
     out.write_text(html)           # write once, after all transforms
 
-    for asset in ["icons.svg", "doromiert-znak"]:
+    for asset in ["icons.svg", "doromiert-znak", "doromiert-bold.svg"]:
         src = ROOT / asset
         if not src.exists():
             continue

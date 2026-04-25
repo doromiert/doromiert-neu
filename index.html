@@ -33,11 +33,42 @@
         --w: #ffffff;
       }
 
+      .jab-cta {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        button {
+          min-width: 270px;
+          span:not(.nz-icon) {
+            margin-right: auto;
+          }
+        }
+      }
+
       html {
         scroll-behavior: smooth;
       }
 
+      .nz-section {
+        padding-right: 20px;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+
+      .about {
+        text-align: center;
+        text-wrap: balance;
+        b {
+          white-space: nowrap;
+        }
+        .nz-icon {
+          vertical-align: middle;
+          margin-right: 4px;
+        }
+      }
       button {
+        font-weight: normal;
+        font-size: 16px;
         padding: 8px;
         border-radius: 0;
         transition: all 0.15s;
@@ -47,14 +78,17 @@
         color: var(--c0);
         display: flex;
         align-items: center;
+        outline: 2px solid var(--c1);
+        outline-offset: 0px;
+        transition: all 0.15s;
 
         &:hover {
+          outline: 6px solid var(--c1);
           filter: brightness(1.5);
-          scale: 1.1;
         }
         &:active {
+          outline: -1px solid var(--c1);
           filter: brightness(0.75);
-          scale: 0.9;
         }
         span:not(.nz-icon) {
           margin-left: 8px;
@@ -63,6 +97,8 @@
       }
 
       section {
+        text-wrap: balance;
+        text-align: center;
         min-height: calc(100vh - 34px);
         background-color: var(--c0);
         color: var(--c1);
@@ -179,7 +215,7 @@
         <nz-icon name="chat"></nz-icon>
       </nav-button>
     </div>
-    <section id="doromiert" style="--c0: var(--b0); --c1: var(--b1)">
+    <nz-section id="doromiert" nosep="true">
       <div class="doromiert-znak">
         <img src="doromiert-znak/dor.svg" />
         <img src="doromiert-znak/omi.svg" />
@@ -189,29 +225,35 @@
         <div style="font-size: 20px"><b>doromiert</b> /dor-omi-ert/</div>
         <div style="font-size: 16px">Noun. The one that creates.</div>
       </div>
-    </section>
-    <nz-sep name="About me" href="#jab" c0="var(--n1)" c1="var(--n0)"></nz-sep>
-    <section id="jab" style="--c0: var(--n1); --c1: var(--n0)"></section>
-    <nz-sep name="Library" href="#lib" c0="var(--z1)" c1="var(--z0)"></nz-sep>
-    <section id="lib" style="--c0: var(--z1); --c1: var(--z0)"></section>
-    <nz-sep name="Blog" href="#blog" c0="var(--po1)" c1="var(--j0)"></nz-sep>
-    <section id="blog" style="--c0: var(--po1); --c1: var(--po0)"></section>
-    <nz-sep
-      name="Devices"
-      href="#devices"
-      c0="var(--x0)"
-      c1="var(--z0)"
-    ></nz-sep>
-    <section id="devices" style="--c0: var(--x0); --c1: var(--z0)"></section>
-    <nz-sep name="Music" href="#music" c0="var(--r1)" c1="var(--r0)"></nz-sep>
-    <section id="music" style="--c0: var(--r1); --c1: var(--r0)"></section>
-    <nz-sep
-      name="Contact"
-      href="#contact"
-      c0="var(--pu1)"
-      c1="var(--r0)"
-    ></nz-sep>
-    <section id="contact" style="--c0: var(--pu1); --c1: var(--r0)"></section>
+    </nz-section>
+
+    <nz-section id="jab" name="Who am I?">
+      <div class="about">
+        I'm a <b><nz-icon name="paintbrush"></nz-icon>designer</b>,
+        <b><nz-icon name="code"></nz-icon>developer</b>,
+        <b><nz-icon name="translate"></nz-icon>language</b> and
+        <b><nz-icon name="cpu"></nz-icon>hardware enthusiast</b>.
+      </div>
+      I live in Warsaw, Poland and speak polish, english, ixni and toki pona.
+      (although I'm learning other languages too, for example russian)
+      <div class="jab-cta">
+        <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)"
+          ><nz-icon name="chat"></nz-icon>
+          <span>Contact me now</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+        <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)"
+          ><nz-icon name="library"></nz-icon>
+          <span>Check out my creations</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+      </div>
+    </nz-section>
+    <nz-section id="lib" name="My creations"></nz-section>
+    <nz-section id="blog" name="Blog"></nz-section>
+    <nz-section id="devices" name="My devices"></nz-section>
+    <nz-section id="music" name="Music I like"></nz-section>
+    <nz-section id="contact" name="Contact me"></nz-section>
     <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
       <div style="gap: 5px; display: flex; flex-direction: column">
         <div>Made with love by doromiert</div>
