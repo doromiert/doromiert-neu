@@ -19,6 +19,14 @@
 
             echo ":: initial build"
             ${pkgs.python3}/bin/python3 build.py
+            ${pkgs.html-minifier}/bin/html-minifier \
+                --collapse-whitespace \
+                --remove-comments \
+                --remove-optional-tags \
+                --remove-redundant-attributes \
+                --remove-script-type-attributes \
+                --remove-tag-whitespace \
+                dist/index.html -o dist/index.html
 
             echo ":: watching — http://localhost:8080"
 
@@ -29,7 +37,17 @@
               --watch doromiert.svg \
               --on-busy-update restart \
               --postpone \
-              -- ${pkgs.python3}/bin/python3 build.py &
+              -- sh -c '
+                ${pkgs.python3}/bin/python3 build.py && \
+                ${pkgs.html-minifier}/bin/html-minifier \
+                    --collapse-whitespace \
+                    --remove-comments \
+                    --remove-optional-tags \
+                    --remove-redundant-attributes \
+                    --remove-script-type-attributes \
+                    --remove-tag-whitespace \
+                    dist/index.html -o dist/index.html
+                ' &
 
             WATCHPID=$!
             trap "kill $WATCHPID 2>/dev/null" EXIT
