@@ -8,6 +8,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      pythonWithMarkdown = pkgs.python3.withPackages (ps: [ ps.markdown ]);
     in
     {
       apps.${system}.default = {
@@ -18,7 +19,7 @@
             cd "/home/doromiert/Projects/doromiert-neu"
 
             echo ":: initial build"
-            ${pkgs.python3}/bin/python3 build.py
+            ${pythonWithMarkdown}/bin/python3 build.py
 
             echo ":: watching — http://localhost:8080"
 
@@ -29,7 +30,7 @@
               --watch doromiert.svg \
               --on-busy-update restart \
               --postpone \
-              -- ${pkgs.python3}/bin/python3 build.py &
+              -- ${pythonWithMarkdown}/bin/python3 build.py &
 
             WATCHPID=$!
             trap "kill $WATCHPID 2>/dev/null" EXIT

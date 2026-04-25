@@ -5,34 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>doromiert</title>
     <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap"
-      rel="stylesheet"
-    />
     <style>
-      :root {
-        font-family: "Atkinson Hyperlegible Next", sans-serif;
-        --b1: #5a1e17;
-        --b0: #c96959;
-        --po0: #e58b3c;
-        --po1: #7c3a0b;
-        --j0: #ffd165;
-        --j1: #a87600;
-        --z0: #76e256;
-        --z1: #2e7700;
-        --n0: #59a7c9;
-        --n1: #004a69;
-        --r0: #d47be6;
-        --r1: #7a1b8d;
-        --pu0: #7159c9;
-        --pu1: #150055;
-        --x1: #5d5d5d;
-        --x0: #1a1a1a;
-        --w: #ffffff;
-      }
-
+      @import "base.css";
       .jab-cta {
         display: flex;
         gap: 10px;
@@ -43,10 +17,6 @@
             margin-right: auto;
           }
         }
-      }
-
-      html {
-        scroll-behavior: smooth;
       }
 
       .nz-section {
@@ -64,36 +34,6 @@
         .nz-icon {
           vertical-align: middle;
           margin-right: 4px;
-        }
-      }
-
-      button {
-        font-weight: normal;
-        font-size: 16px;
-        padding: 8px;
-        border-radius: 0;
-        transition: all 0.15s;
-        border: none;
-        cursor: pointer;
-        background-color: var(--c1);
-        color: var(--c0);
-        display: flex;
-        align-items: center;
-        outline: 2px solid var(--c1);
-        outline-offset: 0px;
-        transition: all 0.15s;
-
-        &:hover {
-          outline-width: 6px;
-          filter: brightness(1.5);
-        }
-        &:active {
-          outline-width: -1px;
-          filter: brightness(0.75);
-        }
-        span:not(.nz-icon) {
-          margin-left: 8px;
-          margin-right: 8px;
         }
       }
 
@@ -119,6 +59,10 @@
       }
 
       #doromiert-icon {
+        fill: var(--b1);
+      }
+
+      #doromiert-button * {
         fill: var(--b1);
       }
 
@@ -185,11 +129,7 @@
         c0="var(--b1)"
         c1="var(--b0)"
       >
-        <img
-          src="doromiert.svg"
-          alt="Logo"
-          style="width: 18px; height: 18px; padding: 3px"
-        />
+        <img src="doromiert.svg" alt="Logo" style="" />
       </nav-button>
 
       <nav-button href="#jab" c0="var(--n0)" c1="var(--n1)">
@@ -254,7 +194,83 @@
     <nz-section id="blog" name="Blog"></nz-section>
     <nz-section id="devices" name="My devices"></nz-section>
     <nz-section id="music" name="Music I like"></nz-section>
-    <nz-section id="contact" name="Contact me"></nz-section>
+    <nz-section id="contact" name="Contact me">
+      <div
+        style="
+          width: 270px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        "
+      >
+        <nav-button
+          href="mailto:doromiert@gmail.com"
+          c0="var(--pu1)"
+          c1="var(--r0)"
+          style="width: 270px"
+        >
+          <nz-icon name="mail"></nz-icon>
+          <span style="margin-right: auto">Email</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+
+        <nav-button
+          href="https://t.me/doromiert"
+          c0="var(--pu1)"
+          c1="var(--r0)"
+          style="width: 270px"
+        >
+          <nz-icon name="telegram"></nz-icon>
+          <span style="margin-right: auto">Telegram</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+
+        <nav-button
+          href="https://discord.com/users/786127059020808192"
+          c0="var(--pu1)"
+          c1="var(--r0)"
+          style="width: 270px"
+        >
+          <nz-icon name="discord"></nz-icon>
+          <span style="margin-right: auto">Discord</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+
+        <nav-button
+          href="https://lastfm.com/user/nrdeez"
+          c0="var(--pu1)"
+          c1="var(--r0)"
+          style="width: 270px"
+        >
+          <nz-icon name="music"></nz-icon>
+          <span style="margin-right: auto">Last.fm</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+
+        <nav-button
+          href="https://huggingface.co/doromiert"
+          c0="var(--pu1)"
+          c1="var(--r0)"
+          style="width: 270px"
+        >
+          <nz-icon name="brain"></nz-icon>
+          <span style="margin-right: auto">Hugging Face</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+
+        <nav-button
+          href="https://github.com/doromiert"
+          c0="var(--pu1)"
+          c1="var(--r0)"
+          style="width: 270px"
+        >
+          <nz-icon name="github"></nz-icon>
+          <span style="margin-right: auto">GitHub</span>
+          <nz-icon name="direction"></nz-icon>
+        </nav-button>
+      </div>
+    </nz-section>
     <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
       <div style="gap: 5px; display: flex; flex-direction: column">
         <div>Made with love by doromiert</div>

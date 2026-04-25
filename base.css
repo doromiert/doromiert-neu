@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap");
+
+:root {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
+  --b1: #5a1e17;
+  --b0: #c96959;
+  --po0: #e58b3c;
+  --po1: #7c3a0b;
+  --j0: #ffd165;
+  --j1: #a87600;
+  --z0: #76e256;
+  --z1: #2e7700;
+  --n0: #59a7c9;
+  --n1: #004a69;
+  --r0: #d47be6;
+  --r1: #7a1b8d;
+  --pu0: #7159c9;
+  --pu1: #150055;
+  --x1: #5d5d5d;
+  --x0: #1a1a1a;
+  --w: #ffffff;
+}
+html {
+  scroll-behavior: smooth;
+}
+button {
+  font-weight: normal;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 0;
+  transition: all 0.15s;
+  border: none;
+  cursor: pointer;
+  background-color: var(--c1);
+  color: var(--c0);
+  display: flex;
+  align-items: center;
+  outline: 2px solid var(--c1);
+  outline-offset: 0px;
+  transition: all 0.15s;
+
+  &:hover {
+    outline-width: 6px;
+    filter: brightness(1.5);
+  }
+  &:active {
+    outline-width: -1px;
+    filter: brightness(0.75);
+  }
+  span:not(.nz-icon) {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
