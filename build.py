@@ -21,11 +21,21 @@ DIST = ROOT / "dist"
 
 class NzIcon:
     tag = "nz-icon"
-    attrs = ["name", "size"]
+    attrs = ["name", "size", "rotate"]
 
-    def render(self, name, size="24", **_):
-        return f'<span class="nz-icon nz-icon-{name}" style="--icon-size:{size or "24"}px"></span>'
+    def render(self, name, size="24", rotate="0", **_):
+        return f'<span class="nz-icon nz-icon-{name}" style="--icon-size:{size or "24"}px;rotate:{rotate}deg"></span>'
 
+class Separator:
+    tag = "nz-sep"
+    attrs = ["name", "c0", "c1", "href"]
+
+    def render(self, name, c0, c1, href="", **_):
+        inner = f'<nz-icon rotate="90" name="direction"/>{name}'
+        style = f'display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:{c0};color:{c1}'
+        if href:
+            return f'<a href="{href}" style="text-decoration:none"><div style="{style}">{inner}</div></a>'
+        return f'<div style="{style}">{inner}</div>'
 
 class NavButton:
     tag = "nav-button"
@@ -36,32 +46,35 @@ class NavButton:
         return f'<a style="text-decoration: none;" href="{href}"><button style="--c1: {c1}; --c0: {c0};"{id_attr}>{inner}</button></a>'
 
 # Add new element classes above, then register them here
-ELEMENTS = [NzIcon, NavButton]
+ELEMENTS = [NzIcon, NavButton, Separator]
 
 # =============================================================================
 # COMPILER
 # =============================================================================
 
 def compile_elements(html):
-    for cls in ELEMENTS:
-        el = cls()
+    for _ in range(10):  # max depth, prevents infinite loops
+        prev = html
+        for cls in ELEMENTS:
+            el = cls()
 
-        def replacer(m, el=el):
-            raw = m.group(0)
-            kwargs = {
-                a: ((re.search(rf'{a}="([^"]*)"', raw) or [None, ""])[1])
-                for a in el.attrs
-            }
-            # extract inner content if the element has a closing tag
-            inner = re.search(rf'<{el.tag}[^>]*>(.*?)</{el.tag}>', raw, re.DOTALL)
-            kwargs["inner"] = inner.group(1).strip() if inner else ""
-            return el.render(**kwargs)
+            def replacer(m, el=el):
+                raw = m.group(0)
+                kwargs = {
+                    a: ((re.search(rf'{a}="([^"]*)"', raw) or [None, ""])[1])
+                    for a in el.attrs
+                }
+                inner = re.search(rf'<{el.tag}[^>]*>(.*?)</{el.tag}>', raw, re.DOTALL)
+                kwargs["inner"] = inner.group(1).strip() if inner else ""
+                return el.render(**kwargs)
 
-        html = re.sub(
-            rf'<{el.tag}[^>]*>.*?</{el.tag}>|<{el.tag}[^>]*/?>',
-            replacer,
-            html, flags=re.DOTALL
-        )
+            html = re.sub(
+                rf'<{el.tag}[^>]*>.*?</{el.tag}>|<{el.tag}[^>]*/?>',
+                replacer,
+                html, flags=re.DOTALL
+            )
+        if html == prev:
+            break  # nothing left to expand
     return html
 
 # =============================================================================

@@ -33,6 +33,10 @@
         --w: #ffffff;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       button {
         padding: 8px;
         border-radius: 0;
@@ -46,11 +50,11 @@
 
         &:hover {
           filter: brightness(1.5);
-          scale: 1.05;
+          scale: 1.1;
         }
         &:active {
           filter: brightness(0.75);
-          scale: 0.95;
+          scale: 0.9;
         }
         span:not(.nz-icon) {
           margin-left: 8px;
@@ -59,7 +63,6 @@
       }
 
       section {
-        min-width: 100vw;
         min-height: calc(100vh - 34px);
         background-color: var(--c0);
         color: var(--c1);
@@ -68,6 +71,9 @@
         justify-content: center;
         flex-direction: column;
         gap: 20px;
+        &#contact {
+          min-height: calc(100vh - 80px) !important;
+        }
       }
 
       body {
@@ -90,6 +96,10 @@
         padding: 20px;
         box-sizing: border-box;
         transition: all 0.15s;
+        pointer-events: none;
+        & > * {
+          pointer-events: all;
+        }
 
         @media (max-width: 600px) {
           justify-content: space-between;
@@ -105,6 +115,7 @@
           }
         }
       }
+
       .doromiert-znak {
         user-select: none;
         display: flex;
@@ -115,6 +126,17 @@
         @media (min-width: 601px) {
           flex-direction: row;
         }
+      }
+
+      #footer {
+        display: flex;
+        padding: 20px;
+        background-color: var(--c0);
+        color: var(--c1);
+        justify-content: space-between;
+        height: 80px;
+        box-sizing: border-box;
+        align-items: center;
       }
     </style>
   </head>
@@ -168,6 +190,50 @@
         <div style="font-size: 16px">Noun. The one that creates.</div>
       </div>
     </section>
+    <nz-sep name="About me" href="#jab" c0="var(--n1)" c1="var(--n0)"></nz-sep>
     <section id="jab" style="--c0: var(--n1); --c1: var(--n0)"></section>
+    <nz-sep name="Library" href="#lib" c0="var(--z1)" c1="var(--z0)"></nz-sep>
+    <section id="lib" style="--c0: var(--z1); --c1: var(--z0)"></section>
+    <nz-sep name="Blog" href="#blog" c0="var(--po1)" c1="var(--j0)"></nz-sep>
+    <section id="blog" style="--c0: var(--po1); --c1: var(--po0)"></section>
+    <nz-sep
+      name="Devices"
+      href="#devices"
+      c0="var(--x0)"
+      c1="var(--z0)"
+    ></nz-sep>
+    <section id="devices" style="--c0: var(--x0); --c1: var(--z0)"></section>
+    <nz-sep name="Music" href="#music" c0="var(--r1)" c1="var(--r0)"></nz-sep>
+    <section id="music" style="--c0: var(--r1); --c1: var(--r0)"></section>
+    <nz-sep
+      name="Contact"
+      href="#contact"
+      c0="var(--pu1)"
+      c1="var(--r0)"
+    ></nz-sep>
+    <section id="contact" style="--c0: var(--pu1); --c1: var(--r0)"></section>
+    <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
+      <div style="gap: 5px; display: flex; flex-direction: column">
+        <div>Made with love by doromiert</div>
+        <div style="opacity: 0.5">Use as you wish but please credit me</div>
+      </div>
+      <div style="display: flex; gap: 20px">
+        <nav-button
+          href="https://buymeacoffee.com/doromiert"
+          c0="var(--x0)"
+          c1="var(--w)"
+        >
+          <nz-icon name="dollar"></nz-icon>
+        </nav-button>
+
+        <nav-button
+          href="https://github.com/doromiert/doromiert-neu"
+          c0="var(--x0)"
+          c1="var(--w)"
+        >
+          <nz-icon name="code"></nz-icon>
+        </nav-button>
+      </div>
+    </div>
   </body>
 </html>
