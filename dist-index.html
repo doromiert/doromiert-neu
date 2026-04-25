@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>doromiert</title>
+    <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
+    <style>
+      :root {
+        --b1: #5a1e17;
+        --b0: #c96959;
+        --po0: #e58b3c;
+        --po1: #7c3a0b;
+        --je0: #ffd165;
+        --je1: #a87600;
+        --z0: #76e256;
+        --z1: #2e7700;
+        --n0: #59a7c9;
+        --n1: #004a69;
+        --r0: #d47be6;
+        --r1: #7a1b8d;
+        --pu0: #7159c9;
+        --pu1: #150055;
+        --x1: #5d5d5d;
+        --x0: #1a1a1a;
+        --w: #ffffff;
+      }
+
+      button {
+        padding: 8px;
+        border-radius: 0;
+        transition: all 0.15s;
+        border: none;
+        cursor: pointer;
+        background-color: var(--c1);
+        color: var(--c0);
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          filter: brightness(1.5);
+          scale: 1.05;
+        }
+        &:active {
+          filter: brightness(0.75);
+          scale: 0.95;
+        }
+        span {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      section {
+        min-width: 100vw;
+        min-height: calc(100vh - 34px);
+        background-color: var(--c0);
+        color: var(--c1);
+      }
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    .nz-icon{display:inline-block;width:24px;height:24px;background-color:currentColor;mask-image:url('icons.svg');mask-size:1368px 24px;-webkit-mask-image:url('icons.svg');-webkit-mask-size:1368px 24px}.nz-icon-home{mask-position:-0px 0;-webkit-mask-position:-0px 0}.nz-icon-docs{mask-position:-24px 0;-webkit-mask-position:-24px 0}.nz-icon-image{mask-position:-48px 0;-webkit-mask-position:-48px 0}.nz-icon-arrow{mask-position:-72px 0;-webkit-mask-position:-72px 0}.nz-icon-plus{mask-position:-96px 0;-webkit-mask-position:-96px 0}.nz-icon-sun{mask-position:-120px 0;-webkit-mask-position:-120px 0}.nz-icon-photocam{mask-position:-144px 0;-webkit-mask-position:-144px 0}.nz-icon-videocam{mask-position:-168px 0;-webkit-mask-position:-168px 0}.nz-icon-download{mask-position:-192px 0;-webkit-mask-position:-192px 0}.nz-icon-music{mask-position:-216px 0;-webkit-mask-position:-216px 0}.nz-icon-search{mask-position:-240px 0;-webkit-mask-position:-240px 0}.nz-icon-objects{mask-position:-264px 0;-webkit-mask-position:-264px 0}.nz-icon-folder{mask-position:-288px 0;-webkit-mask-position:-288px 0}.nz-icon-zenos{mask-position:-312px 0;-webkit-mask-position:-312px 0}.nz-icon--0{mask-position:-336px 0;-webkit-mask-position:-336px 0}.nz-icon-cube{mask-position:-360px 0;-webkit-mask-position:-360px 0}.nz-icon-bell{mask-position:-384px 0;-webkit-mask-position:-384px 0}.nz-icon-chat{mask-position:-408px 0;-webkit-mask-position:-408px 0}.nz-icon-doromiert{mask-position:-432px 0;-webkit-mask-position:-432px 0}.nz-icon-terminal{mask-position:-456px 0;-webkit-mask-position:-456px 0}.nz-icon-cloud{mask-position:-480px 0;-webkit-mask-position:-480px 0}.nz-icon-warning{mask-position:-504px 0;-webkit-mask-position:-504px 0}.nz-icon-info{mask-position:-528px 0;-webkit-mask-position:-528px 0}.nz-icon-question{mask-position:-552px 0;-webkit-mask-position:-552px 0}.nz-icon-zap{mask-position:-576px 0;-webkit-mask-position:-576px 0}.nz-icon-monitor{mask-position:-600px 0;-webkit-mask-position:-600px 0}.nz-icon-radio{mask-position:-624px 0;-webkit-mask-position:-624px 0}.nz-icon-trash{mask-position:-648px 0;-webkit-mask-position:-648px 0}.nz-icon-mouse{mask-position:-672px 0;-webkit-mask-position:-672px 0}.nz-icon-location{mask-position:-696px 0;-webkit-mask-position:-696px 0}.nz-icon-user{mask-position:-720px 0;-webkit-mask-position:-720px 0}.nz-icon-users{mask-position:-744px 0;-webkit-mask-position:-744px 0}.nz-icon-scissors{mask-position:-768px 0;-webkit-mask-position:-768px 0}.nz-icon-library{mask-position:-792px 0;-webkit-mask-position:-792px 0}.nz-icon-announcement{mask-position:-816px 0;-webkit-mask-position:-816px 0}.nz-icon-cpu{mask-position:-840px 0;-webkit-mask-position:-840px 0}.nz-icon-brain{mask-position:-864px 0;-webkit-mask-position:-864px 0}.nz-icon-direction{mask-position:-888px 0;-webkit-mask-position:-888px 0}.nz-icon-fork{mask-position:-912px 0;-webkit-mask-position:-912px 0}.nz-icon-github{mask-position:-936px 0;-webkit-mask-position:-936px 0}.nz-icon-headphones{mask-position:-960px 0;-webkit-mask-position:-960px 0}.nz-icon-instagram{mask-position:-984px 0;-webkit-mask-position:-984px 0}.nz-icon-twitter{mask-position:-1008px 0;-webkit-mask-position:-1008px 0}.nz-icon-phone{mask-position:-1032px 0;-webkit-mask-position:-1032px 0}.nz-icon-mail{mask-position:-1056px 0;-webkit-mask-position:-1056px 0}.nz-icon-discord{mask-position:-1080px 0;-webkit-mask-position:-1080px 0}.nz-icon-telegram{mask-position:-1104px 0;-webkit-mask-position:-1104px 0}.nz-icon-translate{mask-position:-1128px 0;-webkit-mask-position:-1128px 0}.nz-icon-laptop{mask-position:-1152px 0;-webkit-mask-position:-1152px 0}.nz-icon-xr{mask-position:-1176px 0;-webkit-mask-position:-1176px 0}.nz-icon-nudl{mask-position:-1200px 0;-webkit-mask-position:-1200px 0}.nz-icon-joycon{mask-position:-1224px 0;-webkit-mask-position:-1224px 0}.nz-icon-smartphone{mask-position:-1248px 0;-webkit-mask-position:-1248px 0}.nz-icon-calendar{mask-position:-1272px 0;-webkit-mask-position:-1272px 0}.nz-icon-paintbrush{mask-position:-1296px 0;-webkit-mask-position:-1296px 0}.nz-icon-code{mask-position:-1320px 0;-webkit-mask-position:-1320px 0}.nz-icon-dollar{mask-position:-1344px 0;-webkit-mask-position:-1344px 0}
+    </style>
+  </head>
+  <body>
+    <section id="jab" style="--c0: var(--b0); --c1: var(--b1)">
+      <button>
+        <span class="nz-icon nz-icon-home"></span>
+        <span>asasd</span>
+        <span class="nz-icon nz-icon-docs"></span>
+      </button>
+    </section>
+  </body>
+</html>
