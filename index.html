@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>doromiert</title>
+    <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
+    <style>
+      :root {
+        --b1: #5a1e17;
+        --b0: #c96959;
+        --po0: #e58b3c;
+        --po1: #7c3a0b;
+        --je0: #ffd165;
+        --je1: #a87600;
+        --z0: #76e256;
+        --z1: #2e7700;
+        --n0: #59a7c9;
+        --n1: #004a69;
+        --r0: #d47be6;
+        --r1: #7a1b8d;
+        --pu0: #7159c9;
+        --pu1: #150055;
+        --x1: #5d5d5d;
+        --x0: #1a1a1a;
+        --w: #ffffff;
+      }
+
+      button {
+        padding: 8px;
+        border-radius: 0;
+        transition: all 0.15s;
+        border: none;
+        cursor: pointer;
+
+        background-color: var(--c1);
+        color: var(--c0);
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          filter: brightness(1.5);
+          scale: 1.05;
+        }
+        &:active {
+          filter: brightness(0.75);
+          scale: 0.95;
+        }
+        span {
+          margin-left: 8px;
+          margin-right: 8px;
+        }
+      }
+
+      section {
+        min-width: 100vw;
+        min-height: calc(100vh - 34px);
+        background-color: var(--c0);
+        color: var(--c1);
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+    <script>
+      let icons = [];
+
+      async function init() {
+        icons = await fetch("./icons.txt")
+          .then((r) => r.text())
+          .then((t) => t.trim().split("\n"));
+
+        class NzIcon extends HTMLElement {
+          connectedCallback() {
+            const name = this.getAttribute("name");
+            const size = this.getAttribute("size") || 24;
+            const offset = icons.indexOf(name);
+            const scale = size / 24;
+
+            this.style.display = "inline-block";
+            this.style.width = `${size}px`;
+            this.style.height = `${size}px`;
+            this.style.backgroundColor = "currentColor";
+            this.style.maskImage = `url('icons.svg')`;
+            this.style.maskPosition = `-${offset * 24}px 0`;
+            this.style.maskSize = `${icons.length * 24}px 24px`;
+            this.style.webkitMaskImage = `url('icons.svg')`;
+            this.style.webkitMaskPosition = `-${offset * 24}px 0`;
+            this.style.webkitMaskSize = `${icons.length * 24}px 24px`;
+          }
+        }
+
+        customElements.define("nz-icon", NzIcon);
+      }
+
+      init();
+    </script>
+  </head>
+  <body>
+    <section id="jab" style="--c0: var(--b0); --c1: var(--b1)">
+      <button>
+        <nz-icon name="home"></nz-icon> <span>asasd</span>
+        <nz-icon name="docs"></nz-icon>
+      </button>
+    </section>
+  </body>
+</html>
