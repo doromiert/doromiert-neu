@@ -27,7 +27,13 @@
               --watch index.html \
               --watch icons.txt \
               --watch icons.svg \
+              --watch blog \
+              --watch lib \
+              --watch devices \
+              --watch music \
               --watch doromiert.svg \
+              --watch build.py \
+              --watch base.css \
               --on-busy-update restart \
               --postpone \
               -- ${pythonWithMarkdown}/bin/python3 build.py &

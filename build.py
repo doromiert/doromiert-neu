@@ -149,43 +149,6 @@ CONTENT_C = {
     "music":   ("var(--r1)",  "var(--r0)"),
 }
 
-# Shared component CSS — injected into both index.html and article pages
-COMPONENT_CSS = (
-    ".card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:2px;width:100%;max-width:800px}"
-    ".card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;"
-    "background:color-mix(in srgb,var(--c1) 10%,transparent);color:var(--c1);"
-    "text-decoration:none;outline:2px solid color-mix(in srgb,var(--c1) 25%,transparent);"
-    "transition:all .15s;text-align:center}"
-    ".card:hover{background:color-mix(in srgb,var(--c1) 20%,transparent);outline-width:5px}"
-    ".card .tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}"
-    ".card .tag{font-size:11px;padding:1px 6px;background:color-mix(in srgb,var(--c1) 20%,transparent)}"
-    ".cat-list{width:100%;max-width:700px;display:flex;flex-direction:column;gap:20px}"
-    ".cat-group{display:flex;flex-direction:column;gap:6px}"
-    ".cat-header{font-size:13px;opacity:.6;display:flex;align-items:center;gap:8px;padding:0 2px}"
-    ".cat-header::after{content:'';flex:1;height:1px;background:currentColor;opacity:.3}"
-    ".cat-rows{display:grid;grid-template-columns:1fr 1fr;gap:2px}"
-    ".cat-item{display:flex;align-items:center;gap:8px;padding:10px 12px;"
-    "background:color-mix(in srgb,var(--c1) 10%,transparent);color:var(--c1);"
-    "text-decoration:none;transition:background .15s}"
-    ".cat-item:hover{background:color-mix(in srgb,var(--c1) 20%,transparent)}"
-    ".cat-item .nz-icon:last-child{margin-left:auto;opacity:.5}"
-    ".now-playing{display:flex;flex-direction:column;align-items:center;gap:2px;padding:14px 24px;"
-    "background:color-mix(in srgb,var(--c1) 15%,transparent);"
-    "outline:1px solid color-mix(in srgb,var(--c1) 30%,transparent);max-width:300px}"
-    ".np-label{font-size:12px;opacity:.7;display:flex;align-items:center;gap:6px}"
-    ".np-song{font-weight:bold}"
-    ".post-nav{display:flex;gap:10px;align-items:center;justify-content:center}"
-    ".blog-body{max-width:500px;text-align:left}"
-    ".art-header{display:flex;flex-direction:column;align-items:center;gap:8px;padding:60px 20px 20px}"
-    ".art-subtitle{opacity:.7;font-size:14px}"
-    ".art-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}"
-    ".art-tag{font-size:12px;padding:2px 8px;background:color-mix(in srgb,var(--c1) 20%,transparent)}"
-    ".page-back{position:fixed;top:20px;left:20px;z-index:10}"
-    "article{max-width:600px;width:100%;padding:20px;padding-top:20px;box-sizing:border-box;text-align:left}"
-    "article img{max-width:100%;display:block;margin:16px 0}"
-    "article h1,article h2,article h3{margin-top:1.5em}"
-)
-
 def parse_frontmatter(text):
     if text.startswith("---"):
         parts = text.split("---", 2)
@@ -200,7 +163,7 @@ def parse_frontmatter(text):
 
 def lnk_btn(label_html, href, c0, c1):
     """Button that's disabled (no href) or wrapped in <a>."""
-    b = f'<button style="--c0:{c0};--c1:{c1}">{label_html}</button>'
+    b = f'<button style="--c0:{c0};--c1:{c1}; width: 100%">{label_html}</button>'
     if href:
         return f'<a href="{href}" style="text-decoration:none">{b}</a>'
     return f'<button style="--c0:{c0};--c1:{c1};opacity:.3" disabled>{label_html}</button>'
@@ -217,7 +180,7 @@ def article_page(title, body_html, section_id):
         f'<style>:root{{--c0:{c0};--c1:{c1}}}'
         f'body{{margin:0;padding:0;background:var(--c0);color:var(--c1);'
         f'min-height:100vh;display:flex;flex-direction:column;align-items:center}}'
-        f'{COMPONENT_CSS}</style>'
+        f'</style>'
         f'</head><body>'
         f'<a class="page-back" href="/">{back_btn}</a>'
         f'{body_html}'
@@ -371,8 +334,8 @@ def build_category(section_id):
             now_html = (
                 f'<div class="now-playing">'
                 f'<div class="np-label"><nz-icon name="headphones"></nz-icon>Now listening to</div>'
-                f'<span class="np-song">{song}</span>'
-                f'<span>{artist}</span>'
+                f'<span class="np-song" style="margin-left: 4px;">{song}</span>'
+                f'<span style="margin-left: 4px;">{artist}</span>'
                 f'</div>'
             )
 
@@ -420,7 +383,7 @@ def build():
     html = inject_section(html, "music",   build_category("music"))
 
     html = compile_elements(html)
-    html = html.replace("</style>", generate_icon_css() + COMPONENT_CSS + "\n    </style>", 1)
+    html = html.replace("</style>", generate_icon_css() + "\n    </style>", 1)
 
     out = DIST / "index.html"
     out.write_text(html)

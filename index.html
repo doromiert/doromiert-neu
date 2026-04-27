@@ -1,299 +1,301 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>doromiert</title>
-    <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
-    <style>
-      @import "base.css";
-      .jab-cta {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        button {
-          min-width: 270px;
-          span:not(.nz-icon) {
-            margin-right: auto;
-          }
-        }
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>doromiert</title>
+        <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
+        <style>
+            @import "base.css";
+            .jab-cta {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                button {
+                    min-width: 270px;
+                    span:not(.nz-icon) {
+                        margin-right: auto;
+                    }
+                }
+                @media (max-width: 600px) {
+                    flex-direction: column;
+                }
+            }
 
-      .nz-section {
-        padding-right: 20px;
-        padding-left: 20px;
-        box-sizing: border-box;
-      }
+            .nz-section {
+                padding-right: 20px;
+                padding-left: 20px;
+                box-sizing: border-box;
+            }
 
-      .about {
-        text-align: center;
-        text-wrap: balance;
-        b {
-          white-space: nowrap;
-        }
-        .nz-icon {
-          vertical-align: middle;
-          margin-right: 4px;
-        }
-      }
+            .about {
+                text-align: center;
+                text-wrap: balance;
+                b {
+                    white-space: nowrap;
+                }
+                .nz-icon {
+                    vertical-align: middle;
+                    margin-right: 4px;
+                }
+            }
 
-      section {
-        text-wrap: balance;
-        text-align: center;
-        min-height: calc(100vh - 34px);
-        background-color: var(--c0);
-        color: var(--c1);
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 20px;
-        &#contact {
-          min-height: calc(100vh - 80px) !important;
-        }
-      }
+            #doromiert-icon {
+                fill: var(--b1);
+            }
 
-      body {
-        padding: 0;
-        margin: 0;
-      }
+            #doromiert-button * {
+                fill: var(--b1);
+            }
 
-      #doromiert-icon {
-        fill: var(--b1);
-      }
+            .topbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                box-sizing: border-box;
+                transition: all 0.15s;
+                pointer-events: none;
+                z-index: 2137;
+                & > * {
+                    pointer-events: all;
+                }
 
-      #doromiert-button * {
-        fill: var(--b1);
-      }
+                @media (max-width: 600px) {
+                    justify-content: space-between;
+                }
+                @media (min-width: 601px) {
+                    justify-content: flex-end;
+                    gap: 10px;
 
-      .topbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        box-sizing: border-box;
-        transition: all 0.15s;
-        pointer-events: none;
-        & > * {
-          pointer-events: all;
-        }
+                    & #doromiert-button {
+                        position: absolute;
+                        left: 20px;
+                        top: 20px;
+                    }
+                }
+            }
 
-        @media (max-width: 600px) {
-          justify-content: space-between;
-        }
-        @media (min-width: 601px) {
-          justify-content: flex-end;
-          gap: 10px;
+            .doromiert-znak {
+                user-select: none;
+                display: flex;
+                gap: 10px;
+                @media (max-width: 600px) {
+                    flex-direction: column;
+                }
+                @media (min-width: 601px) {
+                    flex-direction: row;
+                }
+            }
 
-          & #doromiert-button {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-          }
-        }
-      }
+            #footer {
+                display: flex;
+                padding: 20px;
+                background-color: var(--c0);
+                color: var(--c1);
+                justify-content: space-between;
+                height: 80px;
+                box-sizing: border-box;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="topbar">
+            <nav-button
+                id="doromiert-button"
+                href="#doromiert"
+                c0="var(--b1)"
+                c1="var(--b0)"
+            >
+                <img src="doromiert.svg" alt="Logo" style="" />
+            </nav-button>
 
-      .doromiert-znak {
-        user-select: none;
-        display: flex;
-        gap: 10px;
-        @media (max-width: 600px) {
-          flex-direction: column;
-        }
-        @media (min-width: 601px) {
-          flex-direction: row;
-        }
-      }
+            <nav-button href="#jab" c0="var(--n0)" c1="var(--n1)">
+                <nz-icon name="user"></nz-icon>
+            </nav-button>
 
-      #footer {
-        display: flex;
-        padding: 20px;
-        background-color: var(--c0);
-        color: var(--c1);
-        justify-content: space-between;
-        height: 80px;
-        box-sizing: border-box;
-        align-items: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="topbar">
-      <nav-button
-        id="doromiert-button"
-        href="#doromiert"
-        c0="var(--b1)"
-        c1="var(--b0)"
-      >
-        <img src="doromiert.svg" alt="Logo" style="" />
-      </nav-button>
+            <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)">
+                <nz-icon name="library"></nz-icon>
+            </nav-button>
 
-      <nav-button href="#jab" c0="var(--n0)" c1="var(--n1)">
-        <nz-icon name="user"></nz-icon>
-      </nav-button>
+            <nav-button href="#blog" c0="var(--j0)" c1="var(--po1)">
+                <nz-icon name="announcement"></nz-icon>
+            </nav-button>
 
-      <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)">
-        <nz-icon name="library"></nz-icon>
-      </nav-button>
+            <nav-button href="#devices" c0="var(--z0)" c1="var(--x0)">
+                <nz-icon name="cpu"></nz-icon>
+            </nav-button>
 
-      <nav-button href="#blog" c0="var(--j0)" c1="var(--po1)">
-        <nz-icon name="announcement"></nz-icon>
-      </nav-button>
+            <nav-button href="#music" c0="var(--r0)" c1="var(--r1)">
+                <nz-icon name="music"></nz-icon>
+            </nav-button>
 
-      <nav-button href="#devices" c0="var(--z0)" c1="var(--x0)">
-        <nz-icon name="cpu"></nz-icon>
-      </nav-button>
+            <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)">
+                <nz-icon name="chat"></nz-icon>
+            </nav-button>
+        </div>
+        <nz-section id="doromiert" nosep="true">
+            <div class="doromiert-znak">
+                <img src="doromiert-znak/dor.svg" />
+                <img src="doromiert-znak/omi.svg" />
+                <img src="doromiert-znak/ert.svg" />
+            </div>
+            <div
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                "
+            >
+                <div style="font-size: 20px">
+                    <b>doromiert</b> /dor-omi-ert/
+                </div>
+                <div style="font-size: 16px">Noun. The one that creates.</div>
+            </div>
+            <noscript>
+                <code>
+                    you DIRTY purist!!! how dare you spit in the face of
+                    javascript the holy! how dare you reject the holiness of
+                    this beautiful language?
+                    <br />
+                    well good news because this site uses none'o that
+                </code>
+            </noscript>
+        </nz-section>
 
-      <nav-button href="#music" c0="var(--r0)" c1="var(--r1)">
-        <nz-icon name="music"></nz-icon>
-      </nav-button>
+        <nz-section id="jab" name="Who am I?">
+            <div class="about">
+                I'm a <b><nz-icon name="paintbrush"></nz-icon>designer</b>,
+                <b><nz-icon name="code"></nz-icon>developer</b>,
+                <b><nz-icon name="translate"></nz-icon>language</b> and
+                <b><nz-icon name="cpu"></nz-icon>tech enthusiast</b>.
+            </div>
+            I live in Warsaw, Poland, speak polish, english, ixni and toki pona.
+            <br />
+            (although I'm learning other languages too, for example russian)
+            <div class="jab-cta">
+                <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)"
+                    ><nz-icon name="chat"></nz-icon>
+                    <span>Contact me now</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+                <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)"
+                    ><nz-icon name="library"></nz-icon>
+                    <span>Check out my creations</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+            </div>
+        </nz-section>
+        <nz-section id="lib" name="My creations"></nz-section>
+        <nz-section id="blog" name="Blog"></nz-section>
+        <nz-section id="devices" name="My devices"></nz-section>
+        <nz-section id="music" name="Music I like"></nz-section>
+        <nz-section id="contact" name="Contact me">
+            <div
+                style="
+                    width: 270px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                "
+            >
+                <nav-button
+                    href="mailto:doromiert@gmail.com"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="mail"></nz-icon>
+                    <span style="margin-right: auto">Email</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
 
-      <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)">
-        <nz-icon name="chat"></nz-icon>
-      </nav-button>
-    </div>
-    <nz-section id="doromiert" nosep="true">
-      <div class="doromiert-znak">
-        <img src="doromiert-znak/dor.svg" />
-        <img src="doromiert-znak/omi.svg" />
-        <img src="doromiert-znak/ert.svg" />
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center">
-        <div style="font-size: 20px"><b>doromiert</b> /dor-omi-ert/</div>
-        <div style="font-size: 16px">Noun. The one that creates.</div>
-      </div>
-    </nz-section>
+                <nav-button
+                    href="https://t.me/doromiert"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="telegram"></nz-icon>
+                    <span style="margin-right: auto">Telegram</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
 
-    <nz-section id="jab" name="Who am I?">
-      <div class="about">
-        I'm a <b><nz-icon name="paintbrush"></nz-icon>designer</b>,
-        <b><nz-icon name="code"></nz-icon>developer</b>,
-        <b><nz-icon name="translate"></nz-icon>language</b> and
-        <b><nz-icon name="cpu"></nz-icon>hardware enthusiast</b>.
-      </div>
-      I live in Warsaw, Poland and speak polish, english, ixni and toki pona.
-      <br />
-      (although I'm learning other languages too, for example russian)
-      <div class="jab-cta">
-        <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)"
-          ><nz-icon name="chat"></nz-icon>
-          <span>Contact me now</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
-        <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)"
-          ><nz-icon name="library"></nz-icon>
-          <span>Check out my creations</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
-      </div>
-    </nz-section>
-    <nz-section id="lib" name="My creations"></nz-section>
-    <nz-section id="blog" name="Blog"></nz-section>
-    <nz-section id="devices" name="My devices"></nz-section>
-    <nz-section id="music" name="Music I like"></nz-section>
-    <nz-section id="contact" name="Contact me">
-      <div
-        style="
-          width: 270px;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          align-items: center;
-        "
-      >
-        <nav-button
-          href="mailto:doromiert@gmail.com"
-          c0="var(--pu1)"
-          c1="var(--r0)"
-          style="width: 270px"
-        >
-          <nz-icon name="mail"></nz-icon>
-          <span style="margin-right: auto">Email</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
+                <nav-button
+                    href="https://discord.com/users/786127059020808192"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="discord"></nz-icon>
+                    <span style="margin-right: auto">Discord</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
 
-        <nav-button
-          href="https://t.me/doromiert"
-          c0="var(--pu1)"
-          c1="var(--r0)"
-          style="width: 270px"
-        >
-          <nz-icon name="telegram"></nz-icon>
-          <span style="margin-right: auto">Telegram</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
+                <nav-button
+                    href="https://lastfm.com/user/nrdeez"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="music"></nz-icon>
+                    <span style="margin-right: auto">Last.fm</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
 
-        <nav-button
-          href="https://discord.com/users/786127059020808192"
-          c0="var(--pu1)"
-          c1="var(--r0)"
-          style="width: 270px"
-        >
-          <nz-icon name="discord"></nz-icon>
-          <span style="margin-right: auto">Discord</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
+                <nav-button
+                    href="https://huggingface.co/doromiert"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="brain"></nz-icon>
+                    <span style="margin-right: auto">Hugging Face</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
 
-        <nav-button
-          href="https://lastfm.com/user/nrdeez"
-          c0="var(--pu1)"
-          c1="var(--r0)"
-          style="width: 270px"
-        >
-          <nz-icon name="music"></nz-icon>
-          <span style="margin-right: auto">Last.fm</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
+                <nav-button
+                    href="https://github.com/doromiert"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="github"></nz-icon>
+                    <span style="margin-right: auto">GitHub</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+            </div>
+        </nz-section>
+        <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
+            <div style="gap: 5px; display: flex; flex-direction: column">
+                <div>Made with love by doromiert</div>
+                <div style="opacity: 0.5">
+                    Use as you wish but please credit me
+                </div>
+            </div>
+            <div style="display: flex; gap: 20px">
+                <nav-button
+                    href="https://buymeacoffee.com/doromiert"
+                    c0="var(--x0)"
+                    c1="var(--w)"
+                >
+                    <nz-icon name="dollar"></nz-icon>
+                </nav-button>
 
-        <nav-button
-          href="https://huggingface.co/doromiert"
-          c0="var(--pu1)"
-          c1="var(--r0)"
-          style="width: 270px"
-        >
-          <nz-icon name="brain"></nz-icon>
-          <span style="margin-right: auto">Hugging Face</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
-
-        <nav-button
-          href="https://github.com/doromiert"
-          c0="var(--pu1)"
-          c1="var(--r0)"
-          style="width: 270px"
-        >
-          <nz-icon name="github"></nz-icon>
-          <span style="margin-right: auto">GitHub</span>
-          <nz-icon name="direction"></nz-icon>
-        </nav-button>
-      </div>
-    </nz-section>
-    <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
-      <div style="gap: 5px; display: flex; flex-direction: column">
-        <div>Made with love by doromiert</div>
-        <div style="opacity: 0.5">Use as you wish but please credit me</div>
-      </div>
-      <div style="display: flex; gap: 20px">
-        <nav-button
-          href="https://buymeacoffee.com/doromiert"
-          c0="var(--x0)"
-          c1="var(--w)"
-        >
-          <nz-icon name="dollar"></nz-icon>
-        </nav-button>
-
-        <nav-button
-          href="https://github.com/doromiert/doromiert-neu"
-          c0="var(--x0)"
-          c1="var(--w)"
-        >
-          <nz-icon name="code"></nz-icon>
-        </nav-button>
-      </div>
-    </div>
-  </body>
+                <nav-button
+                    href="https://github.com/doromiert/doromiert-neu"
+                    c0="var(--x0)"
+                    c1="var(--w)"
+                >
+                    <nz-icon name="code"></nz-icon>
+                </nav-button>
+            </div>
+        </div>
+    </body>
 </html>
