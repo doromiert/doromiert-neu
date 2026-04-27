@@ -96,8 +96,10 @@ class NzSection:
         header = ""
         if icon:
             header = f'<nz-icon name="{icon}" size="64"></nz-icon><b style="font-size:20px">{name}</b>'
-        elif id == "jab" or id == "b-hero":
+        elif id == "jab":
             header = f'<img id="jab-doromiert" src="doromiert-bold.svg" alt="Logo" /><b style="font-size:20px;">{name}</b>'
+        elif id == "b-hero":
+            header = f'<div class="doromiert-znak"><img src="doromiert-znak/dor.svg" /><img src="doromiert-znak/omi.svg" /><img src="doromiert-znak/ert.svg" /></div><b style="font-size:20px;">{name}</b>'
         return f'{sep}<section class="nz-section" id="{id}" style="--c0:{c0};--c1:{c1}"{extra}>{header}{inner}</section>'
 
 ELEMENTS = [NzIcon, NavButton, Separator, NzSection, BCard]
