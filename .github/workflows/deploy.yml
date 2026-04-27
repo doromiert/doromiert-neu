@@ -26,7 +26,7 @@ jobs:
           pip install markdown
 
       - name: Build site
-        run: python build.py
+        run: python src/build.py
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
