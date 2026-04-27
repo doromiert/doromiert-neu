@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>doromiert</title>
+        <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
+        <link rel="stylesheet" href="base.css" />
+        <style>
+            .jab-cta {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                button {
+                    min-width: 270px;
+                    span:not(.nz-icon) {
+                        margin-right: auto;
+                    }
+                }
+                @media (max-width: 600px) {
+                    flex-direction: column;
+                }
+            }
+
+            .nz-section {
+                padding-right: 20px;
+                padding-left: 20px;
+                box-sizing: border-box;
+            }
+
+            .about {
+                text-align: center;
+                text-wrap: balance;
+                b {
+                    white-space: nowrap;
+                }
+                .nz-icon {
+                    vertical-align: middle;
+                    margin-right: 4px;
+                }
+            }
+
+            #doromiert-icon {
+                fill: var(--b1);
+            }
+
+            #doromiert-button-b * {
+                fill: var(--j0);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="topbar">
+            <nav-button
+                id="doromiert-button-b"
+                href="#b-hero"
+                c0="var(--j0)"
+                c1="var(--n1)"
+            >
+                <img src="doromiert.svg" alt="Logo" style="fill: var(--c1)" />
+            </nav-button>
+
+            <nav-button href="#b-werk" c0="var(--po1)" c1="var(--po0)">
+                <nz-icon name="zap"></nz-icon>
+            </nav-button>
+
+            <nav-button href="#b-lib" c0="var(--w)" c1="var(--x0)">
+                <nz-icon name="library"></nz-icon>
+            </nav-button>
+
+            <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)">
+                <nz-icon name="chat"></nz-icon> <span>Contact me</span>
+            </nav-button>
+        </div>
+
+        <nz-section
+            id="b-hero"
+            name="I turn complex problems into clean software."
+            nosep="true"
+        >
+            <div class="jab-cta">
+                <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)"
+                    ><nz-icon name="chat"></nz-icon>
+                    <span>Contact me now</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+                <nav-button href="#b-lib" c0="var(--w)" c1="var(--x0)"
+                    ><nz-icon name="library"></nz-icon>
+                    <span>Look at my work first</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+            </div>
+        </nz-section>
+        <nz-section id="b-werk" name="What I do">
+            <div class="nz-bcard-grid">
+                <nz-bcard name="Software development" icon="code"
+                    >I can build you a website or tool that doesn't just look
+                    the part; it actually does what you need it to, without the
+                    bugs, the slowness, or the parts that never quite work
+                    right</nz-bcard
+                >
+                <nz-bcard name="UI/UX design" icon="paintbrush"
+                    >I can design your product to not just look good but feel
+                    obvious; so intuitive your users never stop to think about
+                    how it works, they just use it</nz-bcard
+                >
+                <nz-bcard name="Systems & infrastructure" icon="cloud"
+                    >I can set up and maintain server infrastructure and device
+                    fleets that just work; no mystery costs, no vendor lock-in,
+                    no guy you have to call every time something
+                    breaks</nz-bcard
+                >
+                <nz-bcard name="AI integration" icon="brain"
+                    >I can take your website or program and add AI to it in a
+                    way that feels thoughtful; that doesn’t just feel magical
+                    but actually solves your problems.</nz-bcard
+                >
+            </div>
+        </nz-section>
+        <nz-section id="b-lib" name="My work"></nz-section>
+        <nz-section id="contact" name="Contact me">
+            <div
+                style="
+                    width: 270px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                "
+            >
+                <nav-button
+                    href="mailto:doromiert@gmail.com"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="mail"></nz-icon>
+                    <span style="margin-right: auto">Email</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+
+                <nav-button
+                    href="https://t.me/doromiert"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="telegram"></nz-icon>
+                    <span style="margin-right: auto">Telegram</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+
+                <nav-button
+                    href="https://github.com/doromiert"
+                    c0="var(--pu1)"
+                    c1="var(--r0)"
+                    style="width: 270px"
+                >
+                    <nz-icon name="github"></nz-icon>
+                    <span style="margin-right: auto">GitHub</span>
+                    <nz-icon name="direction"></nz-icon>
+                </nav-button>
+            </div>
+        </nz-section>
+        <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
+            <div style="gap: 5px; display: flex; flex-direction: column">
+                <div>Made by doromiert</div>
+            </div>
+            <div style="display: flex; gap: 20px">
+                <nav-button
+                    href="https://github.com/doromiert/doromiert-neu"
+                    c0="var(--x0)"
+                    c1="var(--w)"
+                >
+                    <nz-icon name="code"></nz-icon>
+                </nav-button>
+            </div>
+        </div>
+    </body>
+</html>

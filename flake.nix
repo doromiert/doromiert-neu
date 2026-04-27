@@ -21,24 +21,16 @@
               cd "/home/doromiert/Projects/doromiert-neu"
 
               echo ":: initial build"
-              ${pythonWithMarkdown}/bin/python3 build.py
+              ${pythonWithMarkdown}/bin/python3 src/build.py
 
               echo ":: watching — http://localhost:8080"
 
               ${pkgs.watchexec}/bin/watchexec \
-                --watch index.html \
-                --watch icons.txt \
-                --watch icons.svg \
-                --watch blog \
-                --watch lib \
-                --watch devices \
-                --watch music \
-                --watch doromiert.svg \
-                --watch build.py \
-                --watch base.css \
+                --watch src \
+                --watch data \
                 --on-busy-update restart \
                 --postpone \
-                -- ${pythonWithMarkdown}/bin/python3 build.py &
+                -- ${pythonWithMarkdown}/bin/python3 src/build.py &
 
               WATCHPID=$!
               trap "kill $WATCHPID 2>/dev/null" EXIT
@@ -61,7 +53,7 @@
               cd "/home/doromiert/Projects/doromiert-neu"
 
               echo ":: building clean dist"
-              ${pythonWithMarkdown}/bin/python3 build.py
+              ${pythonWithMarkdown}/bin/python3 src/build.py
 
               echo ":: serving with caddy (gzip + zstd enabled) — http://localhost:8080"
               exec ${pkgs.caddy}/bin/caddy run --adapter caddyfile --config ${pkgs.writeText "Caddyfile" ''

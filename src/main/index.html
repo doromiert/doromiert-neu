@@ -48,39 +48,6 @@
                 fill: var(--b1);
             }
 
-            .topbar {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 80px;
-                display: flex;
-                align-items: center;
-                padding: 20px;
-                box-sizing: border-box;
-                transition: all 0.15s;
-                pointer-events: none;
-                width: 100vw;
-                z-index: 2137;
-                & > * {
-                    pointer-events: all;
-                }
-
-                @media (max-width: 600px) {
-                    justify-content: space-between;
-                }
-                @media (min-width: 601px) {
-                    justify-content: flex-end;
-                    gap: 10px;
-
-                    & #doromiert-button {
-                        position: absolute;
-                        left: 20px;
-                        top: 20px;
-                    }
-                }
-            }
-
             .doromiert-znak {
                 * {
                     fill: var(--c1);
@@ -94,17 +61,6 @@
                 @media (min-width: 601px) {
                     flex-direction: row;
                 }
-            }
-
-            #footer {
-                display: flex;
-                padding: 20px;
-                background-color: var(--c0);
-                color: var(--c1);
-                justify-content: space-between;
-                height: 80px;
-                box-sizing: border-box;
-                align-items: center;
             }
         </style>
     </head>
@@ -161,6 +117,16 @@
                 </div>
                 <div style="font-size: 16px">Noun. The one that creates.</div>
             </div>
+            <nav-button
+                href="/business"
+                c0="var(--j0)"
+                c1="var(--n1)"
+                style="width: 270px"
+            >
+                <nz-icon name="zap"></nz-icon>
+                <span style="margin-right: auto">Work with me</span>
+                <nz-icon name="direction"></nz-icon>
+            </nav-button>
             <noscript>
                 <code>
                     you DIRTY purist!!! how dare you spit in the face of
