@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>doromiert</title>
+        <link rel="icon" type="image/svg+xml" href="doromiert.svg" />
+        <style>
+            @import "base.css";
+            .jab-cta {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                button {
+                    min-width: 270px;
+                    span:not(.nz-icon) {
+                        margin-right: auto;
+                    }
+                }
+                @media (max-width: 600px) {
+                    flex-direction: column;
+                }
+            }
+
+            .nz-section {
+                padding-right: 20px;
+                padding-left: 20px;
+                box-sizing: border-box;
+            }
+
+            .about {
+                text-align: center;
+                text-wrap: balance;
+                b {
+                    white-space: nowrap;
+                }
+                .nz-icon {
+                    vertical-align: middle;
+                    margin-right: 4px;
+                }
+            }
+
+            #doromiert-icon {
+                fill: var(--b1);
+            }
+
+            #doromiert-button * {
+                fill: var(--b1);
+            }
+
+            .topbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                box-sizing: border-box;
+                transition: all 0.15s;
+                pointer-events: none;
+                width: 100vw;
+                z-index: 2137;
+                & > * {
+                    pointer-events: all;
+                }
+
+                @media (max-width: 600px) {
+                    justify-content: space-between;
+                }
+                @media (min-width: 601px) {
+                    justify-content: flex-end;
+                    gap: 10px;
+
+                    & #doromiert-button {
+                        position: absolute;
+                        left: 20px;
+                        top: 20px;
+                    }
+                }
+            }
+
+            .doromiert-znak {
+                user-select: none;
+                display: flex;
+                gap: 10px;
+                @media (max-width: 600px) {
+                    flex-direction: column;
+                }
+                @media (min-width: 601px) {
+                    flex-direction: row;
+                }
+            }
+
+            #footer {
+                display: flex;
+                padding: 20px;
+                background-color: var(--c0);
+                color: var(--c1);
+                justify-content: space-between;
+                height: 80px;
+                box-sizing: border-box;
+                align-items: center;
+            }
+        .nz-icon{display:inline-block;width:var(--icon-size,24px);height:var(--icon-size,24px);background-color:currentColor;--icon-count:57;--icon-index:0;mask-image:url('icons.svg');mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0;-webkit-mask-image:url('icons.svg');-webkit-mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);-webkit-mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0}.nz-icon-home{--icon-index:0}.nz-icon-docs{--icon-index:1}.nz-icon-image{--icon-index:2}.nz-icon-arrow{--icon-index:3}.nz-icon-plus{--icon-index:4}.nz-icon-sun{--icon-index:5}.nz-icon-photocam{--icon-index:6}.nz-icon-videocam{--icon-index:7}.nz-icon-download{--icon-index:8}.nz-icon-music{--icon-index:9}.nz-icon-search{--icon-index:10}.nz-icon-objects{--icon-index:11}.nz-icon-folder{--icon-index:12}.nz-icon-zenos{--icon-index:13}.nz-icon--0{--icon-index:14}.nz-icon-cube{--icon-index:15}.nz-icon-bell{--icon-index:16}.nz-icon-chat{--icon-index:17}.nz-icon-doromiert{--icon-index:18}.nz-icon-terminal{--icon-index:19}.nz-icon-cloud{--icon-index:20}.nz-icon-warning{--icon-index:21}.nz-icon-info{--icon-index:22}.nz-icon-question{--icon-index:23}.nz-icon-zap{--icon-index:24}.nz-icon-monitor{--icon-index:25}.nz-icon-radio{--icon-index:26}.nz-icon-trash{--icon-index:27}.nz-icon-mouse{--icon-index:28}.nz-icon-location{--icon-index:29}.nz-icon-user{--icon-index:30}.nz-icon-users{--icon-index:31}.nz-icon-scissors{--icon-index:32}.nz-icon-library{--icon-index:33}.nz-icon-announcement{--icon-index:34}.nz-icon-cpu{--icon-index:35}.nz-icon-brain{--icon-index:36}.nz-icon-direction{--icon-index:37}.nz-icon-fork{--icon-index:38}.nz-icon-github{--icon-index:39}.nz-icon-headphones{--icon-index:40}.nz-icon-instagram{--icon-index:41}.nz-icon-twitter{--icon-index:42}.nz-icon-phone{--icon-index:43}.nz-icon-mail{--icon-index:44}.nz-icon-discord{--icon-index:45}.nz-icon-telegram{--icon-index:46}.nz-icon-translate{--icon-index:47}.nz-icon-laptop{--icon-index:48}.nz-icon-xr{--icon-index:49}.nz-icon-nudl{--icon-index:50}.nz-icon-joycon{--icon-index:51}.nz-icon-smartphone{--icon-index:52}.nz-icon-calendar{--icon-index:53}.nz-icon-paintbrush{--icon-index:54}.nz-icon-code{--icon-index:55}.nz-icon-dollar{--icon-index:56}
+    </style>
+    </head>
+    <body>
+        <div class="topbar">
+            <a style="text-decoration: none;" href="#doromiert"><button style="--c1: var(--b0); --c0: var(--b1); " id="doromiert-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  path { fill: #5A1E17; }
+  @media (prefers-color-scheme: dark ) {
+    path { fill: #C96959; }
+  }
+</style>
+<path d="M21 3V17L17 21H3L7 17H15L17 15V7H3L7 3H21Z" />
+</svg></button></a>
+
+            <a style="text-decoration: none;" href="#jab"><button style="--c1: var(--n1); --c0: var(--n0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-user" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+            <a style="text-decoration: none;" href="#lib"><button style="--c1: var(--z1); --c0: var(--z0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-library" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+            <a style="text-decoration: none;" href="#blog"><button style="--c1: var(--po1); --c0: var(--j0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-announcement" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+            <a style="text-decoration: none;" href="#devices"><button style="--c1: var(--x0); --c0: var(--z0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-cpu" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+            <a style="text-decoration: none;" href="#music"><button style="--c1: var(--r1); --c0: var(--r0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-music" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+            <a style="text-decoration: none;" href="#contact"><button style="--c1: var(--pu1); --c0: var(--r0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-chat" style="--icon-size:24px;rotate:deg"></span></button></a>
+        </div>
+        <section class="nz-section" id="doromiert" style="--c0:var(--b0);--c1:var(--b1)"><div class="doromiert-znak">
+                <img src="doromiert-znak/dor.svg" />
+                <img src="doromiert-znak/omi.svg" />
+                <img src="doromiert-znak/ert.svg" />
+            </div>
+            <div
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                "
+            >
+                <div style="font-size: 20px">
+                    <b>doromiert</b> /dor-omi-ert/
+                </div>
+                <div style="font-size: 16px">Noun. The one that creates.</div>
+            </div>
+            <noscript>
+                <code>
+                    you DIRTY purist!!! how dare you spit in the face of
+                    javascript the holy! how dare you reject the holiness of
+                    this beautiful language?
+                    <br />
+                    well good news because this site uses none'o that
+                </code>
+            </noscript></section>
+
+        <a href="#jab" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:var(--n1);color:var(--n0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Who am I?</div></a><section class="nz-section" id="jab" style="--c0:var(--n1);--c1:var(--n0)"><img src="doromiert-bold.svg" alt="Logo" /><b style="font-size:20px">Who am I?</b><div class="about">
+                I'm a <b><span class="nz-icon nz-icon-paintbrush" style="--icon-size:24px;rotate:deg"></span>designer</b>,
+                <b><span class="nz-icon nz-icon-code" style="--icon-size:24px;rotate:deg"></span>developer</b>,
+                <b><span class="nz-icon nz-icon-translate" style="--icon-size:24px;rotate:deg"></span>language</b> and
+                <b><span class="nz-icon nz-icon-cpu" style="--icon-size:24px;rotate:deg"></span>tech enthusiast</b>.
+            </div>
+            I live in Warsaw, Poland, speak polish, english, ixni and toki pona.
+            <br />
+            (although I'm learning other languages too, for example russian)
+            <div class="jab-cta">
+                <a style="text-decoration: none;" href="#contact"><button style="--c1: var(--pu1); --c0: var(--r0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-chat" style="--icon-size:24px;rotate:deg"></span>
+                    <span>Contact me now</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                <a style="text-decoration: none;" href="#lib"><button style="--c1: var(--z1); --c0: var(--z0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-library" style="--icon-size:24px;rotate:deg"></span>
+                    <span>Check out my creations</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+            </div></section>
+        <a href="#lib" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:var(--z1);color:var(--z0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My creations</div></a><section class="nz-section" id="lib" style="--c0:var(--z1);--c1:var(--z0)"><span class="nz-icon nz-icon-library" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">My creations</b><div class="card-grid"><a class="card" href="/lib/slug.html"><span class="nz-icon nz-icon-docs" style="--icon-size:32px;rotate:deg"></span><b>slug</b></a></div></section>
+        <a href="#blog" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:var(--po1);color:var(--j0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Blog</div></a><section class="nz-section" id="blog" style="--c0:var(--po1);--c1:var(--j0)"><span class="nz-icon nz-icon-announcement" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Blog</b><b style="font-size:18px">2026-04-27 (1/2)</b><div class="blog-body"><p>asdjiasdolasjmd</p></div><div class="post-nav"><a href="/blog/2026-03-21.html" style="text-decoration:none"><button style="--c0:var(--po1);--c1:var(--j0); width: 100%"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></button></a><a href="/blog/" style="text-decoration:none"><button style="--c0:var(--po1);--c1:var(--j0); width: 100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px;rotate:deg"></span><span>Browse by date</span></button></a></div></section>
+        <a href="#devices" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:var(--x0);color:var(--z0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My devices</div></a><section class="nz-section" id="devices" style="--c0:var(--x0);--c1:var(--z0)"><span class="nz-icon nz-icon-cpu" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">My devices</b><div class="cat-list"><div class="cat-group"><div class="cat-header">daily drivers</div><div class="cat-rows"><a class="cat-item" href="/devices/doromi-tul-2.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px;rotate:deg"></span><span>doromi tul 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></a></div></div></div></section>
+        <a href="#music" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:var(--r1);color:var(--r0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Music I like</div></a><section class="nz-section" id="music" style="--c0:var(--r1);--c1:var(--r0)"><span class="nz-icon nz-icon-music" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Music I like</b><div class="now-playing"><div class="np-label"><span class="nz-icon nz-icon-headphones" style="--icon-size:24px;rotate:deg"></span>Now listening to</div><span class="np-song" style="margin-left: 4px;">Undercover</span><span style="margin-left: 4px;">Two door cinema club</span></div><div class="cat-list"><div class="cat-group"><div class="cat-header">Other</div><div class="cat-rows"><a class="cat-item" href="/music/test.html"><span class="nz-icon nz-icon-docs" style="--icon-size:24px;rotate:deg"></span><span>asjdoasuijasido</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></a></div></div></div></section>
+        <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:var(--pu1);color:var(--r0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:var(--pu1);--c1:var(--r0)" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Contact me</b><div
+                style="
+                    width: 270px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                "
+            >
+                <a style="text-decoration: none;" href="mailto:doromiert@gmail.com"><button style="--c1: var(--r0); --c0: var(--pu1); width: 270px"><span class="nz-icon nz-icon-mail" style="--icon-size:24px;rotate:deg"></span>
+                    <span style="margin-right: auto">Email</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+                <a style="text-decoration: none;" href="https://t.me/doromiert"><button style="--c1: var(--r0); --c0: var(--pu1); width: 270px"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px;rotate:deg"></span>
+                    <span style="margin-right: auto">Telegram</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+                <a style="text-decoration: none;" href="https://discord.com/users/786127059020808192"><button style="--c1: var(--r0); --c0: var(--pu1); width: 270px"><span class="nz-icon nz-icon-discord" style="--icon-size:24px;rotate:deg"></span>
+                    <span style="margin-right: auto">Discord</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+                <a style="text-decoration: none;" href="https://lastfm.com/user/nrdeez"><button style="--c1: var(--r0); --c0: var(--pu1); width: 270px"><span class="nz-icon nz-icon-music" style="--icon-size:24px;rotate:deg"></span>
+                    <span style="margin-right: auto">Last.fm</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+                <a style="text-decoration: none;" href="https://huggingface.co/doromiert"><button style="--c1: var(--r0); --c0: var(--pu1); width: 270px"><span class="nz-icon nz-icon-brain" style="--icon-size:24px;rotate:deg"></span>
+                    <span style="margin-right: auto">Hugging Face</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+                <a style="text-decoration: none;" href="https://github.com/doromiert"><button style="--c1: var(--r0); --c0: var(--pu1); width: 270px"><span class="nz-icon nz-icon-github" style="--icon-size:24px;rotate:deg"></span>
+                    <span style="margin-right: auto">GitHub</span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+            </div></section>
+        <div id="footer" style="--c0: var(--x0); --c1: var(--w)">
+            <div style="gap: 5px; display: flex; flex-direction: column">
+                <div>Made with love by doromiert</div>
+                <div style="opacity: 0.5">
+                    Use as you wish but please credit me
+                </div>
+            </div>
+            <div style="display: flex; gap: 20px">
+                <a style="text-decoration: none;" href="https://buymeacoffee.com/doromiert"><button style="--c1: var(--w); --c0: var(--x0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-dollar" style="--icon-size:24px;rotate:deg"></span></button></a>
+
+                <a style="text-decoration: none;" href="https://github.com/doromiert/doromiert-neu"><button style="--c1: var(--w); --c0: var(--x0); --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-code" style="--icon-size:24px;rotate:deg"></span></button></a>
+            </div>
+        </div>
+    </body>
+</html>
