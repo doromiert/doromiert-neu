@@ -105,6 +105,20 @@ button {
 #jab * {
     fill: var(--c1) !important;
 }
+.doromiert-znak {
+    * {
+        fill: var(--c1);
+    }
+    user-select: none;
+    display: flex;
+    gap: 10px;
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
+    @media (min-width: 601px) {
+        flex-direction: row;
+    }
+}
 
 .card {
     display: flex;
