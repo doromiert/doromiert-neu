@@ -273,7 +273,9 @@ def build_blog():
         f'<b style="font-size:20px">All posts</b>'
         f'</div>'
         f'<div class="card-grid" style="max-width:600px">{date_btns}</div>'
+        f'<style>body{{padding: 0px 20px}}</style>'
     )
+
     (out / "index.html").write_text(compile_page(article_page("Blog", index_body, "blog")))
 
     # Inline snippet for index.html — latest post only

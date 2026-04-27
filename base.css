@@ -135,11 +135,10 @@ button {
 }
 
 .cat-header {
-    font-size: 13px;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0 2px;
+    padding: 0 5px;
     &::after {
         content: "";
         flex: 1;
@@ -197,7 +196,9 @@ button {
     padding: 12px;
     color: var(--c0);
     background: var(--c1);
-    width: 400px;
+    max-width: calc(400px);
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .np-label {
