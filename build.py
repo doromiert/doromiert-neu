@@ -62,7 +62,7 @@ class NzSection:
         if icon:
             header = f'<nz-icon name="{icon}" size="64"></nz-icon><b style="font-size:20px">{name}</b>'
         elif id == "jab":
-            header = f'<img src="doromiert-bold.svg" alt="Logo" /><b style="font-size:20px">{name}</b>'
+            header = f'<img id="jab-doromiert" src="doromiert-bold.svg" alt="Logo" /><b style="font-size:20px;">{name}</b>'
         return f'{sep}<section class="nz-section" id="{id}" style="--c0:{c0};--c1:{c1}"{extra}>{header}{inner}</section>'
 
 ELEMENTS = [NzIcon, NavButton, Separator, NzSection]
@@ -114,16 +114,49 @@ def generate_icon_css(icon_path="icons.svg"):
 # =============================================================================
 
 def inline_svgs(html):
-    def replacer(m):
-        src, style = m.group(1), m.group(2)
+    """Inline all <img src="*.svg"> and the SVG favicon. Icon pack is left alone."""
+
+    def read_svg(src):
         path = ROOT / src
         if not path.exists():
-            return m.group(0)
+            return None
         svg = path.read_text()
-        if style:
-            svg = re.sub(r'<svg', f'<svg style="{style}"', svg, count=1)
+        # Strip <?xml ...?> — invalid inside HTML
+        return re.sub(r'<\?xml[^?]*\?>', '', svg).strip()
+
+    def img_replacer(m):
+        raw = m.group(0)
+        src_m = re.search(r'src="([^"]+\.svg)"', raw)
+        if not src_m:
+            return raw
+        svg = read_svg(src_m.group(1))
+        if svg is None:
+            return raw
+        style_m = re.search(r'style="([^"]*)"', raw)
+        if style_m and style_m.group(1):
+            svg = re.sub(r'<svg', f'<svg style="{style_m.group(1)}"', svg, count=1)
+        alt_m = re.search(r'alt="([^"]*)"', raw)
+        if alt_m and alt_m.group(1):
+            svg = re.sub(r'<svg', f'<svg aria-label="{alt_m.group(1)}" role="img"', svg, count=1)
         return svg
-    return re.sub(r'<img\s+src="([^"]+\.svg)"[^>]*style="([^"]*)"[^>]*/>', replacer, html)
+
+    html = re.sub(r'<img\b[^>]*src="[^"]+\.svg"[^>]*/>', img_replacer, html)
+
+    def favicon_replacer(m):
+        raw = m.group(0)
+        href_m = re.search(r'href="([^"]+\.svg)"', raw)
+        if not href_m:
+            return raw
+        path = ROOT / href_m.group(1)
+        if not path.exists():
+            return raw
+        import base64
+        b64 = base64.b64encode(path.read_bytes()).decode()
+        return re.sub(r'href="[^"]+"', f'href="data:image/svg+xml;base64,{b64}"', raw)
+
+    html = re.sub(r'<link\b[^>]*rel="icon"[^>]*href="[^"]+\.svg"[^>]*/>', favicon_replacer, html)
+
+    return html
 
 # =============================================================================
 # CONTENT SYSTEM
@@ -386,6 +419,7 @@ def build():
     html = inject_section(html, "music",   build_category("music"))
 
     html = compile_elements(html)
+    html = inline_svgs(html)  # second pass: catch SVGs emitted by element compilation (e.g. doromiert-bold.svg)
     html = html.replace("</style>", generate_icon_css() + "\n    </style>", 1)
 
     out = DIST / "index.html"
