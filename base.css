@@ -83,6 +83,11 @@ button {
     max-width: 800px;
 }
 
+/* jesus christ */
+#jab > svg:nth-child(1) > g:nth-child(1) > path:nth-child(1) {
+    fill: var(--c1) !important;
+}
+
 .card {
     display: flex;
     flex-direction: column;
