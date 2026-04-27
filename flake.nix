@@ -8,7 +8,8 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pythonWithMarkdown = pkgs.python3.withPackages (ps: [ ps.markdown ]);
+      pythonWithMarkdown = pkgs.python3.withPackages (ps: [ ps.markdown ps.fonttools
+        ps.brotli ]);
     in
     {
       apps.${system}.default = {

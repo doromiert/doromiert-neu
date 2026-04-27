@@ -1,7 +1,32 @@
 #!/usr/bin/env python3
+import sys
 import re, gzip, shutil
 import markdown as mdlib
 from pathlib import Path
+import subprocess
+
+def optimize_fonts():
+    font_dir = ROOT / "fonts"
+    font_dir.mkdir(exist_ok=True)
+
+    # Define which variable fonts to process
+    fonts = [
+        ("fonts/std.ttf", "std.woff2"),
+        ("fonts/mono.ttf", "mono.woff2")
+    ]
+
+    for src_path, dest_name in fonts:
+        src = ROOT / src_path
+        dest = font_dir / dest_name
+        if src.exists() and not dest.exists():
+            print(f"Optimizing {dest_name}...")
+            # Subset to basic Latin + common symbols and convert to WOFF2
+            subprocess.run([
+                sys.executable, "-m", "fontTools.subset", str(src),
+                "--unicodes=U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+                "--flavor=woff2",
+                f"--output-file={dest}"
+            ])
 
 ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
@@ -209,7 +234,7 @@ def article_page(title, body_html, section_id):
         f'<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>'
         f'<title>{title} — doromiert</title>'
         f'<link rel="icon" type="image/svg+xml" href="/doromiert.svg"/>'
-        f'<link rel="stylesheet" href="/base.css"/>'
+        f'<style>{(ROOT / "base.css").read_text()}</style>'
         f'<style>:root{{--c0:{c0};--c1:{c1}}}'
         f'body{{margin:0;padding:0;background:var(--c0);color:var(--c1);'
         f'min-height:100vh;display:flex;flex-direction:column;align-items:center}}'
@@ -406,10 +431,13 @@ def inject_section(html, section_id, content):
 # =============================================================================
 
 def build():
+    optimize_fonts()
     DIST.mkdir(exist_ok=True)
     (DIST / "CNAME").write_text("doromiert.neg-zero.com")
 
     html = (ROOT / "index.html").read_text()
+    base_css = (ROOT / "base.css").read_text()
+    html = re.sub(r'<link[^>]*href="[^"]*base\.css"[^>]*>', f'<style>{base_css}</style>', html)
     html = inline_svgs(html)
 
     # Inject content before compile_elements so nz-icon tags inside get compiled
@@ -425,7 +453,7 @@ def build():
     out = DIST / "index.html"
     out.write_text(html)
 
-    for asset in ["icons.svg", "doromiert-znak", "doromiert-bold.svg", "doromiert.svg", "base.css"]:
+    for asset in ["icons.svg", "doromiert-znak", "doromiert-bold.svg", "doromiert.svg", "fonts"]:
         src = ROOT / asset
         if not src.exists():
             continue

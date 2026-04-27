@@ -1,4 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap");
+@font-face {
+    font-family: "Atkinson Hyperlegible Next";
+    src: url("/fonts/std.woff2") format("woff2-variations");
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap; /* Forces text to show immediately using system fonts */
+}
+
+@font-face {
+    font-family: "Atkinson Hyperlegible Mono";
+    src: url("/fonts/mono.woff2") format("woff2-variations");
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root {
     font-family: "Atkinson Hyperlegible Next", sans-serif;
