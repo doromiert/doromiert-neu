@@ -255,9 +255,9 @@ def build_blog():
             f'<div class="art-header"><b style="font-size:18px">{date} ({i + 1}/{total})</b></div>'
             f'<article>{mdlib.markdown(body)}</article>'
             f'<div class="post-nav">'
-            f'{lnk_btn("<nz-icon name=\"direction\" rotate=\"180\"></nz-icon>", prev_url, c0, c1)}'
-            f'{lnk_btn("<nz-icon name=\"calendar\"></nz-icon><span>Browse by date</span>", "/blog/", c0, c1)}'
-            f'{lnk_btn("<nz-icon name=\"direction\"></nz-icon>", next_url, c0, c1)}'
+            f'{lnk_btn("<nz-icon name="direction" rotate="180"></nz-icon>", prev_url, c0, c1)}'
+            f'{lnk_btn("<nz-icon name="calendar"></nz-icon><span>Browse by date</span>", "/blog/", c0, c1)}'
+            f'{lnk_btn("<nz-icon name="direction"></nz-icon>", next_url, c0, c1)}'
             f'</div>'
         )
         (out / f"{slug}.html").write_text(compile_page(article_page(date, body_html, "blog")))
