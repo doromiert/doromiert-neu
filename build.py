@@ -374,6 +374,7 @@ def inject_section(html, section_id, content):
 
 def build():
     DIST.mkdir(exist_ok=True)
+    (DIST / "CNAME").write_text("doromiert.neg-zero.com")
 
     html = (ROOT / "index.html").read_text()
     html = inline_svgs(html)
