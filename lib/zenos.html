@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>slug — doromiert</title><link rel="icon" type="image/svg+xml" href="/doromiert.svg"/><style>@font-face {
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>ZenOS — doromiert</title><link rel="icon" type="image/svg+xml" href="/doromiert.svg"/><style>@font-face {
     font-family: "Atkinson Hyperlegible Next";
     src: url("/fonts/std.woff2") format("woff2-variations");
     font-weight: 200 800;
@@ -149,13 +149,13 @@ button {
     .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 8px;
         justify-content: center;
     }
     .tag {
-        font-size: 11px;
         padding: 1px 6px;
-        background: color-mix(in srgb, var(--c1) 20%, transparent);
+        background: var(--c1);
+        color: var(--c0);
     }
 }
 
@@ -271,6 +271,10 @@ button {
     padding: 60px 20px 20px;
 }
 
+article :nth-child(1) {
+    margin-top: 0;
+}
+
 .art-subtitle {
     font-size: 14px;
 }
@@ -278,14 +282,14 @@ button {
 .art-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 8px;
     justify-content: center;
 }
 
 .art-tag {
-    font-size: 12px;
-    padding: 2px 8px;
-    background: color-mix(in srgb, var(--c1) 20%, transparent);
+    padding: 8px 16px;
+    background-color: var(--c1);
+    color: var(--c0);
 }
 
 .page-back {
@@ -459,4 +463,30 @@ article h3 {
         grid-template-columns: 1fr;
     }
 }
-.nz-icon{display:inline-block;width:var(--icon-size,24px);height:var(--icon-size,24px);background-color:currentColor;--icon-count:57;--icon-index:0;mask-image:url('/icons.svg');mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0;-webkit-mask-image:url('/icons.svg');-webkit-mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);-webkit-mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0}.nz-icon-home{--icon-index:0}.nz-icon-docs{--icon-index:1}.nz-icon-image{--icon-index:2}.nz-icon-arrow{--icon-index:3}.nz-icon-plus{--icon-index:4}.nz-icon-sun{--icon-index:5}.nz-icon-photocam{--icon-index:6}.nz-icon-videocam{--icon-index:7}.nz-icon-download{--icon-index:8}.nz-icon-music{--icon-index:9}.nz-icon-search{--icon-index:10}.nz-icon-objects{--icon-index:11}.nz-icon-folder{--icon-index:12}.nz-icon-zenos{--icon-index:13}.nz-icon--0{--icon-index:14}.nz-icon-cube{--icon-index:15}.nz-icon-bell{--icon-index:16}.nz-icon-chat{--icon-index:17}.nz-icon-doromiert{--icon-index:18}.nz-icon-terminal{--icon-index:19}.nz-icon-cloud{--icon-index:20}.nz-icon-warning{--icon-index:21}.nz-icon-info{--icon-index:22}.nz-icon-question{--icon-index:23}.nz-icon-zap{--icon-index:24}.nz-icon-monitor{--icon-index:25}.nz-icon-radio{--icon-index:26}.nz-icon-trash{--icon-index:27}.nz-icon-mouse{--icon-index:28}.nz-icon-location{--icon-index:29}.nz-icon-user{--icon-index:30}.nz-icon-users{--icon-index:31}.nz-icon-scissors{--icon-index:32}.nz-icon-library{--icon-index:33}.nz-icon-announcement{--icon-index:34}.nz-icon-cpu{--icon-index:35}.nz-icon-brain{--icon-index:36}.nz-icon-direction{--icon-index:37}.nz-icon-fork{--icon-index:38}.nz-icon-github{--icon-index:39}.nz-icon-headphones{--icon-index:40}.nz-icon-instagram{--icon-index:41}.nz-icon-twitter{--icon-index:42}.nz-icon-phone{--icon-index:43}.nz-icon-mail{--icon-index:44}.nz-icon-discord{--icon-index:45}.nz-icon-telegram{--icon-index:46}.nz-icon-translate{--icon-index:47}.nz-icon-laptop{--icon-index:48}.nz-icon-xr{--icon-index:49}.nz-icon-nudl{--icon-index:50}.nz-icon-joycon{--icon-index:51}.nz-icon-smartphone{--icon-index:52}.nz-icon-calendar{--icon-index:53}.nz-icon-paintbrush{--icon-index:54}.nz-icon-code{--icon-index:55}.nz-icon-dollar{--icon-index:56}</style><style>:root{--c0:var(--z1);--c1:var(--z0)}body{margin:0;padding:0;background:var(--c0);color:var(--c1);min-height:100vh;display:flex;flex-direction:column;align-items:center}</style></head><body><a class="page-back" href="/"><button style="--c0:var(--z1);--c1:var(--z0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></button></a><div class="art-header"><span class="nz-icon nz-icon-docs" style="--icon-size:64px;rotate:deg"></span><b style="font-size:24px">slug</b></div><article><p>asdaisdjasdoi</p></article></body></html>
+.nz-icon{display:inline-block;width:var(--icon-size,24px);height:var(--icon-size,24px);background-color:currentColor;--icon-count:57;--icon-index:0;mask-image:url('/icons.svg');mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0;-webkit-mask-image:url('/icons.svg');-webkit-mask-size:calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size,24px);-webkit-mask-position:calc(var(--icon-index)*var(--icon-size,24px)*-1) 0}.nz-icon-home{--icon-index:0}.nz-icon-docs{--icon-index:1}.nz-icon-image{--icon-index:2}.nz-icon-arrow{--icon-index:3}.nz-icon-plus{--icon-index:4}.nz-icon-sun{--icon-index:5}.nz-icon-photocam{--icon-index:6}.nz-icon-videocam{--icon-index:7}.nz-icon-download{--icon-index:8}.nz-icon-music{--icon-index:9}.nz-icon-search{--icon-index:10}.nz-icon-objects{--icon-index:11}.nz-icon-folder{--icon-index:12}.nz-icon-zenos{--icon-index:13}.nz-icon--0{--icon-index:14}.nz-icon-cube{--icon-index:15}.nz-icon-bell{--icon-index:16}.nz-icon-chat{--icon-index:17}.nz-icon-doromiert{--icon-index:18}.nz-icon-terminal{--icon-index:19}.nz-icon-cloud{--icon-index:20}.nz-icon-warning{--icon-index:21}.nz-icon-info{--icon-index:22}.nz-icon-question{--icon-index:23}.nz-icon-zap{--icon-index:24}.nz-icon-monitor{--icon-index:25}.nz-icon-radio{--icon-index:26}.nz-icon-trash{--icon-index:27}.nz-icon-mouse{--icon-index:28}.nz-icon-location{--icon-index:29}.nz-icon-user{--icon-index:30}.nz-icon-users{--icon-index:31}.nz-icon-scissors{--icon-index:32}.nz-icon-library{--icon-index:33}.nz-icon-announcement{--icon-index:34}.nz-icon-cpu{--icon-index:35}.nz-icon-brain{--icon-index:36}.nz-icon-direction{--icon-index:37}.nz-icon-fork{--icon-index:38}.nz-icon-github{--icon-index:39}.nz-icon-headphones{--icon-index:40}.nz-icon-instagram{--icon-index:41}.nz-icon-twitter{--icon-index:42}.nz-icon-phone{--icon-index:43}.nz-icon-mail{--icon-index:44}.nz-icon-discord{--icon-index:45}.nz-icon-telegram{--icon-index:46}.nz-icon-translate{--icon-index:47}.nz-icon-laptop{--icon-index:48}.nz-icon-xr{--icon-index:49}.nz-icon-nudl{--icon-index:50}.nz-icon-joycon{--icon-index:51}.nz-icon-smartphone{--icon-index:52}.nz-icon-calendar{--icon-index:53}.nz-icon-paintbrush{--icon-index:54}.nz-icon-code{--icon-index:55}.nz-icon-dollar{--icon-index:56}</style><style>:root{--c0:var(--z1);--c1:var(--z0)}body{margin:0;padding:0;background:var(--c0);color:var(--c1);min-height:100vh;display:flex;flex-direction:column;align-items:center}</style></head><body><a class="page-back" href="/"><button style="--c0:var(--z1);--c1:var(--z0)"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></button></a><div class="art-header"><span class="nz-icon nz-icon-zenos" style="--icon-size:64px;rotate:deg"></span><b style="font-size:24px">ZenOS</b><div class=art-tags><span class="art-tag">Operating Systems</span><span class="art-tag">Negative Zero</span><span class="art-tag">Software</span><span class="art-tag">Design</span></div></div><article><h1>The beginning</h1>
+<p>ZenOS is a really old project of mine, depending on how you count it, it started in 2016 (back then known as Glass OS) or 2020 (finally called ZenOS)</p>
+<p>But the issue was always that it was first just a design on paper (yes, actual paper) or on Figma.</p>
+<p>But since late 2025, I started actually putting together ZenOS the software, an actual operating system based on NixOS.</p>
+<h2>What did it look like on paper, then?</h2>
+<p>(image here lol)</p>
+<p>This was Glass. My first ever piece of UI design, back when i was only 8(!), bored in świetlica (which is like a daycare inside of an elementary school).</p>
+<p>It was actually originally inspired by Windows and Ubuntu (which is where the orange accent color and name come from)</p>
+<p>Later on, it went through so many iterations I don't think it makes sense to list them all here (and, anyways, looking for all of them will be tedious as all hell.)</p>
+<h2>The Figma era</h2>
+<h3>V1: under construction</h3>
+<p>(image here)</p>
+<p>This is what the first Figma edition of ZenOS looked like. Very dark, very yellow.</p>
+<p>But it had a few elements that eventually became the ZenOS UX staples:</p>
+<ol>
+<li>dynamic app icons: my response to Apple's dynamic island</li>
+<li>notification + widget side view</li>
+<li>the window's top bar getting merged into the Action Center (which is the fancy name for the system top bar)</li>
+</ol>
+<p>but of course, i eventually got bored with how that version of ZenOS looked so I designed a </p>
+<h3>V2: monochrome</h3>
+<p>(image here)</p>
+<p>This version of ZenOS had basically no color, not much has changed since V1 other than styling.</p>
+<h3>V3: NUDL</h3>
+<p>(image here)</p>
+<p>Now this is where it gets interesting. This is the first ZenOS version using the Negative Zero Universal Design Language, shortened to NUDL (purposely skipped Z so that it's pronounced as noodle)... version 4.</p>
+<p>Yep, NUDL v1-v3 had no desktop version whatsoever</p></article></body></html>

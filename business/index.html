@@ -156,13 +156,13 @@ button {
     .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 8px;
         justify-content: center;
     }
     .tag {
-        font-size: 11px;
         padding: 1px 6px;
-        background: color-mix(in srgb, var(--c1) 20%, transparent);
+        background: var(--c1);
+        color: var(--c0);
     }
 }
 
@@ -278,6 +278,10 @@ button {
     padding: 60px 20px 20px;
 }
 
+article :nth-child(1) {
+    margin-top: 0;
+}
+
 .art-subtitle {
     font-size: 14px;
 }
@@ -285,14 +289,14 @@ button {
 .art-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 8px;
     justify-content: center;
 }
 
 .art-tag {
-    font-size: 12px;
-    padding: 2px 8px;
-    background: color-mix(in srgb, var(--c1) 20%, transparent);
+    padding: 8px 16px;
+    background-color: var(--c1);
+    color: var(--c0);
 }
 
 .page-back {
