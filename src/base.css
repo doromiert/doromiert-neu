@@ -105,6 +105,7 @@ button {
 #jab * {
     fill: var(--c1) !important;
 }
+
 .doromiert-znak {
     * {
         fill: var(--c1);
