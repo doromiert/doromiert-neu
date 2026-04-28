@@ -239,7 +239,7 @@ def article_page(title, body_html, section_id):
         f'min-height:100vh;display:flex;flex-direction:column;align-items:center}}'
         f'</style>'
         f'</head><body>'
-        f'<a class="page-back" href="/">{back_btn}</a>'
+        f'<a class="page-back" href="/#{section_id}">{back_btn}</a>'
         f'{body_html}'
         f'</body></html>'
     )

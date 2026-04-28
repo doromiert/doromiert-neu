@@ -42,7 +42,7 @@ html {
 section {
     text-wrap: balance;
     text-align: center;
-    min-height: calc(100svh - 34px);
+    min-height: calc(100lvh - 34px);
     background-color: var(--c0);
     color: var(--c1);
     align-items: center;
@@ -51,7 +51,14 @@ section {
     flex-direction: column;
     gap: 20px;
     &#contact {
-        min-height: calc(100svh - 80px) !important;
+        min-height: calc(100lvh - 80px) !important;
+    }
+
+    &#b-hero {
+        min-height: calc(100svh - 34px) !important;
+    }
+    &#doromiert {
+        min-height: calc(100svh - 34px) !important;
     }
 }
 
