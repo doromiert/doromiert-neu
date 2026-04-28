@@ -50,6 +50,7 @@ section {
     justify-content: center;
     flex-direction: column;
     gap: 20px;
+    padding: 60px;
     &#contact {
         min-height: calc(100svh - 80px) !important;
     }
