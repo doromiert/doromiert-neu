@@ -272,7 +272,6 @@ def build_lib():
             f'<a class="card" href="{href}">'
             f'<nz-icon name="{icon}" size="32"></nz-icon>'
             f'<b>{title}</b>'
-            f'{"<div class=tags>" + tag_html + "</div>" if tag_html else ""}'
             f'</a>'
         )
         if not ext_url:
