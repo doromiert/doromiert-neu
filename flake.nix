@@ -4,11 +4,15 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   outputs =
-    { self, nixpkgs }:
+    { nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pythonWithMarkdown = pkgs.python3.withPackages (ps: [ ps.markdown ps.fonttools ps.brotli ]);
+      pythonWithMarkdown = pkgs.python3.withPackages (ps: [
+        ps.markdown
+        ps.fonttools
+        ps.brotli
+      ]);
     in
     {
       apps.${system} = {
