@@ -11,6 +11,7 @@
       pythonWithMarkdown = pkgs.python3.withPackages (ps: [
         ps.markdown
         ps.fonttools
+        ps.libsass
         ps.brotli
       ]);
     in

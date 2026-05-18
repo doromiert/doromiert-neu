@@ -4,6 +4,7 @@ import re, gzip, shutil
 import markdown as mdlib
 from pathlib import Path
 import subprocess
+import backcompat
 
 PROJ = Path(__file__).parent.parent
 DATA = PROJ / "data"
@@ -503,11 +504,13 @@ def build():
     DIST.mkdir(exist_ok=True)
     BIZ.mkdir(parents=True, exist_ok=True)
     (DIST / "CNAME").write_text("doromiert.neg-zero.com")
+
     base_css = (
         (PROJ / "src" / "base.css").read_text()
         if (PROJ / "src" / "base.css").exists()
         else ""
     )
+
     l, b, d, m = (
         build_lib(),
         build_blog(),
@@ -561,12 +564,36 @@ def build():
                 src, DIST / asset, dirs_exist_ok=True
             ) if src.is_dir() else shutil.copy(src, DIST / asset)
 
+    # --- WII U BACKCOMPAT UNROLLER PASS (MUST RUN BEFORE GZIP) ---
+    print("\nviolently flattening css and html for the wii u...")
+    base_css_src = PROJ / "src" / "base.css"
+
+    if base_css_src.exists():
+        # 1. extract variables from original base.css source
+        global_vars = backcompat.extract_root_vars(
+            base_css_src.read_text(encoding="utf-8")
+        )
+
+        # 2. unnest & unroll standalone base.css in dist
+        backcompat.compile_compatible_css(base_css_src, DIST / "base.css", global_vars)
+
+        # 3. sweep all generated HTML in dist to unroll inlined blocks & inline styles
+        for html_dist in DIST.rglob("*.html"):
+            backcompat.compile_html_file(html_dist, html_dist, global_vars)
+
+        print("✅ HTML and CSS fully unrolled & optimized.")
+    else:
+        print(f"⚠️ could not find base.css at {base_css_src}, skipping unroll pass.")
+
+    # --- FINAL GZIP COMPRESSION STEP ---
+    print("compressing files...")
     for f in DIST.rglob("*.html"):
         with (
             open(f, "rb") as fi,
             gzip.open(str(f) + ".gz", "wb", compresslevel=9) as fo,
         ):
             fo.write(fi.read())
+
     print("build complete.")
 
 
