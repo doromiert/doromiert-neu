@@ -84,7 +84,7 @@ body {
   margin: 0;
 }
 
-button {
+:is(button, .navbutton) {
   font-weight: normal;
   font-size: 16px;
   padding: 8px;
@@ -92,26 +92,29 @@ button {
   transition: all 0.15s;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
   background-color: var(--c1);
   color: var(--c0);
   display: flex;
   align-items: center;
   outline: 0px solid var(--c1);
   outline-offset: 0px;
+  text-decoration: none;
+  /* move this from the inline style */
 }
 
-button:hover {
+:is(button, .navbutton):is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
 
-button:active {
+:is(button, .navbutton):active {
   outline-width: 0px;
   outline-offset: -1px;
   filter: brightness(0.75);
 }
 
-button span:not(.nz-icon) {
+:is(button, .navbutton) span:not(.nz-icon) {
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -170,7 +173,7 @@ button span:not(.nz-icon) {
   outline-offset: 0px;
 }
 
-.card:hover {
+.card:is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
@@ -247,7 +250,7 @@ button span:not(.nz-icon) {
   outline-offset: 0px;
 }
 
-.cat-item:hover {
+.cat-item:is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
@@ -332,7 +335,7 @@ article :nth-child(1) {
   color: var(--c0);
 }
 
-.page-back {
+#page-back {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -777,6 +780,8 @@ html {
   display: flex;
   gap: 10px;
   justify-content: center;
+  width: 100%;
+  align-items: center;
 }
 
 .jab-cta button {
@@ -790,6 +795,27 @@ html {
 @media (max-width: 600px) {
   .jab-cta {
     flex-direction: column;
+  }
+}
+
+.jab-cta .navbutton span {
+  word-wrap: none;
+  white-space: nowrap;
+}
+
+.jab-cta .navbutton span:not(.nz-icon) {
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  .jab-cta .navbutton {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) {
+  .jab-cta .navbutton {
+    width: 270px;
   }
 }
 
@@ -828,7 +854,7 @@ html {
     </head>
     <body style="view-transition-name: page-main">
         <div class="topbar">
-            <a style="text-decoration: none;" href="#doromiert"><button style="--c1: #c96959; --c0: #5a1e17; " id="doromiert-button"><svg aria-label="Logo" role="img" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a style="text-decoration: none; --c1: #c96959; --c0: #5a1e17; "  id="doromiert-button" href="#doromiert" class="navbutton"><svg aria-label="Logo" role="img" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
 #doromiert-logo-svg {
   fill: #5A1E17;
@@ -841,19 +867,19 @@ html {
 }
 </style>
 <path id="doromiert-logo-svg" d="M22 3V17L17 21H3L7 17H15L17 15V7H3L7 3H21Z" />
-</svg></button></a>
+</svg></a>
 
-            <a style="text-decoration: none;" href="#jab"><button style="--c1: #004a69; --c0: #59a7c9; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-user" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #004a69; --c0: #59a7c9; --icon-size:24px"  href="#jab" class="navbutton"><span class="nz-icon nz-icon-user" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none;" href="#lib"><button style="--c1: #2e7700; --c0: #76e256; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-library" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #2e7700; --c0: #76e256; --icon-size:24px"  href="#lib" class="navbutton"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none;" href="#blog"><button style="--c1: #7c3a0b; --c0: #ffd165; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-announcement" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #7c3a0b; --c0: #ffd165; --icon-size:24px"  href="#blog" class="navbutton"><span class="nz-icon nz-icon-announcement" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none;" href="#devices"><button style="--c1: #1a1a1a; --c0: #76e256; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-cpu" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #1a1a1a; --c0: #76e256; --icon-size:24px"  href="#devices" class="navbutton"><span class="nz-icon nz-icon-cpu" style="--icon-size:24px"></span></a>
 
-            <!--<a style="text-decoration: none;" href="#music"><button style="--c1: #7a1b8d; --c0: #d47be6; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-music" style="--icon-size:24px;rotate:deg"></span></button></a>-->
+            <!--<a style="text-decoration: none; --c1: #7a1b8d; --c0: #d47be6; --icon-size:24px"  href="#music" class="navbutton"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span></a>-->
 
-            <a style="text-decoration: none;" href="#contact"><button style="--c1: #150055; --c0: #d47be6; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-chat" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #150055; --c0: #d47be6; --icon-size:24px"  href="#contact" class="navbutton"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span></a>
         </div>
         <section class="nz-section" id="doromiert" style="--c0:#c96959;--c1:#5a1e17"><div class="doromiert-znak">
                 <svg width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -898,10 +924,10 @@ html {
                 </div>
                 <div style="font-size: 16px">Noun. The one that creates.</div>
             </div>
-            <a style="text-decoration: none;" href="/business"><button style="--c1: #004a69; --c0: #ffd165; width: 270px; display: none"><!-- hidden until i officially start -->
-                <span class="nz-icon nz-icon-zap" style="--icon-size:24px;rotate:deg"></span>
+            <a style="text-decoration: none; --c1: #004a69; --c0: #ffd165; width: 270px; display: none"  href="/business" class="navbutton"><!-- hidden until i officially start -->
+                <span class="nz-icon nz-icon-zap" style="--icon-size:24px"></span>
                 <span style="margin-right: auto">Work with me</span>
-                <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             <noscript>
                 <code>
                     you DIRTY purist!!! how dare you spit in the face of
@@ -922,27 +948,27 @@ html {
 </clipPath>
 </defs>
 </svg><b style="font-size:20px;">Who am I?</b><div class="about">
-                I'm a <b><span class="nz-icon nz-icon-paintbrush" style="--icon-size:24px;rotate:deg"></span>designer</b>,
-                <b><span class="nz-icon nz-icon-code" style="--icon-size:24px;rotate:deg"></span>developer</b>,
-                <b><span class="nz-icon nz-icon-translate" style="--icon-size:24px;rotate:deg"></span>language</b> and
-                <b><span class="nz-icon nz-icon-cpu" style="--icon-size:24px;rotate:deg"></span>tech enthusiast</b>.
+                I'm a <b><span class="nz-icon nz-icon-paintbrush" style="--icon-size:24px"></span>designer</b>,
+                <b><span class="nz-icon nz-icon-code" style="--icon-size:24px"></span>developer</b>,
+                <b><span class="nz-icon nz-icon-translate" style="--icon-size:24px"></span>language</b> and
+                <b><span class="nz-icon nz-icon-cpu" style="--icon-size:24px"></span>tech enthusiast</b>.
             </div>
             I live in Warsaw, Poland, speak polish, english, ixni and toki pona.
             <br />
             (although I'm learning other languages too, for example russian & romanian)
             <div class="jab-cta">
-                <a style="text-decoration: none;" href="#contact"><button style="--c1: #150055; --c0: #d47be6; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-chat" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #150055; --c0: #d47be6; --icon-size:24px"  href="#contact" class="navbutton"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span>
                     <span>Contact me now</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
-                <a style="text-decoration: none;" href="#lib"><button style="--c1: #2e7700; --c0: #76e256; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-library" style="--icon-size:24px;rotate:deg"></span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
+                <a style="text-decoration: none; --c1: #2e7700; --c0: #76e256; --icon-size:24px"  href="#lib" class="navbutton"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span>
                     <span>Check out my creations</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
-        <a href="#lib" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#2e7700;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My creations</div></a><section class="nz-section" id="lib" style="--c0:#2e7700;--c1:#76e256"><span class="nz-icon nz-icon-library" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">My creations</b><div class="card-grid"><a class="card" href="/lib/zenos.html"><span class="nz-icon nz-icon-zenos" style="--icon-size:32px;rotate:deg"></span><b>ZenOS</b></a></div></section>
-        <a href="#blog" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7c3a0b;color:#ffd165"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Blog</div></a><section class="nz-section" id="blog" style="--c0:#7c3a0b;--c1:#ffd165"><span class="nz-icon nz-icon-announcement" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Blog</b><b style="font-size:18px">2026-04-28 (1/1)</b><div class="blog-body"><p>asdjiasdolasjmd</p></div><div class="post-nav"><a href="/blog/" style="text-decoration:none"><button style="--c0:#7c3a0b;--c1:#ffd165; width: 100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px;rotate:deg"></span><span>Browse by date</span></button></a><button style="--c0:#7c3a0b;--c1:#ffd165;opacity:.3" disabled><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></div></section>
-        <a href="#devices" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My devices</div></a><section class="nz-section" id="devices" style="--c0:#1a1a1a;--c1:#76e256"><span class="nz-icon nz-icon-cpu" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">My devices</b><div class="cat-list"><div class="cat-group"><div class="cat-header">daily drivers</div><div class="cat-rows"><a class="cat-item" href="/devices/doromi-tul-2.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px;rotate:deg"></span><span>doromi tul 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></a></div></div></div></section>
-        <!--<a href="#music" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7a1b8d;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Music I like</div></a><section class="nz-section" id="music" style="--c0:#7a1b8d;--c1:#d47be6"><span class="nz-icon nz-icon-music" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Music I like</b><div class="now-playing"><div class="np-label"><span class="nz-icon nz-icon-headphones" style="--icon-size:24px;rotate:deg"></span>Now listening to</div><span class="np-song" style="margin-left: 4px;">Undercover</span><span style="margin-left: 4px;">Two door cinema club</span></div><div class="cat-list"><div class="cat-group"><div class="cat-header">Other</div><div class="cat-rows"><a class="cat-item" href="/music/test.html"><span class="nz-icon nz-icon-docs" style="--icon-size:24px;rotate:deg"></span><span>asjdoasuijasido</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></a></div></div></div></section>-->
-        <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#150055;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:#150055;--c1:#d47be6" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Contact me</b><div
+        <a href="#lib" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#2e7700;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My creations</div></a><section class="nz-section" id="lib" style="--c0:#2e7700;--c1:#76e256"><span class="nz-icon nz-icon-library" style="--icon-size:64px"></span><b style="font-size:20px">My creations</b><div class="card-grid"><a class="card" href="/lib/zenos.html"><span class="nz-icon nz-icon-zenos" style="--icon-size:32px"></span><b>ZenOS</b></a></div></section>
+        <a href="#blog" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7c3a0b;color:#ffd165"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Blog</div></a><section class="nz-section" id="blog" style="--c0:#7c3a0b;--c1:#ffd165"><span class="nz-icon nz-icon-announcement" style="--icon-size:64px"></span><b style="font-size:20px">Blog</b><b style="font-size:18px">2026-04-28 (1/1)</b><div class="blog-body"><p>asdjiasdolasjmd</p></div><div class="post-nav"><a href="/blog/" class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div></section>
+        <a href="#devices" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My devices</div></a><section class="nz-section" id="devices" style="--c0:#1a1a1a;--c1:#76e256"><span class="nz-icon nz-icon-cpu" style="--icon-size:64px"></span><b style="font-size:20px">My devices</b><div class="cat-list"><div class="cat-group"><div class="cat-header">daily drivers</div><div class="cat-rows"><a class="cat-item" href="/devices/doromi-tul-2.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>doromi tul 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>
+        <!--<a href="#music" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7a1b8d;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Music I like</div></a><section class="nz-section" id="music" style="--c0:#7a1b8d;--c1:#d47be6"><span class="nz-icon nz-icon-music" style="--icon-size:64px"></span><b style="font-size:20px">Music I like</b><div class="now-playing"><div class="np-label"><span class="nz-icon nz-icon-headphones" style="--icon-size:24px"></span>Now listening to</div><span class="np-song" style="margin-left: 4px;">Undercover</span><span style="margin-left: 4px;">Two door cinema club</span></div><div class="cat-list"><div class="cat-group"><div class="cat-header">Other</div><div class="cat-rows"><a class="cat-item" href="/music/test.html"><span class="nz-icon nz-icon-docs" style="--icon-size:24px"></span><span>asjdoasuijasido</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>-->
+        <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#150055;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:#150055;--c1:#d47be6" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px"></span><b style="font-size:20px">Contact me</b><div
                 style="
                     width: 270px;
                     display: flex;
@@ -951,29 +977,29 @@ html {
                     align-items: center;
                 "
             >
-                <a style="text-decoration: none;" href="mailto:doromiert@gmail.com"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-mail" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="mailto:doromiert@gmail.com" class="navbutton"><span class="nz-icon nz-icon-mail" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Email</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://t.me/doromiert"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://t.me/doromiert" class="navbutton"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Telegram</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://discord.com/users/786127059020808192"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-discord" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://discord.com/users/786127059020808192" class="navbutton"><span class="nz-icon nz-icon-discord" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Discord</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://lastfm.com/user/NRDeez"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-music" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://lastfm.com/user/NRDeez" class="navbutton"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Last.fm</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://huggingface.co/doromiert"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-brain" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://huggingface.co/doromiert" class="navbutton"><span class="nz-icon nz-icon-brain" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Hugging Face</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://github.com/doromiert"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-github" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://github.com/doromiert" class="navbutton"><span class="nz-icon nz-icon-github" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">GitHub</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
         <div id="footer" style="--c0: #1a1a1a; --c1: #ffffff">
             <div style="gap: 5px; display: flex; flex-direction: column">
@@ -981,9 +1007,9 @@ html {
                 <div style="opacity: 0.5">Use as you wish, credit me</div>
             </div>
             <div style="display: flex; gap: 20px">
-                <a style="text-decoration: none;" href="https://buymeacoffee.com/doromiert"><button style="--c1: #ffffff; --c0: #1a1a1a; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-dollar" style="--icon-size:24px;rotate:deg"></span></button></a>
+                <a style="text-decoration: none; --c1: #ffffff; --c0: #1a1a1a; --icon-size:24px"  href="https://buymeacoffee.com/doromiert" class="navbutton"><span class="nz-icon nz-icon-dollar" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://github.com/doromiert/doromiert-neu"><button style="--c1: #ffffff; --c0: #1a1a1a; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-code" style="--icon-size:24px;rotate:deg"></span></button></a>
+                <a style="text-decoration: none; --c1: #ffffff; --c0: #1a1a1a; --icon-size:24px"  href="https://github.com/doromiert/doromiert-neu" class="navbutton"><span class="nz-icon nz-icon-code" style="--icon-size:24px"></span></a>
             </div>
         </div>
     </body>

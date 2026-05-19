@@ -77,7 +77,7 @@ body {
   margin: 0;
 }
 
-button {
+:is(button, .navbutton) {
   font-weight: normal;
   font-size: 16px;
   padding: 8px;
@@ -85,26 +85,29 @@ button {
   transition: all 0.15s;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
   background-color: var(--c1);
   color: var(--c0);
   display: flex;
   align-items: center;
   outline: 0px solid var(--c1);
   outline-offset: 0px;
+  text-decoration: none;
+  /* move this from the inline style */
 }
 
-button:hover {
+:is(button, .navbutton):is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
 
-button:active {
+:is(button, .navbutton):active {
   outline-width: 0px;
   outline-offset: -1px;
   filter: brightness(0.75);
 }
 
-button span:not(.nz-icon) {
+:is(button, .navbutton) span:not(.nz-icon) {
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -163,7 +166,7 @@ button span:not(.nz-icon) {
   outline-offset: 0px;
 }
 
-.card:hover {
+.card:is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
@@ -240,7 +243,7 @@ button span:not(.nz-icon) {
   outline-offset: 0px;
 }
 
-.cat-item:hover {
+.cat-item:is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
@@ -325,7 +328,7 @@ article :nth-child(1) {
   color: var(--c0);
 }
 
-.page-back {
+#page-back {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -772,7 +775,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
-</style></head><body><a class="page-back" href="/#blog"><button style="--c0:#7c3a0b;--c1:#ffd165"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></button></a><div class="art-header"><span class="nz-icon nz-icon-calendar" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">All posts</b></div><div class="card-grid" style="max-width:600px" id="blog-content"><a href="/blog/2026-04-28.html" style="text-decoration:none"><button style="--c0:#7c3a0b;--c1:#ffd165; width: 100%">2026-04-28</button></a></div><style>
+</style></head><body><a style="text-decoration: none; --c1: #ffd165; --c0: #7c3a0b; --icon-size:24px;rotate:90deg"  id="page-back" href="/#blog c0=" class="navbutton"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-calendar" style="--icon-size:64px"></span><b style="font-size:20px">All posts</b></div><div class="card-grid" style="max-width:600px" id="blog-content"><a href="/blog/2026-04-28.html" class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:100%">2026-04-28</a></div><style>
 body {
   padding: 0px 20px;
 }

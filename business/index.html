@@ -84,7 +84,7 @@ body {
   margin: 0;
 }
 
-button {
+:is(button, .navbutton) {
   font-weight: normal;
   font-size: 16px;
   padding: 8px;
@@ -92,26 +92,29 @@ button {
   transition: all 0.15s;
   border: none;
   cursor: pointer;
+  box-sizing: border-box;
   background-color: var(--c1);
   color: var(--c0);
   display: flex;
   align-items: center;
   outline: 0px solid var(--c1);
   outline-offset: 0px;
+  text-decoration: none;
+  /* move this from the inline style */
 }
 
-button:hover {
+:is(button, .navbutton):is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
 
-button:active {
+:is(button, .navbutton):active {
   outline-width: 0px;
   outline-offset: -1px;
   filter: brightness(0.75);
 }
 
-button span:not(.nz-icon) {
+:is(button, .navbutton) span:not(.nz-icon) {
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -170,7 +173,7 @@ button span:not(.nz-icon) {
   outline-offset: 0px;
 }
 
-.card:hover {
+.card:is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
@@ -247,7 +250,7 @@ button span:not(.nz-icon) {
   outline-offset: 0px;
 }
 
-.cat-item:hover {
+.cat-item:is(:hover, :focus-visible) {
   outline-width: 4px;
   filter: brightness(1.5);
 }
@@ -332,7 +335,7 @@ article :nth-child(1) {
   color: var(--c0);
 }
 
-.page-back {
+#page-back {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -824,7 +827,7 @@ html {
     </head>
     <body style="view-transition-name: page-biz">
         <div class="topbar">
-            <a style="text-decoration: none;" href="#b-hero"><button style="--c1: #004a69; --c0: #ffd165; fill: var(--c1)" id="doromiert-button-b"><svg aria-label="Logo" role="img" style="fill: var(--c1)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a style="text-decoration: none; --c1: #004a69; --c0: #ffd165; fill: var(--c1)"  id="doromiert-button-b" href="#b-hero" class="navbutton"><svg aria-label="Logo" role="img" style="fill: var(--c1)" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
 #doromiert-logo-svg {
   fill: #5A1E17;
@@ -837,13 +840,13 @@ html {
 }
 </style>
 <path id="doromiert-logo-svg" d="M22 3V17L17 21H3L7 17H15L17 15V7H3L7 3H21Z" />
-</svg></button></a>
+</svg></a>
 
-            <a style="text-decoration: none;" href="#b-werk"><button style="--c1: #e58b3c; --c0: #7c3a0b; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-zap" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #e58b3c; --c0: #7c3a0b; --icon-size:24px"  href="#b-werk" class="navbutton"><span class="nz-icon nz-icon-zap" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none;" href="#b-lib"><button style="--c1: #1a1a1a; --c0: #ffffff; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-library" style="--icon-size:24px;rotate:deg"></span></button></a>
+            <a style="text-decoration: none; --c1: #1a1a1a; --c0: #ffffff; --icon-size:24px"  href="#b-lib" class="navbutton"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none;" href="#contact"><button style="--c1: #150055; --c0: #d47be6; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-chat" style="--icon-size:24px;rotate:deg"></span> <span>Contact me</span></button></a>
+            <a style="text-decoration: none; --c1: #150055; --c0: #d47be6; --icon-size:24px"  href="#contact" class="navbutton"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span> <span>Contact me</span></a>
         </div>
 
         <section class="nz-section" id="b-hero" style="--c0:#004a69;--c1:#ffd165"><div class="doromiert-znak"><svg width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -873,31 +876,31 @@ html {
 <path d="M85 17.3906L98.333 0H110L90.833 25L110 50H98.333L85 32.6084L71.667 50H60L79.166 25L60 0H71.667L85 17.3906Z" fill="#5A1E17"/>
 <path d="M130 40L120 50V10L130 0V40ZM170 40L160 50V10L170 0V40Z" fill="#5A1E17"/>
 </svg></div><b style="font-size:20px;">I turn complex problems into clean software.</b><div class="jab-cta">
-                <a style="text-decoration: none;" href="#contact"><button style="--c1: #150055; --c0: #d47be6; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-chat" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #150055; --c0: #d47be6; --icon-size:24px"  href="#contact" class="navbutton"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span>
                     <span>Contact me now</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
-                <a style="text-decoration: none;" href="#b-lib"><button style="--c1: #1a1a1a; --c0: #ffffff; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-library" style="--icon-size:24px;rotate:deg"></span>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
+                <a style="text-decoration: none; --c1: #1a1a1a; --c0: #ffffff; --icon-size:24px"  href="#b-lib" class="navbutton"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span>
                     <span>Look at my work first</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
-        <a href="#b-werk" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#e58b3c;color:#7c3a0b"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>What I do</div></a><section class="nz-section" id="b-werk" style="--c0:#e58b3c;--c1:#7c3a0b"><span class="nz-icon nz-icon-zap" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">What I do</b><div class="nz-bcard-grid">
-                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-code" style="--icon-size:24px;rotate:0deg"></span><span>Software development</span></div><div class="nz-bcard-content">I can build you a website or tool that doesn't just look
+        <a href="#b-werk" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#e58b3c;color:#7c3a0b"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>What I do</div></a><section class="nz-section" id="b-werk" style="--c0:#e58b3c;--c1:#7c3a0b"><span class="nz-icon nz-icon-zap" style="--icon-size:64px"></span><b style="font-size:20px">What I do</b><div class="nz-bcard-grid">
+                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-code" style="--icon-size:24px"></span><span>Software development</span></div><div class="nz-bcard-content">I can build you a website or tool that doesn't just look
                     the part; it actually does what you need it to, without the
                     bugs, the slowness, or the parts that never quite work
                     right</div></div>
-                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-paintbrush" style="--icon-size:24px;rotate:0deg"></span><span>UI/UX design</span></div><div class="nz-bcard-content">I can design your product to not just look good but feel
+                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-paintbrush" style="--icon-size:24px"></span><span>UI/UX design</span></div><div class="nz-bcard-content">I can design your product to not just look good but feel
                     obvious; so intuitive your users never stop to think about
                     how it works, they just use it</div></div>
-                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-cloud" style="--icon-size:24px;rotate:0deg"></span><span>Systems & infrastructure</span></div><div class="nz-bcard-content">I can set up and maintain server infrastructure and device
+                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-cloud" style="--icon-size:24px"></span><span>Systems & infrastructure</span></div><div class="nz-bcard-content">I can set up and maintain server infrastructure and device
                     fleets that just work; no mystery costs, no vendor lock-in,
                     no guy you have to call every time something
                     breaks</div></div>
-                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-brain" style="--icon-size:24px;rotate:0deg"></span><span>AI integration</span></div><div class="nz-bcard-content">I can take your website or program and add AI to it in a
+                <div class="nz-bcard"><div class="nz-bcard-header"><span class="nz-icon nz-icon-brain" style="--icon-size:24px"></span><span>AI integration</span></div><div class="nz-bcard-content">I can take your website or program and add AI to it in a
                     way that feels thoughtful; that doesn’t just feel magical
                     but actually solves your problems.</div></div>
             </div></section>
-        <a href="#b-lib" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#ffffff"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My work</div></a><section class="nz-section" id="b-lib" style="--c0:#1a1a1a;--c1:#ffffff"><span class="nz-icon nz-icon-library" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">My work</b></section>
-        <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#150055;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:#150055;--c1:#d47be6" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px;rotate:deg"></span><b style="font-size:20px">Contact me</b><div
+        <a href="#b-lib" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#ffffff"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My work</div></a><section class="nz-section" id="b-lib" style="--c0:#1a1a1a;--c1:#ffffff"><span class="nz-icon nz-icon-library" style="--icon-size:64px"></span><b style="font-size:20px">My work</b></section>
+        <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#150055;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:#150055;--c1:#d47be6" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px"></span><b style="font-size:20px">Contact me</b><div
                 style="
                     width: 270px;
                     display: flex;
@@ -906,24 +909,24 @@ html {
                     align-items: center;
                 "
             >
-                <a style="text-decoration: none;" href="mailto:doromiert@gmail.com"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-mail" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="mailto:doromiert@gmail.com" class="navbutton"><span class="nz-icon nz-icon-mail" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Email</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://t.me/doromiert"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://t.me/doromiert" class="navbutton"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Telegram</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none;" href="https://github.com/doromiert"><button style="--c1: #d47be6; --c0: #150055; width: 270px"><span class="nz-icon nz-icon-github" style="--icon-size:24px;rotate:deg"></span>
+                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://github.com/doromiert" class="navbutton"><span class="nz-icon nz-icon-github" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">GitHub</span>
-                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:deg"></span></button></a>
+                    <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
         <div id="footer" style="--c0: #1a1a1a; --c1: #ffffff">
             <div style="gap: 5px; display: flex; flex-direction: column">
                 <div>Made by doromiert</div>
             </div>
             <div style="display: flex; gap: 20px">
-                <a style="text-decoration: none;" href="https://github.com/doromiert/doromiert-neu"><button style="--c1: #ffffff; --c0: #1a1a1a; --icon-size:24px;rotate:deg"><span class="nz-icon nz-icon-code" style="--icon-size:24px;rotate:deg"></span></button></a>
+                <a style="text-decoration: none; --c1: #ffffff; --c0: #1a1a1a; --icon-size:24px"  href="https://github.com/doromiert/doromiert-neu" class="navbutton"><span class="nz-icon nz-icon-code" style="--icon-size:24px"></span></a>
             </div>
         </div>
     </body>
