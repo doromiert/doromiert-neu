@@ -546,7 +546,7 @@ def build():
     def compile_standard_page(raw, vt_name):
         html = re.sub(
             r'<link[^>]*href="[^"]*base\.css"[^>]*>',
-            f'<style>{base_css}</style>\n<meta name="robots" content="index, follow">',
+            f'<style>{base_css}</style>\n<meta name="robots" content="index, follow">\n<meta name="google-site-verification" content="-eYbb_jJi6sNoLs0tLS1QkbVupJZxszUWiAsZ_JZl44" />',
             raw,
         )
         html = inject_section(
