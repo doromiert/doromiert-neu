@@ -55,3 +55,4 @@ calendar
 paintbrush
 code
 dollar
+rss

@@ -100,6 +100,12 @@ body {
         margin-left: 8px;
         margin-right: 8px;
     }
+
+    #rss-text{
+        @media(max-width: 600px){
+            display: none;
+        }
+    }
 }
 
 .card-grid {
@@ -474,6 +480,8 @@ article h3 {
         grid-template-columns: 1fr;
     }
 }
+
+
 .skip-link {
     position: absolute;
     top: -100%;
@@ -486,6 +494,7 @@ article h3 {
         top: 0;
     }
 }
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     ::view-transition-old(*), ::view-transition-new(*) {

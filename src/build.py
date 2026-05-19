@@ -137,6 +137,60 @@ ELEMENTS = [NzIcon, NavButton, Separator, NzSection, BCard]
 # =============================================================================
 
 
+def generate_rss(base_url="https://doromiert.neg-zero.com"):
+    from email.utils import formatdate
+    import time
+
+    src = PROJ / "data" / "blog"
+    if not src.exists():
+        return
+
+    posts = [
+        (f.stem, *parse_frontmatter(f.read_text()))
+        for f in sorted(src.glob("*.md"), reverse=True)
+    ]
+    if not posts:
+        return
+
+    def post_to_item(slug, meta, body):
+        title = meta.get("title", meta.get("date", slug))
+        date = meta.get("date", slug)
+        url = f"{base_url}/blog/{slug}.html"
+        desc = mdlib.markdown(body)
+        # try to parse YYYY-MM-DD into an RFC 2822 date
+        try:
+            t = time.strptime(date, "%Y-%m-%d")
+            pub_date = formatdate(time.mktime(t))
+        except ValueError:
+            pub_date = formatdate()
+        return (
+            f"    <item>\n"
+            f"      <title>{title}</title>\n"
+            f"      <link>{url}</link>\n"
+            f'      <guid isPermaLink="true">{url}</guid>\n'
+            f"      <pubDate>{pub_date}</pubDate>\n"
+            f"      <description><![CDATA[{desc}]]></description>\n"
+            f"    </item>"
+        )
+
+    items = "\n".join(post_to_item(*p) for p in posts)
+    rss = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        "  <channel>\n"
+        f"    <title>doromiert</title>\n"
+        f"    <link>{base_url}</link>\n"
+        f"    <description>posts by doromiert</description>\n"
+        f"    <language>en</language>\n"
+        f'    <atom:link href="{base_url}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+        f"{items}\n"
+        "  </channel>\n"
+        "</rss>"
+    )
+    (DIST / "feed.xml").write_text(rss)
+    print(f"feed.xml written ({len(posts)} posts)")
+
+
 def compile_elements(html):
     for _ in range(10):
         prev = html
@@ -612,8 +666,9 @@ def build():
     else:
         print(f"⚠️ could not find base.css at {base_css_src}, skipping unroll pass.")
 
-    # --- SITEMAP ---
+    # --- SITEMAP & RSS ---
     generate_sitemap()
+    generate_rss()
 
     # --- FINAL GZIP COMPRESSION STEP ---
     print("compressing files...")
