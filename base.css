@@ -1,15 +1,14 @@
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
-  src: url("/fonts/std.woff2") format("woff2-variations");
+  src: url("/fonts/std.woff2") format("woff2") tech("variations"), url("/fonts/std.woff2") format("woff2-variations");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
-  /* Forces text to show immediately using system fonts */
 }
 
 @font-face {
   font-family: "Atkinson Hyperlegible Mono";
-  src: url("/fonts/mono.woff2") format("woff2-variations");
+  src: url("/fonts/mono.woff2") format("woff2") tech("variations"), url("/fonts/mono.woff2") format("woff2-variations");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -507,6 +506,29 @@ article h3 {
 @media (max-width: 660px) {
   .nz-bcard-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  ::view-transition-old(*), ::view-transition-new(*) {
+    animation: none !important;
   }
 }
 

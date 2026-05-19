@@ -8,16 +8,15 @@
         <style>
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
-  src: url("/fonts/std.woff2") format("woff2-variations");
+  src: url("/fonts/std.woff2") format("woff2") tech("variations"), url("/fonts/std.woff2") format("woff2-variations");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
-  /* Forces text to show immediately using system fonts */
 }
 
 @font-face {
   font-family: "Atkinson Hyperlegible Mono";
-  src: url("/fonts/mono.woff2") format("woff2-variations");
+  src: url("/fonts/mono.woff2") format("woff2") tech("variations"), url("/fonts/mono.woff2") format("woff2-variations");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -518,6 +517,29 @@ article h3 {
   }
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  ::view-transition-old(*), ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 .nz-icon {
   display: inline-block;
   width: var(--icon-size, 24px);
@@ -853,8 +875,10 @@ html {
 </style>
     </head>
     <body style="view-transition-name: page-main">
-        <div class="topbar">
-            <a style="text-decoration: none; --c1: #c96959; --c0: #5a1e17; "  id="doromiert-button" href="#doromiert" class="navbutton"><svg aria-label="Logo" role="img" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="#doromiert" class="skip-link">Skip to content</a>
+
+        <nav class="topbar">
+            <a class="navbutton" style="--c1:#c96959;--c0:#5a1e17;"  id="doromiert-button" aria-label="Home" href="#doromiert"><svg aria-label="doromiert" role="img" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
 #doromiert-logo-svg {
   fill: #5A1E17;
@@ -869,20 +893,22 @@ html {
 <path id="doromiert-logo-svg" d="M22 3V17L17 21H3L7 17H15L17 15V7H3L7 3H21Z" />
 </svg></a>
 
-            <a style="text-decoration: none; --c1: #004a69; --c0: #59a7c9; --icon-size:24px"  href="#jab" class="navbutton"><span class="nz-icon nz-icon-user" style="--icon-size:24px"></span></a>
+            <a class="navbutton" style="--c1:#004a69;--c0:#59a7c9;--icon-size:24px"  aria-label="About me" href="#jab"><span class="nz-icon nz-icon-user" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none; --c1: #2e7700; --c0: #76e256; --icon-size:24px"  href="#lib" class="navbutton"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span></a>
+            <a class="navbutton" style="--c1:#2e7700;--c0:#76e256;--icon-size:24px"  aria-label="Library" href="#lib"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none; --c1: #7c3a0b; --c0: #ffd165; --icon-size:24px"  href="#blog" class="navbutton"><span class="nz-icon nz-icon-announcement" style="--icon-size:24px"></span></a>
+            <a class="navbutton" style="--c1:#7c3a0b;--c0:#ffd165;--icon-size:24px"  aria-label="Blog" href="#blog"><span class="nz-icon nz-icon-announcement" style="--icon-size:24px"></span></a>
 
-            <a style="text-decoration: none; --c1: #1a1a1a; --c0: #76e256; --icon-size:24px"  href="#devices" class="navbutton"><span class="nz-icon nz-icon-cpu" style="--icon-size:24px"></span></a>
+            <a class="navbutton" style="--c1:#1a1a1a;--c0:#76e256;--icon-size:24px"  aria-label="Devices" href="#devices"><span class="nz-icon nz-icon-cpu" style="--icon-size:24px"></span></a>
 
-            <!--<a style="text-decoration: none; --c1: #7a1b8d; --c0: #d47be6; --icon-size:24px"  href="#music" class="navbutton"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span></a>-->
+            <!-- temporarily disabled until i make more content for it -->
+            <!--<a class="navbutton" style="--c1:#7a1b8d;--c0:#d47be6;--icon-size:24px"  aria-label="Music" href="#music"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span></a>-->
 
-            <a style="text-decoration: none; --c1: #150055; --c0: #d47be6; --icon-size:24px"  href="#contact" class="navbutton"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span></a>
-        </div>
+            <a class="navbutton" style="--c1:#150055;--c0:#d47be6;--icon-size:24px"  aria-label="Contact" href="#contact"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span></a>
+        </nav>
+        <main>
         <section class="nz-section" id="doromiert" style="--c0:#c96959;--c1:#5a1e17"><div class="doromiert-znak">
-                <svg width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-label="dor" role="img" width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_60_1485)">
 <path d="M50 -6.10352e-05V39.9999L40 49.9999H0L10 39.9999H35L40 34.9999V9.99994H0L10 -6.10352e-05H50Z" fill="#5A1E17"/>
 </g>
@@ -894,7 +920,7 @@ html {
 </clipPath>
 </defs>
 </svg>
-                <svg width="168" height="50" viewBox="0 0 168 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-label="omi" role="img" width="168" height="50" viewBox="0 0 168 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M40 50H0L10 40H50L40 50ZM40 10H0L10 0H50L40 10Z" fill="#5A1E17"/>
 <g clip-path="url(#clip0_60_1499)">
 <path d="M109 39.9999L99 49.9999V20.666L59 49.9999V9.99994L69 -6.10352e-05V29.3329L109 -6.10352e-05V39.9999Z" fill="#5A1E17"/>
@@ -906,7 +932,7 @@ html {
 </clipPath>
 </defs>
 </svg>
-                <svg width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-label="ert" role="img" width="170" height="50" viewBox="0 0 170 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M40 50H0L10 40H50L40 50ZM40 30H0L10 20H50L40 30ZM40 10H0L10 0H50L40 10Z" fill="#5A1E17"/>
 <path d="M85 17.3906L98.333 0H110L90.833 25L110 50H98.333L85 32.6084L71.667 50H60L79.166 25L60 0H71.667L85 17.3906Z" fill="#5A1E17"/>
 <path d="M130 40L120 50V10L130 0V40ZM170 40L160 50V10L170 0V40Z" fill="#5A1E17"/>
@@ -924,7 +950,7 @@ html {
                 </div>
                 <div style="font-size: 16px">Noun. The one that creates.</div>
             </div>
-            <a style="text-decoration: none; --c1: #004a69; --c0: #ffd165; width: 270px; display: none"  href="/business" class="navbutton"><!-- hidden until i officially start -->
+            <a class="navbutton" style="--c1:#004a69;--c0:#ffd165;width: 270px; display: none"  href="/business"><!-- hidden until i officially start -->
                 <span class="nz-icon nz-icon-zap" style="--icon-size:24px"></span>
                 <span style="margin-right: auto">Work with me</span>
                 <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
@@ -957,10 +983,10 @@ html {
             <br />
             (although I'm learning other languages too, for example russian & romanian)
             <div class="jab-cta">
-                <a style="text-decoration: none; --c1: #150055; --c0: #d47be6; --icon-size:24px"  href="#contact" class="navbutton"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#150055;--c0:#d47be6;--icon-size:24px"  href="#contact"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span>
                     <span>Contact me now</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
-                <a style="text-decoration: none; --c1: #2e7700; --c0: #76e256; --icon-size:24px"  href="#lib" class="navbutton"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#2e7700;--c0:#76e256;--icon-size:24px"  href="#lib"><span class="nz-icon nz-icon-library" style="--icon-size:24px"></span>
                     <span>Check out my creations</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
@@ -977,27 +1003,27 @@ html {
                     align-items: center;
                 "
             >
-                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="mailto:doromiert@gmail.com" class="navbutton"><span class="nz-icon nz-icon-mail" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#d47be6;--c0:#150055;width: 270px"  href="mailto:doromiert@gmail.com"><span class="nz-icon nz-icon-mail" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Email</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://t.me/doromiert" class="navbutton"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#d47be6;--c0:#150055;width: 270px"  href="https://t.me/doromiert"><span class="nz-icon nz-icon-telegram" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Telegram</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://discord.com/users/786127059020808192" class="navbutton"><span class="nz-icon nz-icon-discord" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#d47be6;--c0:#150055;width: 270px"  href="https://discord.com/users/786127059020808192"><span class="nz-icon nz-icon-discord" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Discord</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://lastfm.com/user/NRDeez" class="navbutton"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#d47be6;--c0:#150055;width: 270px"  href="https://lastfm.com/user/NRDeez"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Last.fm</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://huggingface.co/doromiert" class="navbutton"><span class="nz-icon nz-icon-brain" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#d47be6;--c0:#150055;width: 270px"  href="https://huggingface.co/doromiert"><span class="nz-icon nz-icon-brain" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">Hugging Face</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none; --c1: #d47be6; --c0: #150055; width: 270px"  href="https://github.com/doromiert" class="navbutton"><span class="nz-icon nz-icon-github" style="--icon-size:24px"></span>
+                <a class="navbutton" style="--c1:#d47be6;--c0:#150055;width: 270px"  href="https://github.com/doromiert"><span class="nz-icon nz-icon-github" style="--icon-size:24px"></span>
                     <span style="margin-right: auto">GitHub</span>
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
@@ -1007,10 +1033,11 @@ html {
                 <div style="opacity: 0.5">Use as you wish, credit me</div>
             </div>
             <div style="display: flex; gap: 20px">
-                <a style="text-decoration: none; --c1: #ffffff; --c0: #1a1a1a; --icon-size:24px"  href="https://buymeacoffee.com/doromiert" class="navbutton"><span class="nz-icon nz-icon-dollar" style="--icon-size:24px"></span></a>
+                <a class="navbutton" style="--c1:#ffffff;--c0:#1a1a1a;--icon-size:24px"  href="https://buymeacoffee.com/doromiert"><span class="nz-icon nz-icon-dollar" style="--icon-size:24px"></span></a>
 
-                <a style="text-decoration: none; --c1: #ffffff; --c0: #1a1a1a; --icon-size:24px"  href="https://github.com/doromiert/doromiert-neu" class="navbutton"><span class="nz-icon nz-icon-code" style="--icon-size:24px"></span></a>
+                <a class="navbutton" style="--c1:#ffffff;--c0:#1a1a1a;--icon-size:24px"  href="https://github.com/doromiert/doromiert-neu"><span class="nz-icon nz-icon-code" style="--icon-size:24px"></span></a>
             </div>
         </div>
+        </main>
     </body>
 </html>

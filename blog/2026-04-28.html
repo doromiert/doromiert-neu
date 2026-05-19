@@ -1,16 +1,15 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>2026-04-28 — doromiert</title><link rel="icon" type="image/svg+xml" href="/doromiert.svg"/><style>
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
-  src: url("/fonts/std.woff2") format("woff2-variations");
+  src: url("/fonts/std.woff2") format("woff2") tech("variations"), url("/fonts/std.woff2") format("woff2-variations");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
-  /* Forces text to show immediately using system fonts */
 }
 
 @font-face {
   font-family: "Atkinson Hyperlegible Mono";
-  src: url("/fonts/mono.woff2") format("woff2-variations");
+  src: url("/fonts/mono.woff2") format("woff2") tech("variations"), url("/fonts/mono.woff2") format("woff2-variations");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -511,6 +510,29 @@ article h3 {
   }
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  ::view-transition-old(*), ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 .nz-icon {
   display: inline-block;
   width: var(--icon-size, 24px);
@@ -775,4 +797,4 @@ body {
   flex-direction: column;
   align-items: center;
 }
-</style></head><body><a style="text-decoration: none; --c1: #ffd165; --c0: #7c3a0b; --icon-size:24px;rotate:90deg"  id="page-back" href="/#blog c0=" class="navbutton"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><b style="font-size:18px">2026-04-28 (1/1)</b></div><article><p>asdjiasdolasjmd</p></article><div class="post-nav"><span class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></span><a href="/blog/" class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div></body></html>
+</style></head><body><a class="navbutton" style="--c1:#ffd165;--c0:#7c3a0b;--icon-size:24px;rotate:90deg"  id="page-back" href="/#blog c0="><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><b style="font-size:18px">2026-04-28 (1/1)</b></div><article><p>asdjiasdolasjmd</p></article><div class="post-nav"><span class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></span><a href="/blog/" class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton" style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div></body></html>
