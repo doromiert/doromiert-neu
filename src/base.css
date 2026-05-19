@@ -269,6 +269,7 @@ body {
 }
 
 .post-nav {
+
     display: flex;
     gap: 10px;
     align-items: center;
@@ -500,4 +501,8 @@ article h3 {
     ::view-transition-old(*), ::view-transition-new(*) {
         animation: none !important;
     }
+}
+
+.rss-btn{
+    width: max-content !important;
 }

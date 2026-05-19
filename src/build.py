@@ -326,10 +326,10 @@ def parse_frontmatter(text):
     return {}, text
 
 
-def lnk_btn(label_html, href, c0, c1):
+def lnk_btn(label_html, href, c0, c1, btnClass=""):
     if href:
-        return f'<a href="{href}" class="navbutton" style="--c0:{c0};--c1:{c1};width:100%">{label_html}</a>'
-    return f'<span class="navbutton" style="--c0:{c0};--c1:{c1};width:min-content;opacity:.3;cursor:not-allowed">{label_html}</span>'
+        return f'<a href="{href}" class="navbutton {btnClass}" style="--c0:{c0};--c1:{c1};width:100%">{label_html}</a>'
+    return f'<span class="navbutton {btnClass}" style="--c0:{c0};--c1:{c1};width:min-content;opacity:.3;cursor:not-allowed">{label_html}</span>'
 
 
 def article_page(title, body_html, section_id):
@@ -345,8 +345,8 @@ def article_page(title, body_html, section_id):
         f"body{{margin:0;padding:0;background:var(--c0);color:var(--c1);"
         f"min-height:100vh;display:flex;flex-direction:column;align-items:center}}"
         f"</style>"
-        f"</head><body>"
-        f'<nav-button id="page-back" href="/#{section_id} c0="{c0}" c1="{c1}"><nz-icon name="direction" rotate="90"></nz-icon></nav-button>'
+        f'</head><body style="gap: 20px;">'
+        f'<nav-button id="page-back" href="/#{section_id}" c0="{c0}" c1="{c1}"><nz-icon name="direction" rotate="90"></nz-icon></nav-button>'
         f"{body_html}"
         f"</body></html>"
     )
@@ -432,6 +432,7 @@ def build_blog():
             f"{lnk_btn('<nz-icon name="calendar"></nz-icon><span>Browse by date</span>', '/blog/', c0, c1)}"
             f"{lnk_btn('<nz-icon name="direction" ></nz-icon>', prev_url, c0, c1)}"
             f"</div>"
+            f"{lnk_btn('<nz-icon name="rss"></nz-icon><span >RSS feed</span>', '/feed.xml', 'var(--j0)', 'var(--x0)', 'rss-btn')}"
         )
         (out / f"{slug}.html").write_text(
             compile_page(article_page(date, body_html, "blog"))
@@ -466,6 +467,7 @@ def build_blog():
         f"{lnk_btn('<nz-icon name="calendar"></nz-icon><span>Browse by date</span>', '/blog/', c0, c1)}"
         f"{lnk_btn('<nz-icon name="direction" ></nz-icon>', prev_url, c0, c1)}"
         f"</div>"
+        f"{lnk_btn('<nz-icon name="rss"></nz-icon><span >RSS feed</span>', '/feed.xml', 'var(--j0)', 'var(--x0)', 'rss-btn')}"
     )
 
 
