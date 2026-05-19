@@ -72,11 +72,14 @@ class Separator:
 
 class NavButton:
     tag = "nav-button"
-    attrs = ["href", "c0", "c1", "id", "style"]
+    attrs = ["href", "c0", "c1", "id", "style", "aria-label"]
 
-    def render(self, href, inner, c0, c1, id=None, style=None, **_):
+    def render(self, href, inner, c0, c1, id=None, style=None, **kwargs):
         id_attr = f' id="{id}"' if id else ""
-        return f'<a style="text-decoration: none; --c1: {c1}; --c0: {c0}; {style}" {id_attr} href="{href}" class="navbutton">{inner}</a>'
+        aria = (
+            f' aria-label="{kwargs["aria-label"]}"' if kwargs.get("aria-label") else ""
+        )
+        return f'<a class="navbutton" style="--c1:{c1};--c0:{c0};{style}" {id_attr}{aria} href="{href}">{inner}</a>'
 
 
 SECTION_COLORS = {

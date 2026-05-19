@@ -78,45 +78,50 @@
         </style>
     </head>
     <body>
-        <div class="topbar">
+        <a href="#doromiert" class="skip-link">Skip to content</a>
+
+        <nav class="topbar">
             <nav-button
                 id="doromiert-button"
                 href="#doromiert"
                 c0="var(--b1)"
                 c1="var(--b0)"
+                aria-label="Home"
             >
-                <img src="doromiert.svg" alt="Logo" style="" />
+                <img src="doromiert.svg" alt="doromiert" style="" />
             </nav-button>
 
-            <nav-button href="#jab" c0="var(--n0)" c1="var(--n1)">
+            <nav-button href="#jab" c0="var(--n0)" c1="var(--n1)" aria-label="About me">
                 <nz-icon name="user"></nz-icon>
             </nav-button>
 
-            <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)">
+            <nav-button href="#lib" c0="var(--z0)" c1="var(--z1)" aria-label="Library">
                 <nz-icon name="library"></nz-icon>
             </nav-button>
 
-            <nav-button href="#blog" c0="var(--j0)" c1="var(--po1)">
+            <nav-button href="#blog" c0="var(--j0)" c1="var(--po1)" aria-label="Blog">
                 <nz-icon name="announcement"></nz-icon>
             </nav-button>
 
-            <nav-button href="#devices" c0="var(--z0)" c1="var(--x0)">
+            <nav-button href="#devices" c0="var(--z0)" c1="var(--x0)" aria-label="Devices">
                 <nz-icon name="cpu"></nz-icon>
             </nav-button>
 
-            <!--<nav-button href="#music" c0="var(--r0)" c1="var(--r1)">
+            <!-- temporarily disabled until i make more content for it -->
+            <!--<nav-button href="#music" c0="var(--r0)" c1="var(--r1)" aria-label="Music">
                 <nz-icon name="music"></nz-icon>
             </nav-button>-->
 
-            <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)">
+            <nav-button href="#contact" c0="var(--r0)" c1="var(--pu1)" aria-label="Contact">
                 <nz-icon name="chat"></nz-icon>
             </nav-button>
-        </div>
+        </nav>
+        <main>
         <nz-section id="doromiert" nosep="true">
             <div class="doromiert-znak">
-                <img src="doromiert-znak/dor.svg" />
-                <img src="doromiert-znak/omi.svg" />
-                <img src="doromiert-znak/ert.svg" />
+                <img alt="dor" src="doromiert-znak/dor.svg" />
+                <img alt="omi" src="doromiert-znak/omi.svg" />
+                <img alt="ert" src="doromiert-znak/ert.svg" />
             </div>
             <div
                 style="
@@ -279,5 +284,6 @@
                 </nav-button>
             </div>
         </div>
+        </main>
     </body>
 </html>
