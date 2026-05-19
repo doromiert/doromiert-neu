@@ -118,6 +118,12 @@ body {
   margin-right: 8px;
 }
 
+@media (max-width: 600px) {
+  :is(button, .navbutton) #rss-text {
+    display: none;
+  }
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -545,7 +551,7 @@ article h3 {
   width: var(--icon-size, 24px);
   height: var(--icon-size, 24px);
   background-color: currentColor;
-  --icon-count:57;
+  --icon-count:58;
   --icon-index:0;
   mask-image: url("/icons.svg");
   mask-size: calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size, 24px);
@@ -783,6 +789,10 @@ article h3 {
   --icon-index:56;
 }
 
+.nz-icon-rss {
+  --icon-index:57;
+}
+
 /* preserved bleeding-edge rules */
 @view-transition {
     navigation: auto;
@@ -793,6 +803,14 @@ article h3 {
 <meta name="google-site-verification" content="-eYbb_jJi6sNoLs0tLS1QkbVupJZxszUWiAsZ_JZl44" />
         <meta name="theme-color" content="#c96959" />
         <meta name="description" content="Doromiert - developer and designer">
+        <link rel="canonical" href="https://doromiert.neg-zero.com/">
+        <meta property="og:title" content="doromiert">
+        <meta property="og:description" content="developer and designer">
+        <meta property="og:url" content="https://doromiert.neg-zero.com">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://doromiert.neg-zero.com/images/og.png">
+        <meta name="color-scheme" content="dark">
+        <link rel="alternate" type="application/rss+xml" title="doromiert" href="/feed.xml">
         <style>
 html {
   background-color: #c96959;
@@ -905,6 +923,9 @@ html {
             <!--<a class="navbutton" style="--c1:#7a1b8d;--c0:#d47be6;--icon-size:24px"  aria-label="Music" href="#music"><span class="nz-icon nz-icon-music" style="--icon-size:24px"></span></a>-->
 
             <a class="navbutton" style="--c1:#150055;--c0:#d47be6;--icon-size:24px"  aria-label="Contact" href="#contact"><span class="nz-icon nz-icon-chat" style="--icon-size:24px"></span></a>
+
+            <a class="navbutton" style="--c1:#1a1a1a;--c0:#ffd165;--icon-size:24px"  id="rss-text" aria-label="RSS feed" href="/feed.xml"><span class="nz-icon nz-icon-rss" style="--icon-size:24px"></span>
+                <span id="rss-text">RSS feed</span></a>
         </nav>
         <main>
         <section class="nz-section" id="doromiert" style="--c0:#c96959;--c1:#5a1e17"><div class="doromiert-znak">

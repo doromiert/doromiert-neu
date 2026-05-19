@@ -110,6 +110,12 @@ body {
   margin-right: 8px;
 }
 
+@media (max-width: 600px) {
+  :is(button, .navbutton) #rss-text {
+    display: none;
+  }
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));

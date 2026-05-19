@@ -111,6 +111,12 @@ body {
   margin-right: 8px;
 }
 
+@media (max-width: 600px) {
+  :is(button, .navbutton) #rss-text {
+    display: none;
+  }
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -538,7 +544,7 @@ article h3 {
   width: var(--icon-size, 24px);
   height: var(--icon-size, 24px);
   background-color: currentColor;
-  --icon-count:57;
+  --icon-count:58;
   --icon-index:0;
   mask-image: url("/icons.svg");
   mask-size: calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size, 24px);
@@ -774,6 +780,10 @@ article h3 {
 
 .nz-icon-dollar {
   --icon-index:56;
+}
+
+.nz-icon-rss {
+  --icon-index:57;
 }
 
 /* preserved bleeding-edge rules */
