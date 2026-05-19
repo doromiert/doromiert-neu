@@ -538,6 +538,10 @@ article h3 {
   }
 }
 
+.rss-btn {
+  width: max-content !important;
+}
+
 /* preserved bleeding-edge rules */
 @view-transition {
     navigation: auto;
