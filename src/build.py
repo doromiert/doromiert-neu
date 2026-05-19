@@ -47,7 +47,7 @@ class NzIcon:
     attrs = ["name", "size", "rotate"]
 
     def render(self, name, size="24", rotate="0", **_):
-        return f'<span class="nz-icon nz-icon-{name}" style="--icon-size:{size or "24"}px;rotate:{rotate}deg"></span>'
+        return f'<span class="nz-icon nz-icon-{name}" style="--icon-size:{size or "24"}px{f";rotate:{rotate}deg" if rotate and rotate != "0" else ""}"></span>'
 
 
 class BCard:
@@ -76,7 +76,7 @@ class NavButton:
 
     def render(self, href, inner, c0, c1, id=None, style=None, **_):
         id_attr = f' id="{id}"' if id else ""
-        return f'<a style="text-decoration: none;" href="{href}"><button style="--c1: {c1}; --c0: {c0}; {style}"{id_attr}>{inner}</button></a>'
+        return f'<a style="text-decoration: none; --c1: {c1}; --c0: {c0}; {style}" {id_attr} href="{href}" class="navbutton">{inner}</a>'
 
 
 SECTION_COLORS = {
@@ -270,13 +270,9 @@ def parse_frontmatter(text):
 
 
 def lnk_btn(label_html, href, c0, c1):
-    """Button that's disabled (no href) or wrapped in <a>."""
-    b = f'<button style="--c0:{c0};--c1:{c1}; width: 100%">{label_html}</button>'
     if href:
-        return f'<a href="{href}" style="text-decoration:none">{b}</a>'
-    return (
-        f'<button style="--c0:{c0};--c1:{c1};opacity:.3" disabled>{label_html}</button>'
-    )
+        return f'<a href="{href}" class="navbutton" style="--c0:{c0};--c1:{c1};width:100%">{label_html}</a>'
+    return f'<span class="navbutton" style="--c0:{c0};--c1:{c1};width:min-content;opacity:.3;cursor:not-allowed">{label_html}</span>'
 
 
 def article_page(title, body_html, section_id):
@@ -293,7 +289,7 @@ def article_page(title, body_html, section_id):
         f"min-height:100vh;display:flex;flex-direction:column;align-items:center}}"
         f"</style>"
         f"</head><body>"
-        f'<a class="page-back" href="/#{section_id}">{back_btn}</a>'
+        f'<nav-button id="page-back" href="/#{section_id} c0="{c0}" c1="{c1}"><nz-icon name="direction" rotate="90"></nz-icon></nav-button>'
         f"{body_html}"
         f"</body></html>"
     )

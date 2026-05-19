@@ -17,15 +17,35 @@
                 display: flex;
                 gap: 10px;
                 justify-content: center;
+                width: 100%;
                 button {
                     min-width: 270px;
                     span:not(.nz-icon) {
                         margin-right: auto;
                     }
                 }
+                align-items: center;
                 @media (max-width: 600px) {
                     flex-direction: column;
                 }
+
+                .navbutton{
+                    span {
+                        word-wrap: none;
+                        white-space: nowrap;
+                        &:not(.nz-icon){
+                            margin-right: auto;
+                        }
+                    }
+                    @media(max-width: 600px){
+                        width: 100%;
+                    }
+
+                    @media(min-width: 601px){
+                        width: 270px;
+                    }
+                }
+
             }
 
             .nz-section {

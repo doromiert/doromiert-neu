@@ -69,7 +69,7 @@ body {
     margin: 0;
 }
 
-button {
+:is(button, .navbutton) {
     font-weight: normal;
     font-size: 16px;
     padding: 8px;
@@ -77,13 +77,15 @@ button {
     transition: all 0.15s;
     border: none;
     cursor: pointer;
+    box-sizing: border-box;
     background-color: var(--c1);
     color: var(--c0);
     display: flex;
     align-items: center;
     outline: 0px solid var(--c1);
     outline-offset: 0px;
-    &:hover {
+    text-decoration: none; /* move this from the inline style */
+    &:is(:hover, :focus-visible) {
         outline-width: 4px;
         filter: brightness(1.5);
     }
@@ -143,7 +145,7 @@ button {
     text-align: center;
     outline: 0px solid var(--c1);
     outline-offset: 0px;
-    &:hover {
+    &:is(:hover, :focus-visible) {
         outline-width: 4px;
         filter: brightness(1.5);
     }
@@ -214,7 +216,7 @@ button {
     transition: all 0.15s;
     outline: 0px solid var(--c1);
     outline-offset: 0px;
-    &:hover {
+    &:is(:hover, :focus-visible) {
         outline-width: 4px;
         filter: brightness(1.5);
     }
@@ -299,7 +301,7 @@ article :nth-child(1) {
     color: var(--c0);
 }
 
-.page-back {
+#page-back {
     position: fixed;
     top: 20px;
     left: 20px;
