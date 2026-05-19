@@ -520,7 +520,9 @@ def build():
 
     def compile_standard_page(raw, vt_name):
         html = re.sub(
-            r'<link[^>]*href="[^"]*base\.css"[^>]*>', f"<style>{base_css}</style>", raw
+            r'<link[^>]*href="[^"]*base\.css"[^>]*>',
+            f'<style>{base_css}</style>\n<meta name="robots" content="index, follow">',
+            raw,
         )
         html = inject_section(
             inject_section(
@@ -552,6 +554,7 @@ def build():
             ) if f.suffix == ".html" else shutil.copy(f, out)
 
     for asset in [
+        "images",
         "icons.svg",
         "doromiert-znak",
         "doromiert-bold.svg",
