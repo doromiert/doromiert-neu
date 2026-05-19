@@ -499,6 +499,31 @@ def inject_section(html, section_id, content):
     return re.sub(r"<nz-section[^>]*></nz-section>", rep, html)
 
 
+def generate_sitemap(base_url="https://doromiert.neg-zero.com"):
+    urls = []
+    for f in sorted(DIST.rglob("*.html")):
+        rel = f.relative_to(DIST).as_posix()
+        # skip .gz artifacts if any sneak in, skip business pages if you want
+        if rel.endswith(".gz"):
+            continue
+        path = "/" + rel
+        urls.append(f"  <url><loc>{base_url}{path}</loc></url>")
+
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(urls)
+        + "\n</urlset>"
+    )
+    (DIST / "sitemap.xml").write_text(sitemap)
+
+    # robots.txt pointing to it
+    (DIST / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nSitemap: {base_url}/sitemap.xml\n"
+    )
+    print(f"sitemap.xml written ({len(urls)} URLs)")
+
+
 def build():
     optimize_fonts()
     DIST.mkdir(exist_ok=True)
@@ -588,9 +613,12 @@ def build():
     else:
         print(f"⚠️ could not find base.css at {base_css_src}, skipping unroll pass.")
 
+    # --- SITEMAP ---
+    generate_sitemap()
+
     # --- FINAL GZIP COMPRESSION STEP ---
     print("compressing files...")
-    for f in DIST.rglob("*.html"):
+    for f in list(DIST.rglob("*.html")) + list(DIST.glob("sitemap.xml")):
         with (
             open(f, "rb") as fi,
             gzip.open(str(f) + ".gz", "wb", compresslevel=9) as fo,
