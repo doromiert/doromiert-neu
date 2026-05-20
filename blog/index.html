@@ -337,7 +337,7 @@ article :nth-child(1) {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 10;
+  z-index: 10000;
 }
 
 article {
@@ -541,6 +541,97 @@ article h3 {
 
 .rss-btn {
   width: max-content !important;
+}
+
+/* ===== article minimap ===== */
+.article-minimap {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 180px;
+  max-height: calc(100vh - 100px);
+  padding: 20px;
+  padding-top: 80px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  font-size: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c1) transparent;
+}
+
+@media (max-width: 1100px) {
+  .article-minimap {
+    display: none;
+  }
+}
+
+.article-minimap a {
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+.article-minimap summary,
+.article-minimap .mm-leaf {
+  padding: 6px 8px;
+  background: var(--c1);
+  color: var(--c0);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+  outline: 0px solid var(--c1);
+  outline-offset: 0px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.article-minimap summary:is(:hover, :focus-visible),
+.article-minimap .mm-leaf:is(:hover, :focus-visible) {
+  outline-width: 4px;
+  filter: brightness(1.5);
+}
+
+.article-minimap summary:active,
+.article-minimap .mm-leaf:active {
+  outline-width: 0px;
+  outline-offset: -1px;
+  filter: brightness(0.75);
+}
+
+.article-minimap summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.article-minimap summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-minimap summary .nz-icon {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: rotate 0.15s;
+}
+
+.article-minimap details[open] > summary .nz-icon {
+  rotate: 0deg !important;
+}
+
+.article-minimap .mm-level-2 {
+  margin-left: 10px;
+}
+
+.article-minimap .mm-level-3 {
+  margin-left: 20px;
 }
 
 .nz-icon {
@@ -811,7 +902,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
-</style></head><body style="gap: 20px;"><a class="navbutton" style="--c1:#ffd165;--c0:#7c3a0b;--icon-size:24px;rotate:90deg"  id="page-back" href="/#blog"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-calendar" style="--icon-size:64px"></span><b style="font-size:20px">All posts</b></div><div class="card-grid" style="max-width:600px" id="blog-content"><a href="/blog/2026-04-28.html" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%">2026-04-28</a></div><style>
+</style></head><body style="gap: 20px;"><a class="navbutton" style="--c1:#ffd165;--c0:#7c3a0b;--icon-size:24px;rotate:90deg"  id="page-back" href="/#blog"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-calendar" style="--icon-size:64px"></span><b style="font-size:20px">All posts</b></div><div class="card-grid" style="max-width:600px" id="blog-content"><a href="/blog/2026-05-20.html" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%">2026-05-20</a></div><style>
 body {
   padding: 0px 20px;
 }

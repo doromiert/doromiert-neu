@@ -344,7 +344,7 @@ article :nth-child(1) {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 10;
+  z-index: 10000;
 }
 
 article {
@@ -548,6 +548,97 @@ article h3 {
 
 .rss-btn {
   width: max-content !important;
+}
+
+/* ===== article minimap ===== */
+.article-minimap {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 180px;
+  max-height: calc(100vh - 100px);
+  padding: 20px;
+  padding-top: 80px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  font-size: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c1) transparent;
+}
+
+@media (max-width: 1100px) {
+  .article-minimap {
+    display: none;
+  }
+}
+
+.article-minimap a {
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+.article-minimap summary,
+.article-minimap .mm-leaf {
+  padding: 6px 8px;
+  background: var(--c1);
+  color: var(--c0);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+  outline: 0px solid var(--c1);
+  outline-offset: 0px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.article-minimap summary:is(:hover, :focus-visible),
+.article-minimap .mm-leaf:is(:hover, :focus-visible) {
+  outline-width: 4px;
+  filter: brightness(1.5);
+}
+
+.article-minimap summary:active,
+.article-minimap .mm-leaf:active {
+  outline-width: 0px;
+  outline-offset: -1px;
+  filter: brightness(0.75);
+}
+
+.article-minimap summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.article-minimap summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-minimap summary .nz-icon {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: rotate 0.15s;
+}
+
+.article-minimap details[open] > summary .nz-icon {
+  rotate: 0deg !important;
+}
+
+.article-minimap .mm-level-2 {
+  margin-left: 10px;
+}
+
+.article-minimap .mm-level-3 {
+  margin-left: 20px;
 }
 
 .nz-icon {
@@ -1015,7 +1106,25 @@ html {
                     <span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a>
             </div></section>
         <a href="#lib" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#2e7700;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My creations</div></a><section class="nz-section" id="lib" style="--c0:#2e7700;--c1:#76e256"><span class="nz-icon nz-icon-library" style="--icon-size:64px"></span><b style="font-size:20px">My creations</b><div class="card-grid"><a class="card" href="/lib/zenos.html"><span class="nz-icon nz-icon-zenos" style="--icon-size:32px"></span><b>ZenOS</b></a></div></section>
-        <a href="#blog" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7c3a0b;color:#ffd165"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Blog</div></a><section class="nz-section" id="blog" style="--c0:#7c3a0b;--c1:#ffd165"><span class="nz-icon nz-icon-announcement" style="--icon-size:64px"></span><b style="font-size:20px">Blog</b><b style="font-size:18px">2026-04-28 (1/1)</b><div class="blog-body"><p>asdjiasdolasjmd</p></div><div class="post-nav"><a href="/blog/" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div><a href="/feed.xml" class="navbutton rss-btn" style="--c0:#ffd165;--c1:#1a1a1a;width:100%"><span class="nz-icon nz-icon-rss" style="--icon-size:24px"></span><span >RSS feed</span></a></section>
+        <a href="#blog" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7c3a0b;color:#ffd165"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Blog</div></a><section class="nz-section" id="blog" style="--c0:#7c3a0b;--c1:#ffd165"><span class="nz-icon nz-icon-announcement" style="--icon-size:64px"></span><b style="font-size:20px">Blog</b><b style="font-size:18px">2026-05-20 (1/1)</b><div class="blog-body"><h1>is this thing on?</h1>
+<p>b,jkgvbhHhyvbjhb
+- a 
+- asda
+- sd
+- asd
+- as
+- d</p>
+<ol>
+<li>asdasd</li>
+<li>asd</li>
+<li>a</li>
+<li>sd</li>
+<li>asd</li>
+</ol>
+<h2>a</h2>
+<h3>a</h3>
+<h4>a</h4>
+<p>-# asdasd</p></div><div class="post-nav"><a href="/blog/" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div><a href="/feed.xml" class="navbutton rss-btn" style="--c0:#ffd165;--c1:#1a1a1a;width:100%"><span class="nz-icon nz-icon-rss" style="--icon-size:24px"></span><span >RSS feed</span></a></section>
         <a href="#devices" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My devices</div></a><section class="nz-section" id="devices" style="--c0:#1a1a1a;--c1:#76e256"><span class="nz-icon nz-icon-cpu" style="--icon-size:64px"></span><b style="font-size:20px">My devices</b><div class="cat-list"><div class="cat-group"><div class="cat-header">daily drivers</div><div class="cat-rows"><a class="cat-item" href="/devices/doromi-tul-2.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>doromi tul 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>
         <!--<a href="#music" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7a1b8d;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Music I like</div></a><section class="nz-section" id="music" style="--c0:#7a1b8d;--c1:#d47be6"><span class="nz-icon nz-icon-music" style="--icon-size:64px"></span><b style="font-size:20px">Music I like</b><div class="now-playing"><div class="np-label"><span class="nz-icon nz-icon-headphones" style="--icon-size:24px"></span>Now listening to</div><span class="np-song" style="margin-left: 4px;">Undercover</span><span style="margin-left: 4px;">Two door cinema club</span></div><div class="cat-list"><div class="cat-group"><div class="cat-header">Other</div><div class="cat-rows"><a class="cat-item" href="/music/test.html"><span class="nz-icon nz-icon-docs" style="--icon-size:24px"></span><span>asjdoasuijasido</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>-->
         <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#150055;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:#150055;--c1:#d47be6" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px"></span><b style="font-size:20px">Contact me</b><div

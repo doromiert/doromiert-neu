@@ -337,7 +337,7 @@ article :nth-child(1) {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 10;
+  z-index: 10000;
 }
 
 article {
@@ -541,6 +541,97 @@ article h3 {
 
 .rss-btn {
   width: max-content !important;
+}
+
+/* ===== article minimap ===== */
+.article-minimap {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 180px;
+  max-height: calc(100vh - 100px);
+  padding: 20px;
+  padding-top: 80px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  font-size: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c1) transparent;
+}
+
+@media (max-width: 1100px) {
+  .article-minimap {
+    display: none;
+  }
+}
+
+.article-minimap a {
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+.article-minimap summary,
+.article-minimap .mm-leaf {
+  padding: 6px 8px;
+  background: var(--c1);
+  color: var(--c0);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+  outline: 0px solid var(--c1);
+  outline-offset: 0px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.article-minimap summary:is(:hover, :focus-visible),
+.article-minimap .mm-leaf:is(:hover, :focus-visible) {
+  outline-width: 4px;
+  filter: brightness(1.5);
+}
+
+.article-minimap summary:active,
+.article-minimap .mm-leaf:active {
+  outline-width: 0px;
+  outline-offset: -1px;
+  filter: brightness(0.75);
+}
+
+.article-minimap summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.article-minimap summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-minimap summary .nz-icon {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: rotate 0.15s;
+}
+
+.article-minimap details[open] > summary .nz-icon {
+  rotate: 0deg !important;
+}
+
+.article-minimap .mm-level-2 {
+  margin-left: 10px;
+}
+
+.article-minimap .mm-level-3 {
+  margin-left: 20px;
 }
 
 .nz-icon {
@@ -811,17 +902,17 @@ body {
   flex-direction: column;
   align-items: center;
 }
-</style></head><body style="gap: 20px;"><a class="navbutton" style="--c1:#76e256;--c0:#2e7700;--icon-size:24px;rotate:90deg"  id="page-back" href="/#lib"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-zenos" style="--icon-size:64px"></span><b style="font-size:24px">ZenOS</b><div class=art-tags><span class="art-tag">Operating Systems</span><span class="art-tag">Negative Zero</span><span class="art-tag">Software</span><span class="art-tag">Design</span></div></div><article><h1>The beginning</h1>
+</style></head><body style="gap: 20px;"><nav class="article-minimap"><details open class="mm-level-1"><summary><a href="#the-beginning">The beginning</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-2"><a href="#what-did-it-look-like-on-paper-then">What did it look like on paper, then?</a></div><details open class="mm-level-2"><summary><a href="#the-figma-era">The Figma era</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-3"><a href="#v1-under-construction">V1: under construction</a></div><div class="mm-leaf mm-level-3"><a href="#v2-monochrome">V2: monochrome</a></div><div class="mm-leaf mm-level-3"><a href="#v3-nudl">V3: NUDL</a></div><div class="mm-leaf mm-level-3"><a href="#v4-nudl-5">V4: NUDL 5</a></div><div class="mm-leaf mm-level-3"><a href="#v5-zenos-40nudl-51">V5: ZenOS 4.0/NUDL 5.1</a></div><div class="mm-leaf mm-level-3"><a href="#v6-zenos-50nudl-60">V6: ZenOS 5.0/NUDL 6.0</a></div><div class="mm-leaf mm-level-3"><a href="#v7-zenos-60nudl-61">V7: ZenOS 6.0/NUDL 6.1</a></div><div class="mm-leaf mm-level-3"><a href="#v8-nudl-7-8">V8: NUDL 7 &amp; 8</a></div><div class="mm-leaf mm-level-3"><a href="#v9-nudl-9-aka-project-carbon">V9: NUDL 9 AKA Project Carbon</a></div><div class="mm-leaf mm-level-3"><a href="#v10-nudl-91-aka-project-neo">V10: NUDL 9.1 AKA Project Neo</a></div><div class="mm-leaf mm-level-3"><a href="#v11-nudl-10-aka-project-aerogellychee">V11: NUDL 10 AKA Project Aerogel/Lychee</a></div></details></details><div class="mm-leaf mm-level-1"><a href="#real-software">Real software</a></div></nav><a class="navbutton" style="--c1:#76e256;--c0:#2e7700;--icon-size:24px;rotate:90deg"  id="page-back" href="/#lib"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-zenos" style="--icon-size:64px"></span><b style="font-size:24px">ZenOS</b><div class=art-tags><span class="art-tag">Operating Systems</span><span class="art-tag">Negative Zero</span><span class="art-tag">Software</span><span class="art-tag">Design</span></div></div><article><h1 id="the-beginning">The beginning</h1>
 <p>ZenOS is a really old project of mine, depending on how you count it, it started in 2016 (back then known as Glass OS) or 2020 (finally called ZenOS)</p>
 <p>But the issue was always that it was first just a design on paper (yes, actual paper) or on Figma.</p>
 <p>But since late 2025, I started actually putting together ZenOS the software, an actual operating system based on NixOS.</p>
-<h2>What did it look like on paper, then?</h2>
+<h2 id="what-did-it-look-like-on-paper-then">What did it look like on paper, then?</h2>
 <p><img alt="Glass OS" src="/images/glassos.png" /></p>
 <p>This was Glass. My first ever piece of UI design, back when i was only 8(!), bored in świetlica (which is like a daycare inside of an elementary school).</p>
 <p>It was actually originally inspired by Windows and Ubuntu (which is where the orange accent color and name come from)</p>
 <p>Later on, it went through so many iterations I don't think it makes sense to list them all here (and, anyways, looking for all of them will be tedious as all hell.)</p>
-<h2>The Figma era</h2>
-<h3>V1: under construction</h3>
+<h2 id="the-figma-era">The Figma era</h2>
+<h3 id="v1-under-construction">V1: under construction</h3>
 <p><img alt="ZenOS 1" src="/images/zenos-piss.png" /></p>
 <p>This is what the first Figma edition of ZenOS looked like. Very dark, very yellow.</p>
 <p>But it had a few elements that eventually became the ZenOS UX staples:</p>
@@ -831,27 +922,51 @@ body {
 <li>the window's top bar getting merged into the Action Center (which is the fancy name for the system top bar)</li>
 </ol>
 <p>but of course, i eventually got bored with how that version of ZenOS looked so I designed a </p>
-<h3>V2: monochrome</h3>
+<h3 id="v2-monochrome">V2: monochrome</h3>
 <p><img alt="ZenOS 2" src="/images/zenos-mono.png" /></p>
 <p>This version of ZenOS had basically no color, not much has changed since V1 other than styling.</p>
-<h3>V3: NUDL</h3>
+<h3 id="v3-nudl">V3: NUDL</h3>
 <p><img alt="ZenOS 3" src="/images/zenos-n4.png" /></p>
 <p>Now this is where it gets interesting. This is the first ZenOS version using the Negative Zero Universal Design Language, shortened to NUDL (purposely skipped Z so that it's pronounced as noodle)... version 4.</p>
 <p>Yep, NUDL v1-v3 had no desktop version whatsoever, only a mobile one.</p>
 <p>Well, not exactly, there were <em>some</em> desktop apps but there wasn't an actual desktop mode in NUDL 1. </p>
 <p>It was the first ZenOS version that didnt have detached window buttons too.</p>
-<h3>V4: NUDL 5</h3>
+<h3 id="v4-nudl-5">V4: NUDL 5</h3>
 <p><img alt="NUDL 5" src="/images/nudl-5.png" /></p>
 <p>This version was mainly just a continuation &amp; polish of the NUDL 4 version of ZenOS, not much has changed.</p>
 <p>It was also the first ZenOS version that had designs for desktop, mobile and XR.</p>
-<h3>V5: ZenOS 4.0/NUDL 5.1</h3>
+<h3 id="v5-zenos-40nudl-51">V5: ZenOS 4.0/NUDL 5.1</h3>
 <p><img alt="ZenOS 4" src="/images/zenos-4.png" /></p>
 <p>Minor refinements to the NUDL 5.0 version, most of the work was actually componentizing the design system &amp; building more screens.</p>
-<h3>V6: ZenOS 5.0/NUDL 6.0</h3>
+<h3 id="v6-zenos-50nudl-60">V6: ZenOS 5.0/NUDL 6.0</h3>
 <p><img alt="ZenOS 5" src="/images/zenos-5.png" /></p>
 <p>This was the biggest departure from the NUDL formula design-wise.</p>
 <p>It removed the background behind every element idea.</p>
 <p>That didn't last long though.</p>
-<h3>V7: ZenOS 6.0/NUDL 6.1</h3>
+<h3 id="v7-zenos-60nudl-61">V7: ZenOS 6.0/NUDL 6.1</h3>
 <p><img alt="ZenOS 6" src="/images/zenos-6.png" /></p>
-<p>This was the ZenOS version with the most screens.</p></article></body></html>
+<p>This was the ZenOS version with the most screens. 
+It also introduced progressive blur into the UI.</p>
+<h3 id="v8-nudl-7-8">V8: NUDL 7 &amp; 8</h3>
+<p>These two versions didn't really do much if I'm being honest.
+They were more just something to do to keep my mind occupied when I was bored.</p>
+<h3 id="v9-nudl-9-aka-project-carbon">V9: NUDL 9 AKA Project Carbon</h3>
+<p><img alt="ZenOS 9 overview" src="/images/n9-overview.png" />
+<img alt="ZenOS 9 views" src="/images/n9-views.png" /></p>
+<p>This version entirely reimagined the desktop as an infinite 2D canvas where each workspace (here called view) is just a purposely cut off section of that canvas that you can focus on.
+It was also the version that introduced what I call advanced materials, which are materials that are designed to keep maximum contrast and color passthrough no matter the background.</p>
+<p>The UI was so complex Figma struggled to render it in real time.</p>
+<h3 id="v10-nudl-91-aka-project-neo">V10: NUDL 9.1 AKA Project Neo</h3>
+<p><img alt="ZenOS 10 overview" src="/images/neo-overview.png" />
+<img alt="Chameleon" src="/images/chameleon.png" /></p>
+<p>This version took what was great about Project Carbon and improved it.
+It introduced Cameleon, a material that automatically decides whether it should be black or white depending on the background to maintain optimal contrast.
+This version also introduced collapsible elements; elements that can shrink down into just lines to indidate their existence without taking up too much space, which is especially useful on mobile platforms.</p>
+<p>It also turned the app list into a 3x∞ grid.</p>
+<h3 id="v11-nudl-10-aka-project-aerogellychee">V11: NUDL 10 AKA Project Aerogel/Lychee</h3>
+<p><img alt="Aerogel" src="/images/n10.png" /></p>
+<p>The name of the game for NUDL 10 was that it's supposed to feel lightweight, like air.
+It's also supposed to be the final NUDL version.</p>
+<h1 id="real-software">Real software</h1>
+<p>Now that we've gone over how it looked on paper and how it looked on figma, we can finally get into the real software side of things.</p>
+<p>ZenOS N started off as just NixOS dotfiles, but later on I realized that making it a full-on operating system will require more than just that.</p></article></body></html>

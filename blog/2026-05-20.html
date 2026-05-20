@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>2026-04-28 — doromiert</title><link rel="icon" type="image/svg+xml" href="/doromiert.svg"/><style>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>2026-05-20 — doromiert</title><link rel="icon" type="image/svg+xml" href="/doromiert.svg"/><style>
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
   src: url("/fonts/std.woff2") format("woff2") tech("variations"), url("/fonts/std.woff2") format("woff2-variations");
@@ -337,7 +337,7 @@ article :nth-child(1) {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 10;
+  z-index: 10000;
 }
 
 article {
@@ -541,6 +541,97 @@ article h3 {
 
 .rss-btn {
   width: max-content !important;
+}
+
+/* ===== article minimap ===== */
+.article-minimap {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 180px;
+  max-height: calc(100vh - 100px);
+  padding: 20px;
+  padding-top: 80px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  font-size: 13px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c1) transparent;
+}
+
+@media (max-width: 1100px) {
+  .article-minimap {
+    display: none;
+  }
+}
+
+.article-minimap a {
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+.article-minimap summary,
+.article-minimap .mm-leaf {
+  padding: 6px 8px;
+  background: var(--c1);
+  color: var(--c0);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s;
+  outline: 0px solid var(--c1);
+  outline-offset: 0px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.article-minimap summary:is(:hover, :focus-visible),
+.article-minimap .mm-leaf:is(:hover, :focus-visible) {
+  outline-width: 4px;
+  filter: brightness(1.5);
+}
+
+.article-minimap summary:active,
+.article-minimap .mm-leaf:active {
+  outline-width: 0px;
+  outline-offset: -1px;
+  filter: brightness(0.75);
+}
+
+.article-minimap summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.article-minimap summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-minimap summary .nz-icon {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: rotate 0.15s;
+}
+
+.article-minimap details[open] > summary .nz-icon {
+  rotate: 0deg !important;
+}
+
+.article-minimap .mm-level-2 {
+  margin-left: 10px;
+}
+
+.article-minimap .mm-level-3 {
+  margin-left: 20px;
 }
 
 .nz-icon {
@@ -811,4 +902,22 @@ body {
   flex-direction: column;
   align-items: center;
 }
-</style></head><body style="gap: 20px;"><a class="navbutton" style="--c1:#ffd165;--c0:#7c3a0b;--icon-size:24px;rotate:90deg"  id="page-back" href="/#blog"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><b style="font-size:18px">2026-04-28 (1/1)</b></div><article><p>asdjiasdolasjmd</p></article><div class="post-nav"><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></span><a href="/blog/" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div><a href="/feed.xml" class="navbutton rss-btn" style="--c0:#ffd165;--c1:#1a1a1a;width:100%"><span class="nz-icon nz-icon-rss" style="--icon-size:24px"></span><span >RSS feed</span></a></body></html>
+</style></head><body style="gap: 20px;"><nav class="article-minimap"><details open class="mm-level-1"><summary><a href="#is-this-thing-on">is this thing on?</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><details open class="mm-level-2"><summary><a href="#a">a</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><details open class="mm-level-3"><summary><a href="#a_1">a</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-4"><a href="#a_2">a</a></div></details></details></details></nav><a class="navbutton" style="--c1:#ffd165;--c0:#7c3a0b;--icon-size:24px;rotate:90deg"  id="page-back" href="/#blog"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><b style="font-size:18px">2026-05-20 (1/1)</b></div><article><h1 id="is-this-thing-on">is this thing on?</h1>
+<p>b,jkgvbhHhyvbjhb
+- a 
+- asda
+- sd
+- asd
+- as
+- d</p>
+<ol>
+<li>asdasd</li>
+<li>asd</li>
+<li>a</li>
+<li>sd</li>
+<li>asd</li>
+</ol>
+<h2 id="a">a</h2>
+<h3 id="a_1">a</h3>
+<h4 id="a_2">a</h4>
+<p>-# asdasd</p></article><div class="post-nav"><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:180deg"></span></span><a href="/blog/" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div><a href="/feed.xml" class="navbutton rss-btn" style="--c0:#ffd165;--c1:#1a1a1a;width:100%"><span class="nz-icon nz-icon-rss" style="--icon-size:24px"></span><span >RSS feed</span></a></body></html>
