@@ -77,4 +77,41 @@ That didn't last long though.
 ### V7: ZenOS 6.0/NUDL 6.1
 ![ZenOS 6](/images/zenos-6.png)
 
-This was the ZenOS version with the most screens.
+This was the ZenOS version with the most screens. 
+It also introduced progressive blur into the UI.
+
+### V8: NUDL 7 & 8
+
+These two versions didn't really do much if I'm being honest.
+They were more just something to do to keep my mind occupied when I was bored.
+
+### V9: NUDL 9 AKA Project Carbon
+![ZenOS 9 overview](/images/n9-overview.png)
+![ZenOS 9 views](/images/n9-views.png)
+
+This version entirely reimagined the desktop as an infinite 2D canvas where each workspace (here called view) is just a purposely cut off section of that canvas that you can focus on.
+It was also the version that introduced what I call advanced materials, which are materials that are designed to keep maximum contrast and color passthrough no matter the background.
+
+The UI was so complex Figma struggled to render it in real time.
+
+### V10: NUDL 9.1 AKA Project Neo
+![ZenOS 10 overview](/images/neo-overview.png)
+![Chameleon](/images/chameleon.png)
+
+This version took what was great about Project Carbon and improved it.
+It introduced Cameleon, a material that automatically decides whether it should be black or white depending on the background to maintain optimal contrast.
+This version also introduced collapsible elements; elements that can shrink down into just lines to indidate their existence without taking up too much space, which is especially useful on mobile platforms.
+
+It also turned the app list into a 3x∞ grid.
+
+### V11: NUDL 10 AKA Project Aerogel/Lychee
+![Aerogel](/images/n10.png)
+
+The name of the game for NUDL 10 was that it's supposed to feel lightweight, like air.
+It's also supposed to be the final NUDL version.
+
+# Real software
+
+Now that we've gone over how it looked on paper and how it looked on figma, we can finally get into the real software side of things.
+
+ZenOS N started off as just NixOS dotfiles, but later on I realized that making it a full-on operating system will require more than just that.

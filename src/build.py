@@ -137,6 +137,39 @@ ELEMENTS = [NzIcon, NavButton, Separator, NzSection, BCard]
 # =============================================================================
 
 
+def md_render(body):
+    """Convert markdown → (html, toc_tokens).
+    Uses the 'toc' extension so headings get proper id= attributes
+    and we get a structured tree to build the minimap from."""
+    md = mdlib.Markdown(extensions=["toc"])
+    html = md.convert(body)
+    return html, getattr(md, "toc_tokens", [])
+
+
+def build_minimap_html(toc_tokens, depth=0):
+    """Convert md.toc_tokens into nested <details>/<summary> HTML.
+    depth=0 → h1 (mm-level-1, no indent)
+    depth=1 → h2 (mm-level-2, 12px indent)
+    depth=2 → h3 (mm-level-3, 24px indent)"""
+    if not toc_tokens:
+        return ""
+    cls = f"mm-level-{depth + 1}"
+    items = []
+    for tok in toc_tokens:
+        slug = tok["id"]
+        name = tok["name"]
+        children = tok.get("children", [])
+        link = f'<a href="#{slug}">{name}</a>'
+        if children:
+            inner = build_minimap_html(children, depth + 1)
+            items.append(
+                f'<details open class="{cls}"><summary>{link}<nz-icon name="direction" rotate="90" size="16"></nz-icon></summary>{inner}</details>'
+            )
+        else:
+            items.append(f'<div class="mm-leaf {cls}">{link}</div>')
+    return "".join(items)
+
+
 def generate_rss(base_url="https://doromiert.neg-zero.com"):
     from email.utils import formatdate
     import time
@@ -332,9 +365,12 @@ def lnk_btn(label_html, href, c0, c1, btnClass=""):
     return f'<span class="navbutton {btnClass}" style="--c0:{c0};--c1:{c1};width:min-content;opacity:.3;cursor:not-allowed">{label_html}</span>'
 
 
-def article_page(title, body_html, section_id):
+def article_page(title, body_html, section_id, minimap_html=""):
     c0, c1 = CONTENT_C[section_id]
     back_btn = f'<button style="--c0:{c0};--c1:{c1}"><nz-icon name="direction" rotate="180"></nz-icon></button>'
+    minimap = (
+        f'<nav class="article-minimap">{minimap_html}</nav>' if minimap_html else ""
+    )
     return (
         f'<!doctype html><html lang="en"><head>'
         f'<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>'
@@ -346,6 +382,7 @@ def article_page(title, body_html, section_id):
         f"min-height:100vh;display:flex;flex-direction:column;align-items:center}}"
         f"</style>"
         f'</head><body style="gap: 20px;">'
+        f"{minimap}"
         f'<nav-button id="page-back" href="/#{section_id}" c0="{c0}" c1="{c1}"><nz-icon name="direction" rotate="90"></nz-icon></nav-button>'
         f"{body_html}"
         f"</body></html>"
@@ -386,6 +423,9 @@ def build_lib():
         )
         if not ext_url:
             art_tags = "".join(f'<span class="art-tag">{t}</span>' for t in tags)
+
+            md_html, toc_tokens = md_render(body)
+            minimap_html = build_minimap_html(toc_tokens)
             body_html = (
                 f'<div class="art-header">'
                 f'<nz-icon name="{icon}" size="64"></nz-icon>'
@@ -393,11 +433,12 @@ def build_lib():
                 f"{'<span class=art-subtitle>' + subtitle + '</span>' if subtitle else ''}"
                 f"{'<div class=art-tags>' + art_tags + '</div>' if art_tags else ''}"
                 f"</div>"
-                f"<article>{mdlib.markdown(body)}</article>"
+                f"<article>{md_html}</article>"
             )
             (out / f"{f.stem}.html").write_text(
-                compile_page(article_page(title, body_html, "lib"))
+                compile_page(article_page(title, body_html, "lib", minimap_html))
             )
+
     return f'<div class="card-grid">{"".join(cards)}</div>'
 
 
@@ -424,9 +465,12 @@ def build_blog():
         date = meta.get("date", slug)
         prev_url = f"/blog/{posts[i + 1][0]}.html" if i + 1 < total else ""
         next_url = f"/blog/{posts[i - 1][0]}.html" if i > 0 else ""
+
+        md_html, toc_tokens = md_render(body)
+        minimap_html = build_minimap_html(toc_tokens)
         body_html = (
             f'<div class="art-header"><b style="font-size:18px">{date} ({i + 1}/{total})</b></div>'
-            f"<article>{mdlib.markdown(body)}</article>"
+            f"<article>{md_html}</article>"
             f'<div class="post-nav">'
             f"{lnk_btn('<nz-icon name="direction"rotate="180"></nz-icon>', next_url, c0, c1)}"
             f"{lnk_btn('<nz-icon name="calendar"></nz-icon><span>Browse by date</span>', '/blog/', c0, c1)}"
@@ -435,7 +479,7 @@ def build_blog():
             f"{lnk_btn('<nz-icon name="rss"></nz-icon><span >RSS feed</span>', '/feed.xml', 'var(--j0)', 'var(--x0)', 'rss-btn')}"
         )
         (out / f"{slug}.html").write_text(
-            compile_page(article_page(date, body_html, "blog"))
+            compile_page(article_page(date, body_html, "blog", minimap_html))
         )
 
     # Date index page /blog/index.html
@@ -496,16 +540,19 @@ def build_category(section_id):
             icon = meta.get("icon", "docs")
             tags = [t.strip() for t in meta.get("tags", "").split(",") if t.strip()]
             art_tags = "".join(f'<span class="art-tag">{t}</span>' for t in tags)
+
+            md_html, toc_tokens = md_render(body)
+            minimap_html = build_minimap_html(toc_tokens)
             body_html = (
                 f'<div class="art-header">'
                 f'<nz-icon name="{icon}" size="64"></nz-icon>'
                 f'<b style="font-size:24px">{title}</b>'
                 f"{'<div class=art-tags>' + art_tags + '</div>' if art_tags else ''}"
                 f"</div>"
-                f"<article>{mdlib.markdown(body)}</article>"
+                f"<article>{md_html}</article>"
             )
             (out / f"{slug}.html").write_text(
-                compile_page(article_page(title, body_html, section_id))
+                compile_page(article_page(title, body_html, section_id, minimap_html))
             )
 
     # "Now listening to" widget for music
