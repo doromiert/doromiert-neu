@@ -187,13 +187,13 @@ body {
 .cat-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 }
 
 .cat-header {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 0 5px;
     &::after {
         content: "";
@@ -206,7 +206,7 @@ body {
 .cat-rows {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2px;
+    gap: 10px;
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
     }
@@ -324,18 +324,62 @@ article {
     padding-top: 20px;
     box-sizing: border-box;
     text-align: left;
-}
 
-article img {
-    max-width: 100%;
-    display: block;
-    margin: 16px 0;
-}
+    img {
+        max-width: 100%;
+        display: block;
+        margin: 16px 0;
+    }
 
-article h1,
-article h2,
-article h3 {
-    margin-top: 1.5em;
+    h1,
+    h2,
+    h3 {
+        margin-top: 1.5em;
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5em 0;
+        font-size: 15px;
+    }
+
+    thead th {
+        background: var(--c1);
+        color: var(--c0);
+        padding: 8px 12px;
+        text-align: left;
+        font-weight: 700;
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid color-mix(in srgb, var(--c1) 20%, transparent);
+            transition: background 0.1s;
+        }
+
+        tr:last-child {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: color-mix(in srgb, var(--c1) 8%, transparent);
+        }
+
+        td {
+            padding: 8px 12px;
+            color: var(--c1);
+            vertical-align: top;
+        }
+
+        td:first-child {
+            color: color-mix(in srgb, var(--c1) 60%, transparent);
+            font-size: 13px;
+            white-space: nowrap;
+            padding-right: 20px;
+         }
+    }
 }
 
 @view-transition {

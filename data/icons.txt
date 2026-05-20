@@ -56,3 +56,4 @@ paintbrush
 code
 dollar
 rss
+gamepad

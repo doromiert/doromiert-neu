@@ -1,117 +1,81 @@
 ---
-
 title: ZenOS
 icon: zenos
 tags: Operating Systems, Negative Zero, Software, Design
-
 ---
 
-# The beginning
-ZenOS is a really old project of mine, depending on how you count it, it started in 2016 (back then known as Glass OS) or 2020 (finally called ZenOS)
+I was 8 years old, bored in świetlica, drawing an operating system on paper.
 
-But the issue was always that it was first just a design on paper (yes, actual paper) or on Figma.
+Not a game. Not a cartoon. An operating system — complete with a taskbar, window chrome, and an accent color I borrowed from Ubuntu without knowing what Ubuntu was. I called it Glass.
 
-But since late 2025, I started actually putting together ZenOS the software, an actual operating system based on NixOS.
+That probably tells you something about how I'm wired.
 
-## What did it look like on paper, then?
+I've always felt like I was made for something bigger than just using the world as-is. An OS felt like the purest expression of that. It's not an app that solves one problem — it's the whole environment. The entire way a person experiences their machine. Build that, and you've built something close to a world.
+
+So I kept building it. On paper, then Figma — version after version, design system after design system, across almost a decade. I loved designing it. I also spent a lot of those years wishing I could actually *use* it.
+
+The gap between designing an OS and building one is enormous. Systems knowledge that takes years to develop. In late 2025 that finally changed — AI let me learn fast enough to close the gap myself. Nine years of accumulated design intent suddenly had somewhere to go.
+
+# The Goal
+
+Even though originally, it was just a way to kill some time, later on, I defined an actual goal for ZenOS.
+
+It goes as follows:
+
+**Make technology feel like magic. Get out of your way, give you real power, look good doing it.
+Most OSes pick one or two of those. ZenOS is supposed to do all three.**
+
+# The Design
+
+## Before Figma
+
+### **Glass circa 2016**
+
 ![Glass OS](/images/glassos.png)
 
-This was Glass. My first ever piece of UI design, back when i was only 8(!), bored in świetlica (which is like a daycare inside of an elementary school).
+Where it started. Drew this at 8 on actual paper. Already had the core instincts: taskbar, windows, apps.
 
-It was actually originally inspired by Windows and Ubuntu (which is where the orange accent color and name come from)
+### First (paper) ZenOS
 
-Later on, it went through so many iterations I don't think it makes sense to list them all here (and, anyways, looking for all of them will be tedious as all hell.)
+![ZenOS paper](/images/zenos-paper.png)
 
-## The Figma era
+It wasn't until 2020, though, until ZenOS got its current name.
+Funnily enough, it wasn't actually called ZenOS but ZenOn instead.
 
-### V1: under construction
-![ZenOS 1](/images/zenos-piss.png)
+### Inkscape experiments
 
-This is what the first Figma edition of ZenOS looked like. Very dark, very yellow.
+Later on, I experimented with ZenOS on Inkscape... unfortunately, those designs were all lost.
 
-But it had a few elements that eventually became the ZenOS UX staples:
+## The Figma Era
 
-1. dynamic app icons: my response to Apple's dynamic island
-2. notification + widget side view
-3. the window's top bar getting merged into the Action Center (which is the fancy name for the system top bar)
+### The first Figma ZenOS 
 
-but of course, i eventually got bored with how that version of ZenOS looked so I designed a 
+![ZenOS mid](/images/zenos-piss.png)
 
-### V2: monochrome
-![ZenOS 2](/images/zenos-mono.png)
+By this point it had a name & the vision was getting sharper, the gap to actually building it was still enormous.
 
-This version of ZenOS had basically no color, not much has changed since V1 other than styling.
+### **Project Carbon / Neo**
 
-### V3: NUDL
-![ZenOS 3](/images/zenos-n4.png)
+![ZenOS Carbon](/images/n9-overview.png)
 
-Now this is where it gets interesting. This is the first ZenOS version using the Negative Zero Universal Design Language, shortened to NUDL (purposely skipped Z so that it's pronounced as noodle)... version 4.
+The most ambitious design era — infinite 2D canvas workspaces, advanced materials that maintain contrast against any background, collapsible UI elements. Figma struggled to render it in realtime.
 
-Yep, NUDL v1-v3 had no desktop version whatsoever, only a mobile one.
+### **NUDL 10 — Aerogel**
 
-Well, not exactly, there were *some* desktop apps but there wasn't an actual desktop mode in NUDL 1. 
-
-It was the first ZenOS version that didnt have detached window buttons too.
-
-### V4: NUDL 5
-![NUDL 5](/images/nudl-5.png)
-
-This version was mainly just a continuation & polish of the NUDL 4 version of ZenOS, not much has changed.
-
-It was also the first ZenOS version that had designs for desktop, mobile and XR.
-
-### V5: ZenOS 4.0/NUDL 5.1
-![ZenOS 4](/images/zenos-4.png)
-
-Minor refinements to the NUDL 5.0 version, most of the work was actually componentizing the design system & building more screens.
-
-### V6: ZenOS 5.0/NUDL 6.0
-![ZenOS 5](/images/zenos-5.png)
-
-This was the biggest departure from the NUDL formula design-wise.
-
-It removed the background behind every element idea.
-
-That didn't last long though.
-
-### V7: ZenOS 6.0/NUDL 6.1
-![ZenOS 6](/images/zenos-6.png)
-
-This was the ZenOS version with the most screens. 
-It also introduced progressive blur into the UI.
-
-### V8: NUDL 7 & 8
-
-These two versions didn't really do much if I'm being honest.
-They were more just something to do to keep my mind occupied when I was bored.
-
-### V9: NUDL 9 AKA Project Carbon
-![ZenOS 9 overview](/images/n9-overview.png)
-![ZenOS 9 views](/images/n9-views.png)
-
-This version entirely reimagined the desktop as an infinite 2D canvas where each workspace (here called view) is just a purposely cut off section of that canvas that you can focus on.
-It was also the version that introduced what I call advanced materials, which are materials that are designed to keep maximum contrast and color passthrough no matter the background.
-
-The UI was so complex Figma struggled to render it in real time.
-
-### V10: NUDL 9.1 AKA Project Neo
-![ZenOS 10 overview](/images/neo-overview.png)
-![Chameleon](/images/chameleon.png)
-
-This version took what was great about Project Carbon and improved it.
-It introduced Cameleon, a material that automatically decides whether it should be black or white depending on the background to maintain optimal contrast.
-This version also introduced collapsible elements; elements that can shrink down into just lines to indidate their existence without taking up too much space, which is especially useful on mobile platforms.
-
-It also turned the app list into a 3x∞ grid.
-
-### V11: NUDL 10 AKA Project Aerogel/Lychee
 ![Aerogel](/images/n10.png)
 
-The name of the game for NUDL 10 was that it's supposed to feel lightweight, like air.
-It's also supposed to be the final NUDL version.
+The final design vision as of writing this. Lightweight, almost like air. This is what ZenOS is supposed to feel like.
 
-# Real software
+# Where It Is Now
 
-Now that we've gone over how it looked on paper and how it looked on figma, we can finally get into the real software side of things.
+ZenOS is built on NixOS and has its own DSL that compiles to Nix, its own package & module repository (ZenPkgs), and a custom installer. It's in alpha — the bones exist, the surfaces are still rough.
 
-ZenOS N started off as just NixOS dotfiles, but later on I realized that making it a full-on operating system will require more than just that.
+The roadmap is honest:
+
+- **Beta** — DSL-wrapped NixOS, polished installer, a handful of custom options. A real usable system.
+- **1.0.0** — Full GNOME desktop, app suite, module system, categorized packages. The complete experience.
+- **2.0.0/3.0.0** — Custom DE. Genuinely far off, but it's where the Figma designs ultimately live.
+
+![fastfetch](/images/fastfetch.png)
+
+_The fastfetch looks good though._

@@ -141,7 +141,7 @@ def md_render(body):
     """Convert markdown → (html, toc_tokens).
     Uses the 'toc' extension so headings get proper id= attributes
     and we get a structured tree to build the minimap from."""
-    md = mdlib.Markdown(extensions=["toc"])
+    md = mdlib.Markdown(extensions=["toc", "tables"])
     html = md.convert(body)
     return html, getattr(md, "toc_tokens", [])
 
@@ -626,6 +626,157 @@ def generate_sitemap(base_url="https://doromiert.neg-zero.com"):
     print(f"sitemap.xml written ({len(urls)} URLs)")
 
 
+def generate_llms_txt(base_url="https://doromiert.neg-zero.com"):
+    """Generate llms.txt and llms-full.txt for AI agent discovery."""
+
+    # ---- collect data from all content sections ----
+    def collect_section(section_id):
+        src = PROJ / "data" / section_id
+        if not src.exists():
+            return []
+        entries = []
+        for f in sorted(src.glob("*.md")):
+            if f.name.startswith("_"):
+                continue
+            meta, body = parse_frontmatter(f.read_text())
+            entries.append((f.stem, meta, body))
+        return entries
+
+    blog_posts = []
+    src_blog = PROJ / "data" / "blog"
+    if src_blog.exists():
+        for f in sorted(src_blog.glob("*.md"), reverse=True):
+            meta, body = parse_frontmatter(f.read_text())
+            blog_posts.append((f.stem, meta, body))
+
+    lib_entries = collect_section("lib")
+    dev_entries = collect_section("devices")
+    music_entries = collect_section("music")
+
+    # ---- build llms.txt (index / summary) ----
+    lines = [
+        "# doromiert",
+        "",
+        "> Personal site of doromiert — developer and designer.",
+        '> Part of Negative Zero (–0), a tech collective with the mission "technology that takes you seriously".',
+        "",
+        f"Full site: {base_url}",
+        f"RSS feed: {base_url}/feed.xml",
+        "",
+    ]
+
+    if blog_posts:
+        lines += ["## Blog", ""]
+        for slug, meta, body in blog_posts:
+            title = meta.get("title", slug)
+            date = meta.get("date", slug)
+            url = f"{base_url}/blog/{slug}.html"
+            # first non-empty line of body as blurb, strip markdown
+            blurb = next(
+                (
+                    re.sub(r"[#*`\[\]()]", "", l).strip()
+                    for l in body.splitlines()
+                    if l.strip()
+                ),
+                "",
+            )[:120]
+            entry = f"- [{title or date}]({url})"
+            if blurb:
+                entry += f": {blurb}"
+            lines.append(entry)
+        lines.append("")
+
+    if lib_entries:
+        lines += ["## Library / Projects", ""]
+        for slug, meta, body in lib_entries:
+            title = meta.get("title", slug)
+            url = meta.get("url") or f"{base_url}/lib/{slug}.html"
+            tags = meta.get("tags", "")
+            blurb = next(
+                (
+                    re.sub(r"[#*`\[\]()]", "", l).strip()
+                    for l in body.splitlines()
+                    if l.strip()
+                ),
+                tags,
+            )[:120]
+            entry = f"- [{title}]({url})"
+            if blurb:
+                entry += f": {blurb}"
+            lines.append(entry)
+        lines.append("")
+
+    if dev_entries:
+        lines += ["## Devices", ""]
+        for slug, meta, body in dev_entries:
+            title = meta.get("title", slug)
+            cat = meta.get("category", "")
+            url = f"{base_url}/devices/{slug}.html"
+            entry = f"- [{title}]({url})"
+            if cat:
+                entry += f" ({cat})"
+            lines.append(entry)
+        lines.append("")
+
+    if music_entries:
+        lines += ["## Music", ""]
+        for slug, meta, body in music_entries:
+            title = meta.get("title", slug)
+            url = f"{base_url}/music/{slug}.html"
+            lines.append(f"- [{title}]({url})")
+        lines.append("")
+
+    llms_txt = "\n".join(lines)
+    (DIST / "llms.txt").write_text(llms_txt)
+    print("llms.txt written")
+
+    # ---- build llms-full.txt (everything inlined) ----
+    full_lines = [llms_txt, "---", ""]
+
+    def append_section_full(section_name, entries, url_prefix):
+        if not entries:
+            return
+        full_lines.append(f"# {section_name}")
+        full_lines.append("")
+        for slug, meta, body in entries:
+            title = meta.get("title", slug)
+            url = f"{base_url}/{url_prefix}/{slug}.html"
+            full_lines.append(f"## [{title}]({url})")
+            if meta:
+                for k, v in meta.items():
+                    if k not in ("title",) and v:
+                        full_lines.append(f"_{k}: {v}_")
+            full_lines.append("")
+            full_lines.append(body.strip())
+            full_lines.append("")
+            full_lines.append("---")
+            full_lines.append("")
+
+    if blog_posts:
+        full_lines.append("# Blog Posts")
+        full_lines.append("")
+        for slug, meta, body in blog_posts:
+            title = meta.get("title", meta.get("date", slug))
+            url = f"{base_url}/blog/{slug}.html"
+            full_lines.append(f"## [{title}]({url})")
+            for k, v in meta.items():
+                if k not in ("title",) and v:
+                    full_lines.append(f"_{k}: {v}_")
+            full_lines.append("")
+            full_lines.append(body.strip())
+            full_lines.append("")
+            full_lines.append("---")
+            full_lines.append("")
+
+    append_section_full("Library / Projects", lib_entries, "lib")
+    append_section_full("Devices", dev_entries, "devices")
+    append_section_full("Music", music_entries, "music")
+
+    llms_full_txt = "\n".join(full_lines)
+    (DIST / "llms-full.txt").write_text(llms_full_txt)
+    print(f"llms-full.txt written ({len(llms_full_txt)} chars)")
+
+
 def build():
     optimize_fonts()
     DIST.mkdir(exist_ok=True)
@@ -715,9 +866,10 @@ def build():
     else:
         print(f"⚠️ could not find base.css at {base_css_src}, skipping unroll pass.")
 
-    # --- SITEMAP & RSS ---
+    # --- SITEMAP, RSS & LLMS.TXT ---
     generate_sitemap()
     generate_rss()
+    generate_llms_txt()
 
     # --- FINAL GZIP COMPRESSION STEP ---
     print("compressing files...")
