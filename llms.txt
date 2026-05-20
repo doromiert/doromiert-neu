@@ -1,0 +1,51 @@
+# doromiert
+
+> Personal site of doromiert — developer and designer.
+> Part of Negative Zero (–0), a tech collective with the mission "technology that takes you seriously".
+
+Full site: https://doromiert.neg-zero.com
+RSS feed: https://doromiert.neg-zero.com/feed.xml
+
+## Blog
+
+- [2026-05-20](https://doromiert.neg-zero.com/blog/2026-05-20.html): is this thing on?
+
+## Library / Projects
+
+- [ZenOS](https://doromiert.neg-zero.com/lib/zenos.html): I was 8 years old, bored in świetlica, drawing an operating system on paper.
+
+## Devices
+
+- [Acer SA243YG0bi](https://doromiert.neg-zero.com/devices/acer-sa243yg0bi.html) (Daily drivers)
+- [doromi tul I](https://doromiert.neg-zero.com/devices/doromi-tul-1.html) (Lost or sold)
+- [doromi tul 2](https://doromiert.neg-zero.com/devices/doromi-tul-2.html) (Daily drivers)
+- [doromipad](https://doromiert.neg-zero.com/devices/doromipad.html) (Daily drivers)
+- [Google Pixel 3a](https://doromiert.neg-zero.com/devices/google-pixel-3a.html) (Phones)
+- [Hiro Pegasus](https://doromiert.neg-zero.com/devices/hiro-pegasus.html) (Daily drivers)
+- [iPhone 6](https://doromiert.neg-zero.com/devices/iphone-6.html) (Phones)
+- [iPhone 7](https://doromiert.neg-zero.com/devices/iphone-7.html) (Phones)
+- [iPhone 8](https://doromiert.neg-zero.com/devices/iphone-8.html) (Phones)
+- [iPhone SE (1st gen)](https://doromiert.neg-zero.com/devices/iphone-se-1st-gen.html) (Phones)
+- [iPhone XR](https://doromiert.neg-zero.com/devices/iphone-xr.html) (Daily drivers)
+- [Lenovo T24i](https://doromiert.neg-zero.com/devices/lenovo-t24i.html) (Daily drivers)
+- [13" MacBook Pro (late 2013)](https://doromiert.neg-zero.com/devices/macbook-pro-2013.html) (Daily drivers)
+- [Mi 11T](https://doromiert.neg-zero.com/devices/mi-11t.html) (Phones)
+- [Negative Zero Server](https://doromiert.neg-zero.com/devices/negative-zero-server.html) (Daily drivers)
+- [Nothing Ear (a)](https://doromiert.neg-zero.com/devices/nothing-ear-a.html) (Daily drivers)
+- [Nothing Phone (2)](https://doromiert.neg-zero.com/devices/nothing-phone-2.html) (Daily drivers)
+- [OnePlus 11](https://doromiert.neg-zero.com/devices/oneplus-11.html) (Daily drivers)
+- [PlayStation Vita](https://doromiert.neg-zero.com/devices/ps-vita.html) (Daily drivers)
+- [Meta Quest 2](https://doromiert.neg-zero.com/devices/quest-2.html) (Lost or sold)
+- [Meta Quest 3](https://doromiert.neg-zero.com/devices/quest-3.html) (Daily drivers)
+- [Redmi Note 11](https://doromiert.neg-zero.com/devices/redmi-note-11.html) (Phones)
+- [Redmi Note 12](https://doromiert.neg-zero.com/devices/redmi-note-12.html) (Phones)
+- [Redmi Note 8](https://doromiert.neg-zero.com/devices/redmi-note-8.html) (Phones)
+- [Redmi Note 9](https://doromiert.neg-zero.com/devices/redmi-note-9.html) (Phones)
+- [Samsung Galaxy A50](https://doromiert.neg-zero.com/devices/samsung-a50.html) (Phones)
+- [Samsung Galaxy Note II](https://doromiert.neg-zero.com/devices/samsung-galaxy-note-ii.html) (Daily drivers)
+- [Smartisan U2 Pro](https://doromiert.neg-zero.com/devices/smartisan-u2-pro.html) (Phones)
+- [Nintendo Wii U](https://doromiert.neg-zero.com/devices/wiiu.html) (Daily drivers)
+
+## Music
+
+- [asjdoasuijasido](https://doromiert.neg-zero.com/music/test.html)

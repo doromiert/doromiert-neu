@@ -213,13 +213,13 @@ body {
 .cat-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .cat-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 0 5px;
 }
 
@@ -233,7 +233,7 @@ body {
 .cat-rows {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 10px;
 }
 
 @media (max-width: 600px) {
@@ -366,6 +366,47 @@ article h1,
 article h2,
 article h3 {
   margin-top: 1.5em;
+}
+
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 15px;
+}
+
+article thead th {
+  background: var(--c1);
+  color: var(--c0);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 700;
+}
+
+article tbody tr {
+  border-bottom: 1px solid color-mix(in srgb, var(--c1) 20%, transparent);
+  transition: background 0.1s;
+}
+
+article tbody tr:last-child {
+  border-bottom: none;
+}
+
+article tbody tr:hover {
+  background: color-mix(in srgb, var(--c1) 8%, transparent);
+}
+
+article tbody td {
+  padding: 8px 12px;
+  color: var(--c1);
+  vertical-align: top;
+}
+
+article tbody td:first-child {
+  color: color-mix(in srgb, var(--c1) 60%, transparent);
+  font-size: 13px;
+  white-space: nowrap;
+  padding-right: 20px;
 }
 
 /* spatial logic: index is base (0), business is right (+100%) */
@@ -646,7 +687,7 @@ article h3 {
   width: var(--icon-size, 24px);
   height: var(--icon-size, 24px);
   background-color: currentColor;
-  --icon-count:58;
+  --icon-count:59;
   --icon-index:0;
   mask-image: url("/icons.svg");
   mask-size: calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size, 24px);
@@ -888,6 +929,10 @@ article h3 {
   --icon-index:57;
 }
 
+.nz-icon-gamepad {
+  --icon-index:58;
+}
+
 /* preserved bleeding-edge rules */
 @view-transition {
     navigation: auto;
@@ -1125,7 +1170,7 @@ html {
 <h3>a</h3>
 <h4>a</h4>
 <p>-# asdasd</p></div><div class="post-nav"><a href="/blog/" class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:100%"><span class="nz-icon nz-icon-calendar" style="--icon-size:24px"></span><span>Browse by date</span></a><span class="navbutton " style="--c0:#7c3a0b;--c1:#ffd165;width:min-content;opacity:.3;cursor:not-allowed"><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></span></div><a href="/feed.xml" class="navbutton rss-btn" style="--c0:#ffd165;--c1:#1a1a1a;width:100%"><span class="nz-icon nz-icon-rss" style="--icon-size:24px"></span><span >RSS feed</span></a></section>
-        <a href="#devices" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My devices</div></a><section class="nz-section" id="devices" style="--c0:#1a1a1a;--c1:#76e256"><span class="nz-icon nz-icon-cpu" style="--icon-size:64px"></span><b style="font-size:20px">My devices</b><div class="cat-list"><div class="cat-group"><div class="cat-header">daily drivers</div><div class="cat-rows"><a class="cat-item" href="/devices/doromi-tul-2.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>doromi tul 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>
+        <a href="#devices" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#1a1a1a;color:#76e256"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>My devices</div></a><section class="nz-section" id="devices" style="--c0:#1a1a1a;--c1:#76e256"><span class="nz-icon nz-icon-cpu" style="--icon-size:64px"></span><b style="font-size:20px">My devices</b><div class="cat-list"><div class="cat-group"><div class="cat-header">Daily drivers</div><div class="cat-rows"><a class="cat-item" href="/devices/acer-sa243yg0bi.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>Acer SA243YG0bi</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/doromi-tul-2.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>doromi tul 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/doromipad.html"><span class="nz-icon nz-icon-laptop" style="--icon-size:24px"></span><span>doromipad</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/hiro-pegasus.html"><span class="nz-icon nz-icon-mouse" style="--icon-size:24px"></span><span>Hiro Pegasus</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/iphone-xr.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>iPhone XR</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/lenovo-t24i.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>Lenovo T24i</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/macbook-pro-2013.html"><span class="nz-icon nz-icon-laptop" style="--icon-size:24px"></span><span>13" MacBook Pro (late 2013)</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/negative-zero-server.html"><span class="nz-icon nz-icon-cpu" style="--icon-size:24px"></span><span>Negative Zero Server</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/nothing-ear-a.html"><span class="nz-icon nz-icon-headphones" style="--icon-size:24px"></span><span>Nothing Ear (a)</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/nothing-phone-2.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Nothing Phone (2)</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/oneplus-11.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>OnePlus 11</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/ps-vita.html"><span class="nz-icon nz-icon-gamepad" style="--icon-size:24px"></span><span>PlayStation Vita</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/quest-3.html"><span class="nz-icon nz-icon-xr" style="--icon-size:24px"></span><span>Meta Quest 3</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/samsung-galaxy-note-ii.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Samsung Galaxy Note II</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/wiiu.html"><span class="nz-icon nz-icon-gamepad" style="--icon-size:24px"></span><span>Nintendo Wii U</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div><div class="cat-group"><div class="cat-header">Lost or sold</div><div class="cat-rows"><a class="cat-item" href="/devices/doromi-tul-1.html"><span class="nz-icon nz-icon-monitor" style="--icon-size:24px"></span><span>doromi tul I</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/quest-2.html"><span class="nz-icon nz-icon-xr" style="--icon-size:24px"></span><span>Meta Quest 2</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div><div class="cat-group"><div class="cat-header">Phones</div><div class="cat-rows"><a class="cat-item" href="/devices/google-pixel-3a.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Google Pixel 3a</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/iphone-6.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>iPhone 6</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/iphone-7.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>iPhone 7</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/iphone-8.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>iPhone 8</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/iphone-se-1st-gen.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>iPhone SE (1st gen)</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/mi-11t.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Mi 11T</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/redmi-note-11.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Redmi Note 11</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/redmi-note-12.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Redmi Note 12</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/redmi-note-8.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Redmi Note 8</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/redmi-note-9.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Redmi Note 9</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/samsung-a50.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Samsung Galaxy A50</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a><a class="cat-item" href="/devices/smartisan-u2-pro.html"><span class="nz-icon nz-icon-smartphone" style="--icon-size:24px"></span><span>Smartisan U2 Pro</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>
         <!--<a href="#music" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#7a1b8d;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Music I like</div></a><section class="nz-section" id="music" style="--c0:#7a1b8d;--c1:#d47be6"><span class="nz-icon nz-icon-music" style="--icon-size:64px"></span><b style="font-size:20px">Music I like</b><div class="now-playing"><div class="np-label"><span class="nz-icon nz-icon-headphones" style="--icon-size:24px"></span>Now listening to</div><span class="np-song" style="margin-left: 4px;">Undercover</span><span style="margin-left: 4px;">Two door cinema club</span></div><div class="cat-list"><div class="cat-group"><div class="cat-header">Other</div><div class="cat-rows"><a class="cat-item" href="/music/test.html"><span class="nz-icon nz-icon-docs" style="--icon-size:24px"></span><span>asjdoasuijasido</span><span class="nz-icon nz-icon-direction" style="--icon-size:24px"></span></a></div></div></div></section>-->
         <a href="#contact" style="text-decoration:none"><div style="display:flex;gap:10px;align-items:center;justify-content:center;height:34px;background-color:#150055;color:#d47be6"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span>Contact me</div></a><section class="nz-section" id="contact" style="--c0:#150055;--c1:#d47be6" style="min-height:calc(100vh - 80px)!important"><span class="nz-icon nz-icon-chat" style="--icon-size:64px"></span><b style="font-size:20px">Contact me</b><div
                 style="

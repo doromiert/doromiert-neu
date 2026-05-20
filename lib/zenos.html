@@ -206,13 +206,13 @@ body {
 .cat-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .cat-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 0 5px;
 }
 
@@ -226,7 +226,7 @@ body {
 .cat-rows {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 10px;
 }
 
 @media (max-width: 600px) {
@@ -359,6 +359,47 @@ article h1,
 article h2,
 article h3 {
   margin-top: 1.5em;
+}
+
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 15px;
+}
+
+article thead th {
+  background: var(--c1);
+  color: var(--c0);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 700;
+}
+
+article tbody tr {
+  border-bottom: 1px solid color-mix(in srgb, var(--c1) 20%, transparent);
+  transition: background 0.1s;
+}
+
+article tbody tr:last-child {
+  border-bottom: none;
+}
+
+article tbody tr:hover {
+  background: color-mix(in srgb, var(--c1) 8%, transparent);
+}
+
+article tbody td {
+  padding: 8px 12px;
+  color: var(--c1);
+  vertical-align: top;
+}
+
+article tbody td:first-child {
+  color: color-mix(in srgb, var(--c1) 60%, transparent);
+  font-size: 13px;
+  white-space: nowrap;
+  padding-right: 20px;
 }
 
 /* spatial logic: index is base (0), business is right (+100%) */
@@ -639,7 +680,7 @@ article h3 {
   width: var(--icon-size, 24px);
   height: var(--icon-size, 24px);
   background-color: currentColor;
-  --icon-count:58;
+  --icon-count:59;
   --icon-index:0;
   mask-image: url("/icons.svg");
   mask-size: calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size, 24px);
@@ -881,6 +922,10 @@ article h3 {
   --icon-index:57;
 }
 
+.nz-icon-gamepad {
+  --icon-index:58;
+}
+
 /* preserved bleeding-edge rules */
 @view-transition {
     navigation: auto;
@@ -902,71 +947,45 @@ body {
   flex-direction: column;
   align-items: center;
 }
-</style></head><body style="gap: 20px;"><nav class="article-minimap"><details open class="mm-level-1"><summary><a href="#the-beginning">The beginning</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-2"><a href="#what-did-it-look-like-on-paper-then">What did it look like on paper, then?</a></div><details open class="mm-level-2"><summary><a href="#the-figma-era">The Figma era</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-3"><a href="#v1-under-construction">V1: under construction</a></div><div class="mm-leaf mm-level-3"><a href="#v2-monochrome">V2: monochrome</a></div><div class="mm-leaf mm-level-3"><a href="#v3-nudl">V3: NUDL</a></div><div class="mm-leaf mm-level-3"><a href="#v4-nudl-5">V4: NUDL 5</a></div><div class="mm-leaf mm-level-3"><a href="#v5-zenos-40nudl-51">V5: ZenOS 4.0/NUDL 5.1</a></div><div class="mm-leaf mm-level-3"><a href="#v6-zenos-50nudl-60">V6: ZenOS 5.0/NUDL 6.0</a></div><div class="mm-leaf mm-level-3"><a href="#v7-zenos-60nudl-61">V7: ZenOS 6.0/NUDL 6.1</a></div><div class="mm-leaf mm-level-3"><a href="#v8-nudl-7-8">V8: NUDL 7 &amp; 8</a></div><div class="mm-leaf mm-level-3"><a href="#v9-nudl-9-aka-project-carbon">V9: NUDL 9 AKA Project Carbon</a></div><div class="mm-leaf mm-level-3"><a href="#v10-nudl-91-aka-project-neo">V10: NUDL 9.1 AKA Project Neo</a></div><div class="mm-leaf mm-level-3"><a href="#v11-nudl-10-aka-project-aerogellychee">V11: NUDL 10 AKA Project Aerogel/Lychee</a></div></details></details><div class="mm-leaf mm-level-1"><a href="#real-software">Real software</a></div></nav><a class="navbutton" style="--c1:#76e256;--c0:#2e7700;--icon-size:24px;rotate:90deg"  id="page-back" href="/#lib"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-zenos" style="--icon-size:64px"></span><b style="font-size:24px">ZenOS</b><div class=art-tags><span class="art-tag">Operating Systems</span><span class="art-tag">Negative Zero</span><span class="art-tag">Software</span><span class="art-tag">Design</span></div></div><article><h1 id="the-beginning">The beginning</h1>
-<p>ZenOS is a really old project of mine, depending on how you count it, it started in 2016 (back then known as Glass OS) or 2020 (finally called ZenOS)</p>
-<p>But the issue was always that it was first just a design on paper (yes, actual paper) or on Figma.</p>
-<p>But since late 2025, I started actually putting together ZenOS the software, an actual operating system based on NixOS.</p>
-<h2 id="what-did-it-look-like-on-paper-then">What did it look like on paper, then?</h2>
+</style></head><body style="gap: 20px;"><nav class="article-minimap"><div class="mm-leaf mm-level-1"><a href="#the-goal">The Goal</a></div><details open class="mm-level-1"><summary><a href="#the-design">The Design</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><details open class="mm-level-2"><summary><a href="#before-figma">Before Figma</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-3"><a href="#glass-circa-2016">Glass circa 2016</a></div><div class="mm-leaf mm-level-3"><a href="#first-paper-zenos">First (paper) ZenOS</a></div><div class="mm-leaf mm-level-3"><a href="#inkscape-experiments">Inkscape experiments</a></div></details><details open class="mm-level-2"><summary><a href="#the-figma-era">The Figma Era</a><span class="nz-icon nz-icon-direction" style="--icon-size:16px;rotate:90deg"></span></summary><div class="mm-leaf mm-level-3"><a href="#the-first-figma-zenos">The first Figma ZenOS</a></div><div class="mm-leaf mm-level-3"><a href="#project-carbon-neo">Project Carbon / Neo</a></div><div class="mm-leaf mm-level-3"><a href="#nudl-10-aerogel">NUDL 10 — Aerogel</a></div></details></details><div class="mm-leaf mm-level-1"><a href="#where-it-is-now">Where It Is Now</a></div></nav><a class="navbutton" style="--c1:#76e256;--c0:#2e7700;--icon-size:24px;rotate:90deg"  id="page-back" href="/#lib"><span class="nz-icon nz-icon-direction" style="--icon-size:24px;rotate:90deg"></span></a><div class="art-header"><span class="nz-icon nz-icon-zenos" style="--icon-size:64px"></span><b style="font-size:24px">ZenOS</b><div class=art-tags><span class="art-tag">Operating Systems</span><span class="art-tag">Negative Zero</span><span class="art-tag">Software</span><span class="art-tag">Design</span></div></div><article><p>I was 8 years old, bored in świetlica, drawing an operating system on paper.</p>
+<p>Not a game. Not a cartoon. An operating system — complete with a taskbar, window chrome, and an accent color I borrowed from Ubuntu without knowing what Ubuntu was. I called it Glass.</p>
+<p>That probably tells you something about how I'm wired.</p>
+<p>I've always felt like I was made for something bigger than just using the world as-is. An OS felt like the purest expression of that. It's not an app that solves one problem — it's the whole environment. The entire way a person experiences their machine. Build that, and you've built something close to a world.</p>
+<p>So I kept building it. On paper, then Figma — version after version, design system after design system, across almost a decade. I loved designing it. I also spent a lot of those years wishing I could actually <em>use</em> it.</p>
+<p>The gap between designing an OS and building one is enormous. Systems knowledge that takes years to develop. In late 2025 that finally changed — AI let me learn fast enough to close the gap myself. Nine years of accumulated design intent suddenly had somewhere to go.</p>
+<h1 id="the-goal">The Goal</h1>
+<p>Even though originally, it was just a way to kill some time, later on, I defined an actual goal for ZenOS.</p>
+<p>It goes as follows:</p>
+<p><strong>Make technology feel like magic. Get out of your way, give you real power, look good doing it.
+Most OSes pick one or two of those. ZenOS is supposed to do all three.</strong></p>
+<h1 id="the-design">The Design</h1>
+<h2 id="before-figma">Before Figma</h2>
+<h3 id="glass-circa-2016"><strong>Glass circa 2016</strong></h3>
 <p><img alt="Glass OS" src="/images/glassos.png" /></p>
-<p>This was Glass. My first ever piece of UI design, back when i was only 8(!), bored in świetlica (which is like a daycare inside of an elementary school).</p>
-<p>It was actually originally inspired by Windows and Ubuntu (which is where the orange accent color and name come from)</p>
-<p>Later on, it went through so many iterations I don't think it makes sense to list them all here (and, anyways, looking for all of them will be tedious as all hell.)</p>
-<h2 id="the-figma-era">The Figma era</h2>
-<h3 id="v1-under-construction">V1: under construction</h3>
-<p><img alt="ZenOS 1" src="/images/zenos-piss.png" /></p>
-<p>This is what the first Figma edition of ZenOS looked like. Very dark, very yellow.</p>
-<p>But it had a few elements that eventually became the ZenOS UX staples:</p>
-<ol>
-<li>dynamic app icons: my response to Apple's dynamic island</li>
-<li>notification + widget side view</li>
-<li>the window's top bar getting merged into the Action Center (which is the fancy name for the system top bar)</li>
-</ol>
-<p>but of course, i eventually got bored with how that version of ZenOS looked so I designed a </p>
-<h3 id="v2-monochrome">V2: monochrome</h3>
-<p><img alt="ZenOS 2" src="/images/zenos-mono.png" /></p>
-<p>This version of ZenOS had basically no color, not much has changed since V1 other than styling.</p>
-<h3 id="v3-nudl">V3: NUDL</h3>
-<p><img alt="ZenOS 3" src="/images/zenos-n4.png" /></p>
-<p>Now this is where it gets interesting. This is the first ZenOS version using the Negative Zero Universal Design Language, shortened to NUDL (purposely skipped Z so that it's pronounced as noodle)... version 4.</p>
-<p>Yep, NUDL v1-v3 had no desktop version whatsoever, only a mobile one.</p>
-<p>Well, not exactly, there were <em>some</em> desktop apps but there wasn't an actual desktop mode in NUDL 1. </p>
-<p>It was the first ZenOS version that didnt have detached window buttons too.</p>
-<h3 id="v4-nudl-5">V4: NUDL 5</h3>
-<p><img alt="NUDL 5" src="/images/nudl-5.png" /></p>
-<p>This version was mainly just a continuation &amp; polish of the NUDL 4 version of ZenOS, not much has changed.</p>
-<p>It was also the first ZenOS version that had designs for desktop, mobile and XR.</p>
-<h3 id="v5-zenos-40nudl-51">V5: ZenOS 4.0/NUDL 5.1</h3>
-<p><img alt="ZenOS 4" src="/images/zenos-4.png" /></p>
-<p>Minor refinements to the NUDL 5.0 version, most of the work was actually componentizing the design system &amp; building more screens.</p>
-<h3 id="v6-zenos-50nudl-60">V6: ZenOS 5.0/NUDL 6.0</h3>
-<p><img alt="ZenOS 5" src="/images/zenos-5.png" /></p>
-<p>This was the biggest departure from the NUDL formula design-wise.</p>
-<p>It removed the background behind every element idea.</p>
-<p>That didn't last long though.</p>
-<h3 id="v7-zenos-60nudl-61">V7: ZenOS 6.0/NUDL 6.1</h3>
-<p><img alt="ZenOS 6" src="/images/zenos-6.png" /></p>
-<p>This was the ZenOS version with the most screens. 
-It also introduced progressive blur into the UI.</p>
-<h3 id="v8-nudl-7-8">V8: NUDL 7 &amp; 8</h3>
-<p>These two versions didn't really do much if I'm being honest.
-They were more just something to do to keep my mind occupied when I was bored.</p>
-<h3 id="v9-nudl-9-aka-project-carbon">V9: NUDL 9 AKA Project Carbon</h3>
-<p><img alt="ZenOS 9 overview" src="/images/n9-overview.png" />
-<img alt="ZenOS 9 views" src="/images/n9-views.png" /></p>
-<p>This version entirely reimagined the desktop as an infinite 2D canvas where each workspace (here called view) is just a purposely cut off section of that canvas that you can focus on.
-It was also the version that introduced what I call advanced materials, which are materials that are designed to keep maximum contrast and color passthrough no matter the background.</p>
-<p>The UI was so complex Figma struggled to render it in real time.</p>
-<h3 id="v10-nudl-91-aka-project-neo">V10: NUDL 9.1 AKA Project Neo</h3>
-<p><img alt="ZenOS 10 overview" src="/images/neo-overview.png" />
-<img alt="Chameleon" src="/images/chameleon.png" /></p>
-<p>This version took what was great about Project Carbon and improved it.
-It introduced Cameleon, a material that automatically decides whether it should be black or white depending on the background to maintain optimal contrast.
-This version also introduced collapsible elements; elements that can shrink down into just lines to indidate their existence without taking up too much space, which is especially useful on mobile platforms.</p>
-<p>It also turned the app list into a 3x∞ grid.</p>
-<h3 id="v11-nudl-10-aka-project-aerogellychee">V11: NUDL 10 AKA Project Aerogel/Lychee</h3>
+<p>Where it started. Drew this at 8 on actual paper. Already had the core instincts: taskbar, windows, apps.</p>
+<h3 id="first-paper-zenos">First (paper) ZenOS</h3>
+<p><img alt="ZenOS paper" src="/images/zenos-paper.png" /></p>
+<p>It wasn't until 2020, though, until ZenOS got its current name.
+Funnily enough, it wasn't actually called ZenOS but ZenOn instead.</p>
+<h3 id="inkscape-experiments">Inkscape experiments</h3>
+<p>Later on, I experimented with ZenOS on Inkscape... unfortunately, those designs were all lost.</p>
+<h2 id="the-figma-era">The Figma Era</h2>
+<h3 id="the-first-figma-zenos">The first Figma ZenOS</h3>
+<p><img alt="ZenOS mid" src="/images/zenos-piss.png" /></p>
+<p>By this point it had a name &amp; the vision was getting sharper, the gap to actually building it was still enormous.</p>
+<h3 id="project-carbon-neo"><strong>Project Carbon / Neo</strong></h3>
+<p><img alt="ZenOS Carbon" src="/images/n9-overview.png" /></p>
+<p>The most ambitious design era — infinite 2D canvas workspaces, advanced materials that maintain contrast against any background, collapsible UI elements. Figma struggled to render it in realtime.</p>
+<h3 id="nudl-10-aerogel"><strong>NUDL 10 — Aerogel</strong></h3>
 <p><img alt="Aerogel" src="/images/n10.png" /></p>
-<p>The name of the game for NUDL 10 was that it's supposed to feel lightweight, like air.
-It's also supposed to be the final NUDL version.</p>
-<h1 id="real-software">Real software</h1>
-<p>Now that we've gone over how it looked on paper and how it looked on figma, we can finally get into the real software side of things.</p>
-<p>ZenOS N started off as just NixOS dotfiles, but later on I realized that making it a full-on operating system will require more than just that.</p></article></body></html>
+<p>The final design vision as of writing this. Lightweight, almost like air. This is what ZenOS is supposed to feel like.</p>
+<h1 id="where-it-is-now">Where It Is Now</h1>
+<p>ZenOS is built on NixOS and has its own DSL that compiles to Nix, its own package &amp; module repository (ZenPkgs), and a custom installer. It's in alpha — the bones exist, the surfaces are still rough.</p>
+<p>The roadmap is honest:</p>
+<ul>
+<li><strong>Beta</strong> — DSL-wrapped NixOS, polished installer, a handful of custom options. A real usable system.</li>
+<li><strong>1.0.0</strong> — Full GNOME desktop, app suite, module system, categorized packages. The complete experience.</li>
+<li><strong>2.0.0/3.0.0</strong> — Custom DE. Genuinely far off, but it's where the Figma designs ultimately live.</li>
+</ul>
+<p><img alt="fastfetch" src="/images/fastfetch.png" /></p>
+<p><em>The fastfetch looks good though.</em></p></article></body></html>

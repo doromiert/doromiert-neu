@@ -213,13 +213,13 @@ body {
 .cat-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .cat-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 0 5px;
 }
 
@@ -233,7 +233,7 @@ body {
 .cat-rows {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 10px;
 }
 
 @media (max-width: 600px) {
@@ -366,6 +366,47 @@ article h1,
 article h2,
 article h3 {
   margin-top: 1.5em;
+}
+
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 15px;
+}
+
+article thead th {
+  background: var(--c1);
+  color: var(--c0);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 700;
+}
+
+article tbody tr {
+  border-bottom: 1px solid color-mix(in srgb, var(--c1) 20%, transparent);
+  transition: background 0.1s;
+}
+
+article tbody tr:last-child {
+  border-bottom: none;
+}
+
+article tbody tr:hover {
+  background: color-mix(in srgb, var(--c1) 8%, transparent);
+}
+
+article tbody td {
+  padding: 8px 12px;
+  color: var(--c1);
+  vertical-align: top;
+}
+
+article tbody td:first-child {
+  color: color-mix(in srgb, var(--c1) 60%, transparent);
+  font-size: 13px;
+  white-space: nowrap;
+  padding-right: 20px;
 }
 
 /* spatial logic: index is base (0), business is right (+100%) */
@@ -646,7 +687,7 @@ article h3 {
   width: var(--icon-size, 24px);
   height: var(--icon-size, 24px);
   background-color: currentColor;
-  --icon-count:58;
+  --icon-count:59;
   --icon-index:0;
   mask-image: url("/icons.svg");
   mask-size: calc(var(--icon-count)*var(--icon-size,24px)) var(--icon-size, 24px);
@@ -886,6 +927,10 @@ article h3 {
 
 .nz-icon-rss {
   --icon-index:57;
+}
+
+.nz-icon-gamepad {
+  --icon-index:58;
 }
 
 /* preserved bleeding-edge rules */

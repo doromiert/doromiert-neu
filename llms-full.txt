@@ -1,0 +1,843 @@
+# doromiert
+
+> Personal site of doromiert — developer and designer.
+> Part of Negative Zero (–0), a tech collective with the mission "technology that takes you seriously".
+
+Full site: https://doromiert.neg-zero.com
+RSS feed: https://doromiert.neg-zero.com/feed.xml
+
+## Blog
+
+- [2026-05-20](https://doromiert.neg-zero.com/blog/2026-05-20.html): is this thing on?
+
+## Library / Projects
+
+- [ZenOS](https://doromiert.neg-zero.com/lib/zenos.html): I was 8 years old, bored in świetlica, drawing an operating system on paper.
+
+## Devices
+
+- [Acer SA243YG0bi](https://doromiert.neg-zero.com/devices/acer-sa243yg0bi.html) (Daily drivers)
+- [doromi tul I](https://doromiert.neg-zero.com/devices/doromi-tul-1.html) (Lost or sold)
+- [doromi tul 2](https://doromiert.neg-zero.com/devices/doromi-tul-2.html) (Daily drivers)
+- [doromipad](https://doromiert.neg-zero.com/devices/doromipad.html) (Daily drivers)
+- [Google Pixel 3a](https://doromiert.neg-zero.com/devices/google-pixel-3a.html) (Phones)
+- [Hiro Pegasus](https://doromiert.neg-zero.com/devices/hiro-pegasus.html) (Daily drivers)
+- [iPhone 6](https://doromiert.neg-zero.com/devices/iphone-6.html) (Phones)
+- [iPhone 7](https://doromiert.neg-zero.com/devices/iphone-7.html) (Phones)
+- [iPhone 8](https://doromiert.neg-zero.com/devices/iphone-8.html) (Phones)
+- [iPhone SE (1st gen)](https://doromiert.neg-zero.com/devices/iphone-se-1st-gen.html) (Phones)
+- [iPhone XR](https://doromiert.neg-zero.com/devices/iphone-xr.html) (Daily drivers)
+- [Lenovo T24i](https://doromiert.neg-zero.com/devices/lenovo-t24i.html) (Daily drivers)
+- [13" MacBook Pro (late 2013)](https://doromiert.neg-zero.com/devices/macbook-pro-2013.html) (Daily drivers)
+- [Mi 11T](https://doromiert.neg-zero.com/devices/mi-11t.html) (Phones)
+- [Negative Zero Server](https://doromiert.neg-zero.com/devices/negative-zero-server.html) (Daily drivers)
+- [Nothing Ear (a)](https://doromiert.neg-zero.com/devices/nothing-ear-a.html) (Daily drivers)
+- [Nothing Phone (2)](https://doromiert.neg-zero.com/devices/nothing-phone-2.html) (Daily drivers)
+- [OnePlus 11](https://doromiert.neg-zero.com/devices/oneplus-11.html) (Daily drivers)
+- [PlayStation Vita](https://doromiert.neg-zero.com/devices/ps-vita.html) (Daily drivers)
+- [Meta Quest 2](https://doromiert.neg-zero.com/devices/quest-2.html) (Lost or sold)
+- [Meta Quest 3](https://doromiert.neg-zero.com/devices/quest-3.html) (Daily drivers)
+- [Redmi Note 11](https://doromiert.neg-zero.com/devices/redmi-note-11.html) (Phones)
+- [Redmi Note 12](https://doromiert.neg-zero.com/devices/redmi-note-12.html) (Phones)
+- [Redmi Note 8](https://doromiert.neg-zero.com/devices/redmi-note-8.html) (Phones)
+- [Redmi Note 9](https://doromiert.neg-zero.com/devices/redmi-note-9.html) (Phones)
+- [Samsung Galaxy A50](https://doromiert.neg-zero.com/devices/samsung-a50.html) (Phones)
+- [Samsung Galaxy Note II](https://doromiert.neg-zero.com/devices/samsung-galaxy-note-ii.html) (Daily drivers)
+- [Smartisan U2 Pro](https://doromiert.neg-zero.com/devices/smartisan-u2-pro.html) (Phones)
+- [Nintendo Wii U](https://doromiert.neg-zero.com/devices/wiiu.html) (Daily drivers)
+
+## Music
+
+- [asjdoasuijasido](https://doromiert.neg-zero.com/music/test.html)
+
+---
+
+# Blog Posts
+
+## [2026-05-20](https://doromiert.neg-zero.com/blog/2026-05-20.html)
+
+# is this thing on?
+
+b,jkgvbhHhyvbjhb
+- a 
+- asda
+- sd
+- asd
+- as
+- d
+
+1. asdasd
+2. asd
+3. a
+4. sd
+5. asd
+
+## a
+### a 
+#### a
+
+-# asdasd
+
+---
+
+# Library / Projects
+
+## [ZenOS](https://doromiert.neg-zero.com/lib/zenos.html)
+_icon: zenos_
+_tags: Operating Systems, Negative Zero, Software, Design_
+
+I was 8 years old, bored in świetlica, drawing an operating system on paper.
+
+Not a game. Not a cartoon. An operating system — complete with a taskbar, window chrome, and an accent color I borrowed from Ubuntu without knowing what Ubuntu was. I called it Glass.
+
+That probably tells you something about how I'm wired.
+
+I've always felt like I was made for something bigger than just using the world as-is. An OS felt like the purest expression of that. It's not an app that solves one problem — it's the whole environment. The entire way a person experiences their machine. Build that, and you've built something close to a world.
+
+So I kept building it. On paper, then Figma — version after version, design system after design system, across almost a decade. I loved designing it. I also spent a lot of those years wishing I could actually *use* it.
+
+The gap between designing an OS and building one is enormous. Systems knowledge that takes years to develop. In late 2025 that finally changed — AI let me learn fast enough to close the gap myself. Nine years of accumulated design intent suddenly had somewhere to go.
+
+# The Goal
+
+Even though originally, it was just a way to kill some time, later on, I defined an actual goal for ZenOS.
+
+It goes as follows:
+
+**Make technology feel like magic. Get out of your way, give you real power, look good doing it.
+Most OSes pick one or two of those. ZenOS is supposed to do all three.**
+
+# The Design
+
+## Before Figma
+
+### **Glass circa 2016**
+
+![Glass OS](/images/glassos.png)
+
+Where it started. Drew this at 8 on actual paper. Already had the core instincts: taskbar, windows, apps.
+
+### First (paper) ZenOS
+
+![ZenOS paper](/images/zenos-paper.png)
+
+It wasn't until 2020, though, until ZenOS got its current name.
+Funnily enough, it wasn't actually called ZenOS but ZenOn instead.
+
+### Inkscape experiments
+
+Later on, I experimented with ZenOS on Inkscape... unfortunately, those designs were all lost.
+
+## The Figma Era
+
+### The first Figma ZenOS 
+
+![ZenOS mid](/images/zenos-piss.png)
+
+By this point it had a name & the vision was getting sharper, the gap to actually building it was still enormous.
+
+### **Project Carbon / Neo**
+
+![ZenOS Carbon](/images/n9-overview.png)
+
+The most ambitious design era — infinite 2D canvas workspaces, advanced materials that maintain contrast against any background, collapsible UI elements. Figma struggled to render it in realtime.
+
+### **NUDL 10 — Aerogel**
+
+![Aerogel](/images/n10.png)
+
+The final design vision as of writing this. Lightweight, almost like air. This is what ZenOS is supposed to feel like.
+
+# Where It Is Now
+
+ZenOS is built on NixOS and has its own DSL that compiles to Nix, its own package & module repository (ZenPkgs), and a custom installer. It's in alpha — the bones exist, the surfaces are still rough.
+
+The roadmap is honest:
+
+- **Beta** — DSL-wrapped NixOS, polished installer, a handful of custom options. A real usable system.
+- **1.0.0** — Full GNOME desktop, app suite, module system, categorized packages. The complete experience.
+- **2.0.0/3.0.0** — Custom DE. Genuinely far off, but it's where the Figma designs ultimately live.
+
+![fastfetch](/images/fastfetch.png)
+
+_The fastfetch looks good though._
+
+---
+
+# Devices
+
+## [Acer SA243YG0bi](https://doromiert.neg-zero.com/devices/acer-sa243yg0bi.html)
+_category: Daily drivers_
+_icon: monitor_
+
+# Brief
+
+Primary monitor.
+
+# Specs
+
+| part | name |
+|---|---|
+| Size | 23.8" |
+| Panel | IPS |
+| Resolution | 1920×1080 |
+| Refresh rate | 120 Hz |
+| Ports | HDMI, VGA |
+
+# Story
+
+---
+
+## [doromi tul I](https://doromiert.neg-zero.com/devices/doromi-tul-1.html)
+_category: Lost or sold_
+_icon: monitor_
+
+# Brief
+
+The predecessor to doromi tul II. Sold to let me afford its successor.
+
+# Specs
+
+| part | name |
+|---|---|
+| CPU | Intel i5 10400f |
+| GPU | nVidia GeForce RTX 3060 (12GB) |
+| RAM | 32GB DDR4-2666 |
+| Primary SSD | 2TB nvme (goodram) |
+| Secondary SSD | 512GB generic SATA SSD |
+| HDD | 3TB, salvaged from a WD My Passport |
+
+# Story
+
+---
+
+## [doromi tul 2](https://doromiert.neg-zero.com/devices/doromi-tul-2.html)
+_category: Daily drivers_
+_icon: monitor_
+
+# Brief
+
+My daily driver PC.
+
+# Specs
+
+| part | name |
+|---|---|
+| CPU | AMD Ryzen 9 7900 |
+| GPU | AMD Radeon RX 6900 XT |
+| RAM | 32GB DDR5-6000 |
+| PSU | Corsair hx850 |
+| Primary SSD | 2TB nvme (goodram) |
+| Secondary SSD | 512GB generic SATA SSD |
+| HDD | 3TB, salvaged from a WD My Passport |
+
+# Story
+
+---
+
+## [doromipad](https://doromiert.neg-zero.com/devices/doromipad.html)
+_category: Daily drivers_
+_icon: laptop_
+
+# Brief
+
+ThinkPad L13 Yoga running NixOS. The portable machine.
+
+# Specs
+
+| part | name |
+|---|---|
+| Model | Lenovo ThinkPad L13 Yoga |
+| CPU | Intel Core i5 (10th gen) |
+| RAM | 8 GB |
+| Display | 13.3" FHD IPS touch, 1920×1080 |
+| Form factor | 2-in-1 convertible |
+| OS | NixOS |
+
+# Story
+
+---
+
+## [Google Pixel 3a](https://doromiert.neg-zero.com/devices/google-pixel-3a.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+Two units gifted by my uncle.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | sargo |
+| SoC | Snapdragon 670 |
+| RAM | 4 GB |
+| Storage | 64 GB |
+| Display | 5.6" OLED, 2220×1080 |
+| Battery | 3000 mAh |
+| Release | 2019 |
+
+# Story
+
+---
+
+## [Hiro Pegasus](https://doromiert.neg-zero.com/devices/hiro-pegasus.html)
+_category: Daily drivers_
+_icon: mouse_
+
+# Brief
+
+Daily mouse.
+
+# Story
+
+---
+
+## [iPhone 6](https://doromiert.neg-zero.com/devices/iphone-6.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My mom's old daily driver, bootloops.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Apple A8 |
+| RAM | 1 GB |
+| Storage | unknown |
+| Display | 4.7" IPS, 1334×750 |
+| Release | 2014 |
+
+# Story
+
+---
+
+## [iPhone 7](https://doromiert.neg-zero.com/devices/iphone-7.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My mom's old daily driver, gifted.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Apple A10 Fusion |
+| RAM | 2 GB |
+| Storage | 32/128/256 GB |
+| Display | 4.7" IPS, 1334×750 |
+| Release | 2016 |
+
+# Story
+
+---
+
+## [iPhone 8](https://doromiert.neg-zero.com/devices/iphone-8.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My mom's old daily driver, gifted.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Apple A11 Bionic |
+| RAM | 2 GB |
+| Storage | 64/256 GB |
+| Display | 4.7" IPS, 1334×750 |
+| Release | 2017 |
+
+# Story
+
+---
+
+## [iPhone SE (1st gen)](https://doromiert.neg-zero.com/devices/iphone-se-1st-gen.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+Gifted by my uncle before moving to New Zealand.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Apple A9 |
+| RAM | 2 GB |
+| Storage | 16/32/64 GB |
+| Display | 4.0" IPS, 1136×640 |
+| Release | 2016 |
+
+# Story
+
+---
+
+## [iPhone XR](https://doromiert.neg-zero.com/devices/iphone-xr.html)
+_category: Daily drivers_
+_icon: smartphone_
+
+# Brief
+
+iOS fallback device. Not a true daily driver — just the first iPhone I'd grab when I need iOS.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Apple A12 Bionic |
+| Display | 6.1" LCD, 1792×828 |
+| RAM | 3 GB |
+| Storage | 64/128/256 GB |
+| OS | iOS (latest supported) |
+
+# Story
+
+---
+
+## [Lenovo T24i](https://doromiert.neg-zero.com/devices/lenovo-t24i.html)
+_category: Daily drivers_
+_icon: monitor_
+
+# Brief
+
+Secondary monitor.
+
+# Specs
+
+| part | name |
+|---|---|
+| Size | 23.8" |
+| Panel | IPS |
+| Resolution | 1920×1080 |
+| Refresh rate | 60 Hz |
+
+# Story
+
+---
+
+## [13" MacBook Pro (late 2013)](https://doromiert.neg-zero.com/devices/macbook-pro-2013.html)
+_category: Daily drivers_
+_icon: laptop_
+
+# Brief
+
+Gifted by my uncle, runs MacOS Big Sur.
+
+# Specs
+
+| part | name |
+|---|---|
+| CPU | Intel Core i5-4258U (2C/4T, 2.4 GHz) |
+| RAM | 8 GB DDR3L |
+| Storage | 256 GB SSD |
+| Display | 13.3" IPS, 2560×1600 (Retina) |
+| GPU | Intel Iris 5100 |
+| OS | macOS Big Sur |
+
+# Story
+
+---
+
+## [Mi 11T](https://doromiert.neg-zero.com/devices/mi-11t.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My old daily driver. Gifted by my dad.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | amber |
+| SoC | MediaTek Dimensity 1200-Ultra |
+| RAM | 8 GB |
+| Storage | 128/256 GB |
+| Display | 6.67" AMOLED, 2400×1080, 144 Hz |
+| Battery | 5000 mAh, 67W |
+| Release | 2021 |
+
+# Story
+
+---
+
+## [Negative Zero Server](https://doromiert.neg-zero.com/devices/negative-zero-server.html)
+_category: Daily drivers_
+_icon: cpu_
+
+# Brief
+
+The home server. Running Jellyfin, Immich, Copyparty, SSH, and torrents.
+At the moment of writing this, it's not up due to work on ZenOS & other projects.
+
+# Specs
+
+| part | name |
+|---|---|
+| CPU | Intel Core i5-9400F (6C/6T) |
+| RAM | 16 GB DDR4 |
+| GPU | AMD RX 570 |
+| PSU | random 500W bronze |
+| OS | NixOS |
+
+# Services
+
+- Jellyfin
+- Immich
+- Copyparty
+- SSH
+- Torrents
+
+# Story
+
+---
+
+## [Nothing Ear (a)](https://doromiert.neg-zero.com/devices/nothing-ear-a.html)
+_category: Daily drivers_
+_icon: headphones_
+
+# Brief
+
+Daily earbuds.
+
+# Specs
+
+| part | name |
+|---|---|
+| Type | TWS IEMs |
+| ANC | Yes |
+| Driver | 11mm dynamic |
+| Codec | LHDC 5.0, AAC, SBC |
+| Battery | 5.5h (buds) + 27h (case) |
+
+# Story
+
+---
+
+## [Nothing Phone (2)](https://doromiert.neg-zero.com/devices/nothing-phone-2.html)
+_category: Daily drivers_
+_icon: smartphone_
+
+# Brief
+
+Secondary Android device.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Snapdragon 8+ Gen 1 |
+| RAM | 8/12 GB |
+| Storage | 128/256 GB |
+| Display | 6.7" OLED, 2412×1080, 120 Hz |
+| Battery | 4700 mAh |
+| OS | Nothing OS |
+
+# Story
+
+---
+
+## [OnePlus 11](https://doromiert.neg-zero.com/devices/oneplus-11.html)
+_category: Daily drivers_
+_icon: smartphone_
+
+# Brief
+
+Main phone. Rooted with KernelSU, running CrDroid 12.10. 
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | salami |
+| SoC | Snapdragon 8 Gen 2 (SM8550) |
+| RAM | 16 GB LPDDR5X |
+| Storage | 256 GB UFS 3.1 |
+| Display | 6.7" AMOLED, 3216×1440, 120 Hz |
+| Battery | 5000 mAh, 100W wired |
+| OS | CrDroid 12.10 (Android 14) |
+| Root | KernelSU |
+
+# Story
+
+---
+
+## [PlayStation Vita](https://doromiert.neg-zero.com/devices/ps-vita.html)
+_category: Daily drivers_
+_icon: gamepad_
+
+# Brief
+
+Modded.
+
+# Specs
+
+| part | name |
+|---|---|
+| CPU | ARM Cortex-A9 MP4 (4C, 444 MHz) |
+| GPU | PowerVR SGX543MP4+ |
+| RAM | 512 MB |
+| Display | 5.0" OLED, 960×544 |
+| Storage | proprietary + SD2Vita adapter |
+| Release | 2011 |
+
+# Story
+
+---
+
+## [Meta Quest 2](https://doromiert.neg-zero.com/devices/quest-2.html)
+_category: Lost or sold_
+_icon: xr_
+
+# Brief
+
+Old VR headset, sold to my friend.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Snapdragon XR2 |
+| RAM | 6 GB |
+| Storage | 128 GB |
+| Display | 1832×1920 per eye, 120 Hz |
+| Release | 2020 |
+
+# Story
+
+---
+
+## [Meta Quest 3](https://doromiert.neg-zero.com/devices/quest-3.html)
+_category: Daily drivers_
+_icon: xr_
+
+# Brief
+
+My main XR headset. Originally the 128GB model but my girlfriend traded her 512GB model with me since she didn't need that much space. 
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Snapdragon XR2 Gen 2 |
+| RAM | 8 GB |
+| Storage | 512 GB |
+| Display | 2064×2208 per eye, 120 Hz |
+| Passthrough | Full colour mixed reality |
+
+# Story
+
+---
+
+## [Redmi Note 11](https://doromiert.neg-zero.com/devices/redmi-note-11.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+Spes. The worst smartphone on the planet (lol).
+Used to be my daily driver.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | spes |
+| SoC | Snapdragon 680 |
+| RAM | 6 GB |
+| Storage | 128 GB |
+| Display | 6.43" AMOLED, 2400×1080, 90 Hz |
+| Battery | 5000 mAh, 33W |
+| Release | 2022 |
+
+# Story
+
+---
+
+## [Redmi Note 12](https://doromiert.neg-zero.com/devices/redmi-note-12.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+Gifted by my girlfriend.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | tapas |
+| SoC | Snapdragon 685 |
+| RAM | 4/6/8 GB |
+| Storage | 128 GB |
+| Display | 6.67" AMOLED, 2400×1080, 120 Hz |
+| Battery | 5000 mAh, 33W |
+| Release | 2023 |
+
+# Story
+
+---
+
+## [Redmi Note 8](https://doromiert.neg-zero.com/devices/redmi-note-8.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My old daily driver, the first smartphone I modded myself.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | ginkgo |
+| SoC | Snapdragon 665 |
+| RAM | 4/6 GB |
+| Storage | 64/128 GB |
+| Display | 6.3" IPS, 2340×1080 |
+| Battery | 4000 mAh, 18W |
+| Release | 2019 |
+
+# Story
+
+---
+
+## [Redmi Note 9](https://doromiert.neg-zero.com/devices/redmi-note-9.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My old daily driver after the Redmi Note 8 got lost.
+Got destroyed when my bike's seat fell off on my way home.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | merlin |
+| SoC | MediaTek Helio G85 |
+| RAM | 4 GB |
+| Storage | 64 GB |
+| Display | 6.53" IPS, 2340×1080 |
+| Battery | 5020 mAh, 18W |
+| Release | 2020 |
+
+# Story
+
+---
+
+## [Samsung Galaxy A50](https://doromiert.neg-zero.com/devices/samsung-a50.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+My old daily driver before I dropped it near a church.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Exynos 9610 |
+| RAM | 4/6 GB |
+| Storage | 64/128 GB |
+| Display | 6.4" Super AMOLED, 2340×1080 |
+| Battery | 4000 mAh |
+| Release | 2019 |
+
+# Story
+
+---
+
+## [Samsung Galaxy Note II](https://doromiert.neg-zero.com/devices/samsung-galaxy-note-ii.html)
+_category: Daily drivers_
+_icon: smartphone_
+
+# Brief
+
+Old Note kept around. Classic piece of hardware.
+I still like to use it for taking nostalgic photos.
+
+# Specs
+
+| part | name |
+|---|---|
+| SoC | Exynos 4412 (quad-core, 1.6 GHz) |
+| RAM | 2 GB |
+| Storage | 16/32/64 GB + microSD |
+| Display | 5.5" Super AMOLED, 1280×720 |
+| Battery | 3100 mAh (removable) |
+| Release | 2012 |
+
+
+# Story
+
+---
+
+## [Smartisan U2 Pro](https://doromiert.neg-zero.com/devices/smartisan-u2-pro.html)
+_category: Phones_
+_icon: smartphone_
+
+# Brief
+
+Won it at a lottery in a groupchat. 
+More of a museum piece than actual daily driver material.
+
+# Specs
+
+| part | name |
+|---|---|
+| Codename | odin |
+| SoC | Snapdragon 821 |
+| RAM | 6 GB |
+| Storage | 64/128/256 GB |
+| Display | 5.7" AMOLED, 2560×1440 |
+| Battery | 3060 mAh |
+| Release | 2017 |
+
+# Story
+
+---
+
+## [Nintendo Wii U](https://doromiert.neg-zero.com/devices/wiiu.html)
+_category: Daily drivers_
+_icon: gamepad_
+
+# Brief
+
+Modded with Aroma.
+
+# Specs
+
+| part | name |
+|---|---|
+| CPU | IBM PowerPC Espresso (3C, 1.24 GHz) |
+| GPU | AMD Radeon-based GPU |
+| RAM | 2 GB |
+| Storage | 32 GB internal + USB |
+| Mod | Aroma (Tiramisu base) |
+| Release | 2012 |
+
+# Story
+
+---
+
+# Music
+
+## [asjdoasuijasido](https://doromiert.neg-zero.com/music/test.html)
+
+asdijasdiojasd
+
+---
