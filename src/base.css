@@ -1,7 +1,8 @@
 @font-face {
     font-family: "Atkinson Hyperlegible Next";
-    src: url("/fonts/std.woff2") format("woff2") tech("variations"),
-         url("/fonts/std.woff2") format("woff2-variations");
+    src:
+        url("/fonts/std.woff2") format("woff2") tech("variations"),
+        url("/fonts/std.woff2") format("woff2-variations");
     font-weight: 200 800;
     font-style: normal;
     font-display: swap;
@@ -9,8 +10,9 @@
 
 @font-face {
     font-family: "Atkinson Hyperlegible Mono";
-    src: url("/fonts/mono.woff2") format("woff2") tech("variations"),
-         url("/fonts/mono.woff2") format("woff2-variations");
+    src:
+        url("/fonts/mono.woff2") format("woff2") tech("variations"),
+        url("/fonts/mono.woff2") format("woff2-variations");
     font-weight: 200 800;
     font-style: normal;
     font-display: swap;
@@ -101,8 +103,8 @@ body {
         margin-right: 8px;
     }
 
-    #rss-text{
-        @media(max-width: 600px){
+    #rss-text {
+        @media (max-width: 600px) {
             display: none;
         }
     }
@@ -269,7 +271,6 @@ body {
 }
 
 .post-nav {
-
     display: flex;
     gap: 10px;
     align-items: center;
@@ -337,7 +338,6 @@ article {
         margin-top: 1.5em;
     }
 
-
     table {
         width: 100%;
         border-collapse: collapse;
@@ -355,7 +355,8 @@ article {
 
     tbody {
         tr {
-            border-bottom: 1px solid color-mix(in srgb, var(--c1) 20%, transparent);
+            border-bottom: 1px solid
+                color-mix(in srgb, var(--c1) 20%, transparent);
             transition: background 0.1s;
         }
 
@@ -378,7 +379,11 @@ article {
             font-size: 13px;
             white-space: nowrap;
             padding-right: 20px;
-         }
+        }
+    }
+    a {
+        color: var(--c1);
+        font-weight: bold;
     }
 }
 
@@ -526,7 +531,6 @@ article {
     }
 }
 
-
 .skip-link {
     position: absolute;
     top: -100%;
@@ -541,13 +545,16 @@ article {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    ::view-transition-old(*), ::view-transition-new(*) {
+    html {
+        scroll-behavior: auto;
+    }
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
         animation: none !important;
     }
 }
 
-.rss-btn{
+.rss-btn {
     width: max-content !important;
 }
 
@@ -609,7 +616,6 @@ article {
             filter: brightness(0.75);
         }
     }
-
 
     summary {
         list-style: none;
