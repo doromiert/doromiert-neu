@@ -402,6 +402,11 @@ article tbody td:first-child {
   padding-right: 20px;
 }
 
+article a {
+  color: var(--c1);
+  font-weight: bold;
+}
+
 /* spatial logic: index is base (0), business is right (+100%) */
 @keyframes slide-to-left {
   to {
@@ -575,7 +580,8 @@ article tbody td:first-child {
   html {
     scroll-behavior: auto;
   }
-  ::view-transition-old(*), ::view-transition-new(*) {
+  ::view-transition-old(*),
+::view-transition-new(*) {
     animation: none !important;
   }
 }
