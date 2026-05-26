@@ -2,6 +2,7 @@
 title: ZenOS
 icon: zenos
 tags: Operating Systems, Negative Zero, Software, Design
+description: doromiert's OS project
 ---
 
 I was 8 years old, bored in świetlica, drawing an operating system on paper.

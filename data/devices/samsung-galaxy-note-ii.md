@@ -22,5 +22,4 @@ I still like to use it for taking nostalgic photos.
 | Battery | 3100 mAh (removable) |
 | Release | 2012 |
 
-
 # Story

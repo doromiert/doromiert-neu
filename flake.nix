@@ -13,6 +13,7 @@
         ps.fonttools
         ps.libsass
         ps.brotli
+        ps.cairosvg
       ]);
     in
     {

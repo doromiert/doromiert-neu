@@ -1,10 +1,41 @@
 #!/usr/bin/env python3
 import sys
-import re, gzip, shutil
+import re, gzip, shutil, io
 import markdown as mdlib
 from pathlib import Path
 import subprocess
 import backcompat
+
+# --- OG image deps (optional, skip gracefully if missing) ---
+try:
+    from PIL import Image, ImageDraw, ImageFont
+    import cairosvg as _cairosvg
+
+    _OG_ENABLED = True
+except ImportError:
+    _OG_ENABLED = False
+
+CSS_VARS = {
+    "--b1": "#5a1e17",
+    "--b0": "#c96959",
+    "--po0": "#e58b3c",
+    "--po1": "#7c3a0b",
+    "--j0": "#ffd165",
+    "--j1": "#a87600",
+    "--z0": "#76e256",
+    "--z1": "#2e7700",
+    "--n0": "#59a7c9",
+    "--n1": "#004a69",
+    "--r0": "#d47be6",
+    "--r1": "#7a1b8d",
+    "--pu0": "#7159c9",
+    "--pu1": "#150055",
+    "--x1": "#5d5d5d",
+    "--x0": "#1a1a1a",
+    "--w": "#ffffff",
+}
+
+BASE_URL = "https://doromiert.neg-zero.com"
 
 PROJ = Path(__file__).parent.parent
 DATA = PROJ / "data"
@@ -274,6 +305,142 @@ def generate_icon_css(icon_path="/icons.svg"):
     return css
 
 
+def resolve_var(var):
+    """Resolve a CSS var() to a hex color."""
+    return CSS_VARS.get(
+        var.strip().replace("var(", "").replace(")", "").strip(), "#ffffff"
+    )
+
+
+def hex_to_rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i : i + 2], 16) for i in (0, 2, 4))
+
+
+def auto_description(body, max_len=160):
+    """Extract first meaningful paragraph from markdown body and strip markup."""
+    for line in body.splitlines():
+        line = line.strip()
+        if (
+            not line
+            or line.startswith("#")
+            or line.startswith("!")
+            or line.startswith("-")
+        ):
+            continue
+        clean = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", line)  # links
+        clean = re.sub(r"[*_`#]", "", clean).strip()
+        if clean:
+            return clean[:max_len] + ("…" if len(clean) > max_len else "")
+    return ""
+
+
+def generate_og_image(title, section_id, icon_name, description, tags, slug, out_dir):
+    """Generate a 1200x630 OG preview image. Returns relative URL or empty string."""
+    if not _OG_ENABLED:
+        return ""
+
+    W, H = 1200, 630
+    c0_var, c1_var = CONTENT_C[section_id]
+    c0 = resolve_var(c0_var)
+    c1 = resolve_var(c1_var)
+    c0_rgb = hex_to_rgb(c0)
+    c1_rgb = hex_to_rgb(c1)
+
+    img = Image.new("RGB", (W, H), c0_rgb)
+    draw = ImageDraw.Draw(img)
+
+    # top accent stripe
+    # stripe = tuple(max(0, v - 25) for v in c0_rgb)
+    # draw.rectangle([(0, 0), (W, 8)], fill=stripe)
+
+    font_std = str(DATA / "fonts/std.ttf")
+    font_mono = str(DATA / "fonts/mono.ttf")
+
+    # doromiert logo — top left, override CSS media query with direct fill
+    try:
+        dor_svg = (DATA / "doromiert.svg").read_text()
+        # nuke the <style> block entirely and set fill directly on the path
+        dor_svg = re.sub(r"<style>.*?</style>", "", dor_svg, flags=re.DOTALL)
+        dor_svg = re.sub(
+            r'id="doromiert-logo-svg"', f'id="doromiert-logo-svg" fill="{c1}"', dor_svg
+        )
+        dor_png = _cairosvg.svg2png(bytestring=dor_svg.encode(), output_height=36)
+        dor_img = Image.open(io.BytesIO(dor_png)).convert("RGBA")
+        img.paste(dor_img, (40, 36), dor_img)
+    except Exception:
+        pass
+
+    # section icon — centered
+    try:
+        icons = (DATA / "icons.txt").read_text().strip().split("\n")
+        _icon = icon_name if icon_name in icons else "docs"
+        idx = icons.index(_icon)
+        svg_src = (DATA / "icons.svg").read_text()
+        patched = re.sub(r'viewBox="[^"]*"', f'viewBox="{idx * 24} 0 24 24"', svg_src)
+        patched = re.sub(r'<svg([^>]*?)width="[^"]*"', r'<svg\1width="96"', patched)
+        patched = re.sub(r'<svg([^>]*?)height="[^"]*"', r'<svg\1height="96"', patched)
+        patched = patched.replace('stroke="white"', f'stroke="{c1}"').replace(
+            'fill="white"', f'fill="{c1}"'
+        )
+        icon_png = _cairosvg.svg2png(bytestring=patched.encode())
+        icon_img = Image.open(io.BytesIO(icon_png)).convert("RGBA")
+        img.paste(icon_img, ((W - 96) // 2, 168), icon_img)
+    except Exception:
+        pass
+
+    # title
+    try:
+        font_title = ImageFont.truetype(font_std, 64)
+    except Exception:
+        font_title = ImageFont.load_default()
+    bbox = draw.textbbox((0, 0), title, font=font_title)
+    draw.text(
+        ((W - (bbox[2] - bbox[0])) // 2, 288), title, font=font_title, fill=c1_rgb
+    )
+
+    # description
+    if description:
+        try:
+            font_desc = ImageFont.truetype(font_std, 24)
+        except Exception:
+            font_desc = ImageFont.load_default()
+        words = description.split()
+        lines, line = [], []
+        for w in words:
+            test = " ".join(line + [w])
+            if draw.textbbox((0, 0), test, font=font_desc)[2] > 900 and line:
+                lines.append(" ".join(line))
+                line = [w]
+            else:
+                line.append(w)
+        if line:
+            lines.append(" ".join(line))
+        y = 376
+        for ln in lines[:2]:
+            bx = draw.textbbox((0, 0), ln, font=font_desc)
+            draw.text(((W - (bx[2] - bx[0])) // 2, y), ln, font=font_desc, fill=c1_rgb)
+            y += 36
+
+    # bottom-right URL
+    # try:
+    #     font_url = ImageFont.truetype(font_mono, 16)
+    # except Exception:
+    #     font_url = ImageFont.load_default()
+    # url_text = "doromiert.neg-zero.com"
+    # bx = draw.textbbox((0, 0), url_text, font=font_url)
+    # faded_url = tuple(int(v * 0.4) for v in c1_rgb)
+    # draw.text(
+    #     (W - (bx[2] - bx[0]) - 40, H - 38), url_text, font=font_url, fill=faded_url
+    # )
+
+    dest = out_dir / "og" / section_id
+    dest.mkdir(parents=True, exist_ok=True)
+    out_path = dest / f"{slug}.png"
+    img.save(out_path, optimize=True)
+    return f"/og/{section_id}/{slug}.png"
+
+
 def inline_svgs(html):
     def read_svg(src):
         path = DATA / src.lstrip("/")
@@ -365,17 +532,48 @@ def lnk_btn(label_html, href, c0, c1, btnClass=""):
     return f'<span class="navbutton {btnClass}" style="--c0:{c0};--c1:{c1};width:min-content;opacity:.3;cursor:not-allowed">{label_html}</span>'
 
 
-def article_page(title, body_html, section_id, minimap_html=""):
+def article_page(
+    title,
+    body_html,
+    section_id,
+    minimap_html="",
+    description="",
+    og_image_url="",
+    canonical_url="",
+):
     c0, c1 = CONTENT_C[section_id]
-    back_btn = f'<button style="--c0:{c0};--c1:{c1}"><nz-icon name="direction" rotate="180"></nz-icon></button>'
     minimap = (
         f'<nav class="article-minimap">{minimap_html}</nav>' if minimap_html else ""
+    )
+    og_image_abs = (
+        f"{BASE_URL}{og_image_url}" if og_image_url else f"{BASE_URL}/images/og.png"
+    )
+    desc_tag = (
+        f'<meta name="description" content="{description}"/>' if description else ""
+    )
+    og_tags = (
+        f'<meta property="og:title" content="{title} — doromiert"/>'
+        f'<meta property="og:type" content="article"/>'
+        f'<meta property="og:image" content="{og_image_abs}"/>'
+        + (
+            f'<meta property="og:description" content="{description}"/>'
+            if description
+            else ""
+        )
+        + (
+            f'<meta property="og:url" content="{canonical_url}"/>'
+            if canonical_url
+            else ""
+        )
+        + f'<meta name="twitter:card" content="summary_large_image"/>'
+        + f'<meta name="twitter:image" content="{og_image_abs}"/>'
     )
     return (
         f'<!doctype html><html lang="en"><head>'
         f'<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>'
         f"<title>{title} — doromiert</title>"
         f'<link rel="icon" type="image/svg+xml" href="/doromiert.svg"/>'
+        f"{desc_tag}{og_tags}"
         f"<style>{(PROJ / 'src' / 'base.css').read_text()}</style>"
         f"<style>:root{{--c0:{c0};--c1:{c1}}}"
         f"body{{margin:0;padding:0;background:var(--c0);color:var(--c1);"
@@ -435,8 +633,15 @@ def build_lib():
                 f"</div>"
                 f"<article>{md_html}</article>"
             )
+            desc = meta.get("description", "") or auto_description(body)
+            og_url = generate_og_image(title, "lib", icon, desc, tags, f.stem, DIST)
+            canonical = f"{BASE_URL}/lib/{f.stem}.html"
             (out / f"{f.stem}.html").write_text(
-                compile_page(article_page(title, body_html, "lib", minimap_html))
+                compile_page(
+                    article_page(
+                        title, body_html, "lib", minimap_html, desc, og_url, canonical
+                    )
+                )
             )
 
     return f'<div class="card-grid">{"".join(cards)}</div>'
@@ -478,8 +683,18 @@ def build_blog():
             f"</div>"
             f"{lnk_btn('<nz-icon name="rss"></nz-icon><span >RSS feed</span>', '/feed.xml', 'var(--j0)', 'var(--x0)', 'rss-btn')}"
         )
+        desc = meta.get("description", "") or auto_description(body)
+        post_title = meta.get("title", date)
+        og_url = generate_og_image(
+            post_title, "blog", "announcement", desc, [], slug, DIST
+        )
+        canonical = f"{BASE_URL}/blog/{slug}.html"
         (out / f"{slug}.html").write_text(
-            compile_page(article_page(date, body_html, "blog", minimap_html))
+            compile_page(
+                article_page(
+                    date, body_html, "blog", minimap_html, desc, og_url, canonical
+                )
+            )
         )
 
     # Date index page /blog/index.html
@@ -551,8 +766,21 @@ def build_category(section_id):
                 f"</div>"
                 f"<article>{md_html}</article>"
             )
+            desc = meta.get("description", "") or auto_description(body)
+            og_url = generate_og_image(title, section_id, icon, desc, tags, slug, DIST)
+            canonical = f"{BASE_URL}/{section_id}/{slug}.html"
             (out / f"{slug}.html").write_text(
-                compile_page(article_page(title, body_html, section_id, minimap_html))
+                compile_page(
+                    article_page(
+                        title,
+                        body_html,
+                        section_id,
+                        minimap_html,
+                        desc,
+                        og_url,
+                        canonical,
+                    )
+                )
             )
 
     # "Now listening to" widget for music
