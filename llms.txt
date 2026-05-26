@@ -8,7 +8,7 @@ RSS feed: https://doromiert.neg-zero.com/feed.xml
 
 ## Blog
 
-- [2026-05-20](https://doromiert.neg-zero.com/blog/2026-05-20.html): is this thing on?
+- [test](https://doromiert.neg-zero.com/blog/2026-05-20.html): is this thing on?
 
 ## Library / Projects
 

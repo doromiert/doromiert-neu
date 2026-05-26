@@ -8,7 +8,7 @@ RSS feed: https://doromiert.neg-zero.com/feed.xml
 
 ## Blog
 
-- [2026-05-20](https://doromiert.neg-zero.com/blog/2026-05-20.html): is this thing on?
+- [test](https://doromiert.neg-zero.com/blog/2026-05-20.html): is this thing on?
 
 ## Library / Projects
 
@@ -54,7 +54,8 @@ RSS feed: https://doromiert.neg-zero.com/feed.xml
 
 # Blog Posts
 
-## [2026-05-20](https://doromiert.neg-zero.com/blog/2026-05-20.html)
+## [test](https://doromiert.neg-zero.com/blog/2026-05-20.html)
+_description: desctest_
 
 # is this thing on?
 
@@ -85,6 +86,7 @@ b,jkgvbhHhyvbjhb
 ## [ZenOS](https://doromiert.neg-zero.com/lib/zenos.html)
 _icon: zenos_
 _tags: Operating Systems, Negative Zero, Software, Design_
+_description: doromiert's OS project_
 
 I was 8 years old, bored in świetlica, drawing an operating system on paper.
 
@@ -841,7 +843,6 @@ I still like to use it for taking nostalgic photos.
 | Display | 5.5" Super AMOLED, 1280×720 |
 | Battery | 3100 mAh (removable) |
 | Release | 2012 |
-
 
 # Story
 
