@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install markdown libsass
+          pip install markdown libsass cairosvg
 
       - name: Build site
         run: python src/build.py
