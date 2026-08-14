@@ -84,6 +84,17 @@
                 fill: var(--b1);
                 #doromiert-logo-svg { fill: #5A1E17 !important; }
             }
+
+            /* Home is the left-most page: when you navigate back to it, it
+               slides in from the left while the page you left exits right.
+               (These override base.css's default rightward slide, since the
+               view-transition pseudo-elements belong to the destination page.) */
+            ::view-transition-old(root) {
+                animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-to-right;
+            }
+            ::view-transition-new(root) {
+                animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-left;
+            }
         </style>
     </head>
     <body>

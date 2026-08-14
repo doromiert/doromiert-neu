@@ -1024,7 +1024,7 @@ def build():
         build_category("music"),
     )
 
-    def compile_standard_page(raw, vt_name):
+    def compile_standard_page(raw):
         html = re.sub(
             r'<link[^>]*href="[^"]*base\.css"[^>]*>',
             f'<style>{base_css}</style>\n<meta name="robots" content="index, follow">\n<meta name="google-site-verification" content="-eYbb_jJi6sNoLs0tLS1QkbVupJZxszUWiAsZ_JZl44" />',
@@ -1040,15 +1040,11 @@ def build():
         html = compile_elements(html)
         html = inline_svgs(html)
         html = html.replace("</style>", generate_icon_css() + "</style>", 1)
-        # inject the transition name into the body
-        html = re.sub(
-            r"<body([^>]*)>", rf'<body\1 style="view-transition-name: {vt_name}">', html
-        )
         return html
 
     if (MAIN / "index.html").exists():
         (DIST / "index.html").write_text(
-            compile_standard_page((MAIN / "index.html").read_text(), "page-main")
+            compile_standard_page((MAIN / "index.html").read_text())
         )
 
     for f in BIZ.rglob("*"):
@@ -1056,7 +1052,7 @@ def build():
             out = DIST / "business" / f.relative_to(BIZ)
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(
-                compile_standard_page(f.read_text(), "page-biz")
+                compile_standard_page(f.read_text())
             ) if f.suffix == ".html" else shutil.copy(f, out)
 
     for asset in [
