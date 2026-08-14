@@ -1,4 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Redmi Note 9 — doromiert</title><link rel="icon" type="image/svg+xml" href="/doromiert.svg"/><meta name="description" content="My old daily driver after the Redmi Note 8 got lost."/><meta property="og:title" content="Redmi Note 9 — doromiert"/><meta property="og:type" content="article"/><meta property="og:image" content="https://doromiert.neg-zero.com/og/devices/redmi-note-9.png"/><meta property="og:description" content="My old daily driver after the Redmi Note 8 got lost."/><meta property="og:url" content="https://doromiert.neg-zero.com/devices/redmi-note-9.html"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://doromiert.neg-zero.com/og/devices/redmi-note-9.png"/><style>
+@charset "UTF-8";
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
   src: url("/fonts/std.woff2") format("woff2") tech("variations"), url("/fonts/std.woff2") format("woff2-variations");
@@ -36,10 +37,9 @@
   --w: #ffffff;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+/* No `scroll-behavior: smooth` here: it also applies to the fragment landing on
+ * a cross-document navigation, so backing out to /#section animated a visible
+ * scroll from the top of the page down to the target. Section jumps are instant. */
 section {
   text-wrap: balance;
   text-align: center;
@@ -408,7 +408,22 @@ article a {
   font-weight: bold;
 }
 
-/* spatial logic: index is base (0), business is right (+100%) */
+/* Full-page slide transitions.
+ *
+ * These ride on `root` — the automatic, viewport-sized snapshot — and NOT on a
+ * per-page `view-transition-name`. Naming the <body> (which is as tall as the
+ * entire scrolling document) made Chromium snapshot the whole body and place it
+ * by its scroll offset, so mid-transition the outgoing page snapped to its top
+ * instead of showing the section you were actually looking at, and the old page
+ * often looked like it had vanished. `root` always captures exactly what's on
+ * screen, so both the old and new page stay put and slide as one.
+ *
+ * Direction is driven by the DESTINATION page's stylesheet: the ::view-transition
+ * pseudo-elements live in the document you're navigating TO. base.css is the
+ * default — you're heading "deeper/right", so the new page enters from the right
+ * while the old page leaves to the left. The home page (src/main/index.html)
+ * overrides this to slide the opposite way, so backing out to it always feels
+ * like returning to the left-most page. No JS needed for either direction. */
 @keyframes slide-to-left {
   to {
     transform: translateX(-100%);
@@ -433,44 +448,12 @@ article a {
   }
 }
 
-/* moving from main (left) to biz (right) */
-::view-transition-old(page-main):only-child {
+::view-transition-old(root) {
   animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-to-left;
 }
 
-::view-transition-new(page-biz):only-child {
-  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-right;
-}
-
-/* moving from biz (right) to main (left) */
-::view-transition-old(page-biz):only-child {
-  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-to-right;
-}
-
-::view-transition-new(page-main):only-child {
-  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-left;
-}
-
-/* avoid cross-fades during the slide */
-::view-transition-old(page-main),
-::view-transition-new(page-main),
-::view-transition-old(page-biz),
-::view-transition-new(page-biz) {
-  height: 100%;
-  mix-blend-mode: normal;
-}
-
-/* anchor logo */
-#jab-doromiert {
-  view-transition-name: main-logo;
-}
-
-::view-transition-old(root) {
-  animation: 0.5s ease both slide-to-left;
-}
-
 ::view-transition-new(root) {
-  animation: 0.5s ease both slide-from-right;
+  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-right;
 }
 
 #footer {

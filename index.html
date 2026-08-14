@@ -6,6 +6,7 @@
         <title>doromiert</title>
         <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHN0eWxlPgogICNkb3JvbWllcnQtbG9nby1zdmcgeyBmaWxsOiAjNUExRTE3OyB9CiAgQG1lZGlhIChwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyayApIHsKICAgICNkb3JvbWllcnQtbG9nby1zdmcgeyBmaWxsOiAjQzk2OTU5OyB9CiAgfQo8L3N0eWxlPgo8cGF0aCBpZD0iZG9yb21pZXJ0LWxvZ28tc3ZnIiBkPSJNMjEgM1YxN0wxNyAyMUgzTDcgMTdIMTVMMTcgMTVWN0gzTDcgM0gyMVoiIC8+Cjwvc3ZnPgo=" />
         <style>
+@charset "UTF-8";
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
   src: url("/fonts/std.woff2") format("woff2") tech("variations"), url("/fonts/std.woff2") format("woff2-variations");
@@ -43,10 +44,9 @@
   --w: #ffffff;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+/* No `scroll-behavior: smooth` here: it also applies to the fragment landing on
+ * a cross-document navigation, so backing out to /#section animated a visible
+ * scroll from the top of the page down to the target. Section jumps are instant. */
 section {
   text-wrap: balance;
   text-align: center;
@@ -415,7 +415,22 @@ article a {
   font-weight: bold;
 }
 
-/* spatial logic: index is base (0), business is right (+100%) */
+/* Full-page slide transitions.
+ *
+ * These ride on `root` — the automatic, viewport-sized snapshot — and NOT on a
+ * per-page `view-transition-name`. Naming the <body> (which is as tall as the
+ * entire scrolling document) made Chromium snapshot the whole body and place it
+ * by its scroll offset, so mid-transition the outgoing page snapped to its top
+ * instead of showing the section you were actually looking at, and the old page
+ * often looked like it had vanished. `root` always captures exactly what's on
+ * screen, so both the old and new page stay put and slide as one.
+ *
+ * Direction is driven by the DESTINATION page's stylesheet: the ::view-transition
+ * pseudo-elements live in the document you're navigating TO. base.css is the
+ * default — you're heading "deeper/right", so the new page enters from the right
+ * while the old page leaves to the left. The home page (src/main/index.html)
+ * overrides this to slide the opposite way, so backing out to it always feels
+ * like returning to the left-most page. No JS needed for either direction. */
 @keyframes slide-to-left {
   to {
     transform: translateX(-100%);
@@ -440,44 +455,12 @@ article a {
   }
 }
 
-/* moving from main (left) to biz (right) */
-::view-transition-old(page-main):only-child {
+::view-transition-old(root) {
   animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-to-left;
 }
 
-::view-transition-new(page-biz):only-child {
-  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-right;
-}
-
-/* moving from biz (right) to main (left) */
-::view-transition-old(page-biz):only-child {
-  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-to-right;
-}
-
-::view-transition-new(page-main):only-child {
-  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-left;
-}
-
-/* avoid cross-fades during the slide */
-::view-transition-old(page-main),
-::view-transition-new(page-main),
-::view-transition-old(page-biz),
-::view-transition-new(page-biz) {
-  height: 100%;
-  mix-blend-mode: normal;
-}
-
-/* anchor logo */
-#jab-doromiert {
-  view-transition-name: main-logo;
-}
-
-::view-transition-old(root) {
-  animation: 0.5s ease both slide-to-left;
-}
-
 ::view-transition-new(root) {
-  animation: 0.5s ease both slide-from-right;
+  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-right;
 }
 
 #footer {
@@ -1038,9 +1021,21 @@ html {
 #doromiert-button * #doromiert-logo-svg {
   fill: #5A1E17 !important;
 }
+
+/* Home is the left-most page: when you navigate back to it, it
+               slides in from the left while the page you left exits right.
+               (These override base.css's default rightward slide, since the
+               view-transition pseudo-elements belong to the destination page.) */
+::view-transition-old(root) {
+  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-to-right;
+}
+
+::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.7, 0, 0.3, 1) both slide-from-left;
+}
 </style>
     </head>
-    <body style="view-transition-name: page-main">
+    <body>
         <a href="#doromiert" class="skip-link">Skip to content</a>
 
         <nav class="topbar">
